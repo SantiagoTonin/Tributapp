@@ -23,13 +23,15 @@ public class DesarrolladorServicio {
     @Transactional
     public void registrar(String nombre, String email, String password,
             String password2, String contratacion) throws MiException {
+
         validar(nombre, email, password, password2);
+
         Desarrollador desarrollador = new Desarrollador();
 
         desarrollador.setNombre(nombre);
         desarrollador.setEmail(email);
         desarrollador.setPassword(password);
-        desarrollador.setPassword2(password);
+        desarrollador.setPassword2(password2);
 
 //        desarrollador.setRol(Rol.DESARROLLADOR);
         desarrolladorRepositorio.save(desarrollador);
@@ -98,6 +100,14 @@ public class DesarrolladorServicio {
         desarrolladores = desarrolladorRepositorio.findAll();
 
         return desarrolladores;
+    }
+
+    @Transactional()
+    public Desarrollador buscarPorEmail(String email) {
+
+        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorEmail(email);
+
+        return desarrollador;
     }
 
 }

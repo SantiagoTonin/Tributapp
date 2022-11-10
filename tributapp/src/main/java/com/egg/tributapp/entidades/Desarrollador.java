@@ -1,24 +1,19 @@
 package com.egg.tributapp.entidades;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author martin
- */
 @Entity
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor()
+@NoArgsConstructor
+@AllArgsConstructor
 public class Desarrollador {
 
     @Id
@@ -29,15 +24,9 @@ public class Desarrollador {
     private String email;
     private String password;
     private String password2;
-    private String contratacion;
+//    private String contratacion;
 //    private Imagen imagen;
 //    private Rol rol;
-    private Boolean alta;
-
-    public Desarrollador() {
-
-    }
-
-    
+//    private Boolean alta;
 
 }

@@ -15,4 +15,5 @@ public interface DesarrolladorRepositorio extends JpaRepository<Desarrollador, S
 
     @Query("SELECT u FROM Usuario u WHERE u.email= :email")
     public Desarrollador buscarPorEmail(@Param("email") String email);
+    
 }
