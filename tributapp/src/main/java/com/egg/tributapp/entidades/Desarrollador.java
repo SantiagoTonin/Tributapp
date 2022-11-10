@@ -3,6 +3,9 @@ package com.egg.tributapp.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -25,6 +28,13 @@ public class Desarrollador {
 //    private Rol rol;
     private Boolean alta;
 
+    @Getter @Setter
+    @NoArgsConstructor
+    public Desarrollador() {
+        
+    }
+
+    
     public String getId() {
         return id;
     }
