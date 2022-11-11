@@ -4,8 +4,6 @@ import com.egg.tributapp.entidades.Desarrollador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,16 +32,13 @@ public class desarrolladorControlador {
     }
 
     @PostMapping("/cargar")
-//     private String id;
-//    private String nombre;
-//    private String email;
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam String contratacion,
+            @RequestParam String password2, 
             ModelMap modelo) throws MiException {
         try {
 
-            desarrolladorServicio.registrar(nombre, email, password, password2, contratacion);
+            desarrolladorServicio.registrar(nombre, email, password, password2);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 

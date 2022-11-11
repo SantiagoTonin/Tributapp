@@ -9,7 +9,6 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 /*
  * @author martin
@@ -22,7 +21,7 @@ public class DesarrolladorServicio {
 
     @Transactional
     public void registrar(String nombre, String email, String password,
-            String password2, String contratacion) throws MiException {
+            String password2) throws MiException {
 
         validar(nombre, email, password, password2);
 
