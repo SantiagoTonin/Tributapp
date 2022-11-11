@@ -1,17 +1,218 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>TributApp</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    </head>
-    <body>
+<html lang="en">
+
+<head>
+    <title>TributApp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="../styles/home.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Inicio</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Desarrolladores
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li>
+                  <li><a class="dropdown-item" href="#">Lista de desarrolladores</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit" style="background-color: 
+                  #D6E4E5; border-color: #497174; color: #497174"><i class="bi bi-search"></i></button>
+    
+    
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <!-- body -->
+    <div class="body">
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1" align="center"> <strong>¿QUIÉNES SOMOS?</strong></h2>
+                <p class="lead" align="right">Somos un grupo de estudiantes y profesionales argentinos. Al igual que muchos, nos introducimos
+                    en el mundo IT pensando en brindar soluciones, y hoy queremos darle una ayuda a quienes están ingresando 
+                    al mundo laboral, para que sepan cuáles son sus derechos y cómo aprovechar al máximo cada condición.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src="./../styles/img/hands.jpg" alt="" width="500">
+
+            </div>
+        </div>
+        <hr class="featurette-divider">
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1" align="center"><strong>¿Cuál es nuestra misión?</strong></h2>
+                <p class="lead">Queremos brindar los conocimientos necesarios a los diferentes desarrolladores
+                    para que puedan insertarse laboralmente de forma correcta, aprovechar al máximo  .</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img class="imiagen" src="https://www.telam.com.ar/thumbs/bluesteel/advf/imagenes/2020/12/5fd5e80d3a205_1200.jpg" alt="" width="500">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="container marketing">
+
+            <div class="row">
+                <div class="col-lg-4" id="pix" align="center">
+                    <img class="imiagen" src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_960_720.png" alt="" heigth="140" width="140">
+
+                    <h2 class="fw-normal">DEVELOPER</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">SABER MAS</span>
+                      </button></p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4" id="pix" align="center">
+                    <img class="imiagen" src="https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_960_720.png" alt="" heigth="150" width="150">
+
+                    <h2 class="fw-normal">CONTADOR</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">SABER MAS</span>
+                      </button></p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4" id="pix" align="center">
+                    <img class="imiagen" src="https://cdn-icons-png.flaticon.com/512/440/440696.png" alt="" heigth="140" width="140">
+
+                    <h2 class="fw-normal">EMPRESA</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">SABER MAS</span>
+                      </button></p>
+                </div><!-- /.col-lg-4 -->
+            </div>
+
+        </div>
+        <!-- FOOTER -->
+        <footer class="text-center text-lg-start text-white" id="footer" style="background-color: #EB6440;">
+
+            <div class="container p-1 pb-0">
+        
+              <section class="d-flex aling align-items-center justify-content-evenly">
+                <img class="justify-content-lg-start" src="../styles/img/Bandera.jpg"
+                  alt="Bandera Argentina" width="170px">
         
         
+                <hr class="w-100 clearfix d-md-none" />
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Developers</h6>
+                  <p>
+                    <a class="text-white">TONIN, Santiago </a><br>
+                    <a class="text-white">GOTTARDINI, Juan Pablo</a>
+                    <a class="text-white">WALKER, Joel </a><br>
+                    <a class="text-white">ELIAS, Juan Bautista</a>
+                    <a class="text-white">GONZÁLEZ, Mariana </a><br>
+                    <a class="text-white">MACHADO, Martín</a><br>
+                    <a class="text-white">TOMASINI, Eduardo</a>
+                  </p>
+                  <p>
 
+                </div>
+        
+                <hr class="w-100 clearfix d-md-none" />
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                  <p><i class="fas fa-home mr-3"></i> Argentina,Mendoza</p>
+                  <p><i class="fas fa-envelope mr-3"></i> grupo4@egg.com</p>
+                  <p><i class="fas fa-phone mr-3"></i> + 54 123 456 78</p>
+        
+        
+                </div>
+                <p>
+                  <span class="me-3"></span>
+                  <button type="button" class="btn btn-outline-light btn-rounded">
+                    <a  style="text-decoration:none;">
+                      REGISTRATE
+                    </a>
+                  </button>
+                  <a class="ms-3" href="#">volver arriba</a>
+                </p>
+        
+              </section>
+        
+        
+            </div>
+            <section class="p-3 pt-0" style="background-color: rgba(0, 0, 0, 0.2);">
+              <div class="row d-flex align-items-center">
+        
+                <div class="col-md-7 col-lg-8 text-center text-md-start">
+        
+                  <div class="p-3">
+                    © 2022 Copyright:
+                    <a class="text-white" href="#">Grupo4.com</a>
+                  </div>
+        
+                </div>
+        
+                <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                  <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                      class="fab fa-facebook-f"></i></a>
+                  <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                      class="fab fa-twitter"></i></a>
+                  <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                      class="fab fa-google"></i></a>
+                  <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                      class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </section>
+        
+          </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-    </body>
+        <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
