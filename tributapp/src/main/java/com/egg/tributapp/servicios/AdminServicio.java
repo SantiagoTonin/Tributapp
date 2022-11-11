@@ -20,15 +20,15 @@ public class AdminServicio {
     // CRUD
     
     @Transactional
-    public void crearAdmin (String name, String email, String Password, String Password2) throws Exception{
+    public void registrarAdmin (String name, String email, String password, String password2) throws Exception{
         
-        validar( name, email, Password, Password2);
+        validar(name, email, password, password2);
         
         Admin admin = new Admin();
         
         admin.setName(name);
         admin.setEmail(email);
-        admin.setPassword(Password);
+        admin.setPassword(password);
         admin.setRol(Rol.ADMIN);
 
         adminRepositorio.save(admin);
@@ -67,12 +67,17 @@ public class AdminServicio {
     
     
     
-    
+    @Transactional 
     public void eliminar (String id){
         
         adminRepositorio.deleteById(id);
     }
      
+    public Admin getOne (String id){
+        
+        return adminRepositorio.getOne(id);
+    }
+    
     
     public Admin buscarPorEmail (String email){
         
