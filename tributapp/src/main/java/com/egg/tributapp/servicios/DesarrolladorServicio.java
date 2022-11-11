@@ -57,7 +57,7 @@ public class DesarrolladorServicio {
     }
 
     @Transactional
-    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String password, String password2) throws MiException {
+    public void modificarDesarrollador(String idUsuario, String nombre, String email, String password, String password2) throws MiException {
 
         validar(nombre, email, password, password2);
 
@@ -67,7 +67,8 @@ public class DesarrolladorServicio {
             Desarrollador desarrollador = respuesta.get();
             desarrollador.setNombre(nombre);
             desarrollador.setEmail(email);
-
+//            desarrollador.setPassword(password);
+//            desarrollador.setPassword2(password2);
 //            desarrollador.setPassword(new BCryptPasswordEncoder().encode(password));
 //            desarrollador.setRol(Rol.USER);
             String idImagen = null;

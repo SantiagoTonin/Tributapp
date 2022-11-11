@@ -4,6 +4,8 @@ import com.egg.tributapp.entidades.Desarrollador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -70,6 +72,22 @@ public class desarrolladorControlador {
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
         return "desarrollador_modificar.html";
+    }
+
+    @PostMapping("/modificar/{id}")
+    public String modificar(@PathVariable String id, String nombre, String email, String pass, String pass2, ModelMap modelo) {
+        try {
+            desarrolladorServicio.modificarDesarrollador(id, nombre, email, pass2, pass2);
+
+            return "redirect:../lista";
+            
+        } catch (MiException ex) {
+
+            modelo.put("error", ex.getMessage());
+            
+            return "desarrollador_modificar.html";
+            
+        }
     }
 
     @GetMapping("/eliminar/{id}")
