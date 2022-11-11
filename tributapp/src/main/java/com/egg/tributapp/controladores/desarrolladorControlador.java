@@ -34,7 +34,7 @@ public class desarrolladorControlador {
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, 
+            @RequestParam String password2,
             ModelMap modelo) throws MiException {
         try {
 
@@ -45,7 +45,9 @@ public class desarrolladorControlador {
         } catch (MiException ex) {
 
             modelo.put("Error", ex.getMessage());
-
+            modelo.put("nombre", nombre);
+            modelo.put("email", email);
+            
             return "desarrolador_cargar.html";
 
         }
@@ -75,13 +77,13 @@ public class desarrolladorControlador {
             desarrolladorServicio.modificarDesarrollador(id, nombre, email, pass2, pass2);
 
             return "redirect:../lista";
-            
+
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
-            
+
             return "desarrollador_modificar.html";
-            
+
         }
     }
 
