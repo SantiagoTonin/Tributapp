@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-TributappApplication<tributapp>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.egg.tributapp.TributappApplication",
+      "projectName": "tributapp",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

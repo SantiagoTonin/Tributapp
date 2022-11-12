@@ -27,21 +27,18 @@ public class desarrolladorControlador {
     @GetMapping("/cargarDesarrollador")
     public String cargar() {
 
-        return "desarrollador_cargar.html";
+        return "CreateDev.html";
 
     }
 
     @PostMapping("/cargar")
-//     private String id;
-//    private String nombre;
-//    private String email;
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam String contratacion,
+            @RequestParam String password2,
             ModelMap modelo) throws MiException {
         try {
 
-            desarrolladorServicio.registrar(nombre, email, password, password2, contratacion);
+            desarrolladorServicio.registrar(nombre, email, password, password2);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
@@ -49,10 +46,10 @@ public class desarrolladorControlador {
 
             modelo.put("Error", ex.getMessage());
 
-            return "desarrolador_cargar.html";
+            return "CreateDev.html";
 
         }
-        return "desarrollador.html";
+        return "CreateDev.html";
     }
 
     @GetMapping("/lista")

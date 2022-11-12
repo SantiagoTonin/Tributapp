@@ -22,7 +22,7 @@ public class DesarrolladorServicio {
 
     @Transactional
     public void registrar(String nombre, String email, String password,
-            String password2, String contratacion) throws MiException {
+            String password2) throws MiException {
 
         validar(nombre, email, password, password2);
 
@@ -103,7 +103,6 @@ public class DesarrolladorServicio {
         return desarrolladores;
     }
 
-    @Transactional()
     public Desarrollador buscarPorEmail(String email) {
 
         Desarrollador desarrollador = desarrolladorRepositorio.buscarPorEmail(email);
