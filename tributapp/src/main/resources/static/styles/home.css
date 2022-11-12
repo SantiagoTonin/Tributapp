@@ -33,6 +33,10 @@
     width: 100%;
     
 }
+.container-footer{
+    margin-left: 10px;
+    margin-right: 100px;
+}
 
 .icon{
     border-radius: 70%;
