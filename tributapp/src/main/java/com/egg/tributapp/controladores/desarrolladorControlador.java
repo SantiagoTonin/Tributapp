@@ -24,6 +24,11 @@ public class desarrolladorControlador {
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
 
+    @GetMapping("/")
+    public String index(){
+        return "index.html";
+    }
+
     @GetMapping("/cargarDesarrollador")
     public String cargar() {
 
