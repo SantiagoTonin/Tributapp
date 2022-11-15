@@ -1,9 +1,6 @@
 package com.egg.tributapp.entidades;
 
-import com.egg.tributapp.enumeraciones.Rol;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -17,20 +14,15 @@ import org.hibernate.annotations.GenericGenerator;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Admin {
+public class Post extends Admin {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-
-    private String name;
-
-    private String email;
-    private String password;
-    private String password2;
     
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
-   
+    private String titulo;
+    private String texto;
+    
+
 }
