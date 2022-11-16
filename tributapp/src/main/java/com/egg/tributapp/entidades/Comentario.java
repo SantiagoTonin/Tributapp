@@ -24,5 +24,11 @@ public class Comentario {
     private String texto;
 
     @ManyToOne
-    private Desarrollador desarrollor;
+    private Desarrollador desarrollador;
+
+//    @OneToOne  un comentario va a tener una empresa o contador
+//    private Contador contador;
+//
+//    @OneToOne 
+//    private Empresa empresa;
 }

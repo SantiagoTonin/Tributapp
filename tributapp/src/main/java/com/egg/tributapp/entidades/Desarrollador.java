@@ -3,22 +3,20 @@ package com.egg.tributapp.entidades;
 import com.egg.tributapp.enumeraciones.Contratacion;
 import com.egg.tributapp.enumeraciones.Rol;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-
+/**
+ *
+ * @author martin
+ */
 @Entity
 @Getter
 @Setter
@@ -32,11 +30,12 @@ public class Desarrollador extends Usuario {
     @Basic(fetch = FetchType.LAZY)
     private byte[] foto;
 
-    private String cuit;
+    private String cuitCuil;
 
     private Double salario;
 
-    
+    @OneToMany
+    private List<Comentario> comentarios;
 //    @ManyToOne
 //    private Empresa empresa;
 //

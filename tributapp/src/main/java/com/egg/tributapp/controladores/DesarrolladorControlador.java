@@ -5,7 +5,6 @@ import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.annotation.MultipartConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Controller
 @RequestMapping("/desarrollador")
-public class desarrolladorControlador {
+public class DesarrolladorControlador {
 
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
@@ -34,7 +33,7 @@ public class desarrolladorControlador {
 
     }
 
-    @PostMapping("/cargar")
+     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String password2, MultipartFile foto,
