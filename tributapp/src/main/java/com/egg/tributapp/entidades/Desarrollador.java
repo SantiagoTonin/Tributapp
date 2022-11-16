@@ -1,32 +1,36 @@
 package com.egg.tributapp.entidades;
 
+import com.egg.tributapp.enumeraciones.Contratacion;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Desarrollador {
+public class Desarrollador extends Usuario {
 
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-    private String nombre;
-    private String email;
-    private String password;
-    private String password2;
-//    private String contratacion;
-//    private Imagen imagen;
-//    private Rol rol;
-//    private Boolean alta;
+    private Contratacion contratacion;
 
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] foto;
+
+    private String cuit;
+
+    private Double salario;
+
+    
+//    @ManyToOne
+//    private Empresa empresa;
+//
+//    @ManyToOne
+//    private Contador contador;
 }

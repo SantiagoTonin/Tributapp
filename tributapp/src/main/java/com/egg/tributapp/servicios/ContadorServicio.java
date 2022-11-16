@@ -28,13 +28,13 @@ public class ContadorServicio {
     private ContadorRepositorio contadorRepositorio;
     
     @Transactional
-    public void registrar(String name, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
+    public void registrar(String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
         
-        validar(name, email, password, password2, telefono, matricula, provincia);
+        validar(nombre, email, password, password2, telefono, matricula, provincia);
         
         Contador contador = new Contador();
 
-        contador.setName(name);
+        contador.setNombre(nombre);
         contador.setEmail(email);
 
         contador.setPassword(password);
@@ -58,15 +58,15 @@ public class ContadorServicio {
     }
     
     @Transactional
-    public void modificarContador(String id, String name, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
+    public void modificarContador(String id, String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
         
-        validar(name, email, password, password2, telefono, matricula, provincia);
+        validar(nombre, email, password, password2, telefono, matricula, provincia);
         
         Optional<Contador> respuesta = contadorRepositorio.findById(id);
         if (respuesta.isPresent()) {
 
             Contador contador = respuesta.get();
-            contador.setName(name);
+            contador.setNombre(nombre);
             contador.setEmail(email);
 
             contador.setPassword(password);
@@ -92,10 +92,10 @@ public class ContadorServicio {
     
     
     
-    private void validar(String name, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
+    private void validar(String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
        
         
-        if(name.isEmpty() || name == null){
+        if(nombre.isEmpty() || nombre == null){
             throw new MiException("el nombre no puede ser nulo o estar vacio");
         }
         if(email.isEmpty() || email == null){
