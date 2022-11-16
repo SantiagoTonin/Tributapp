@@ -24,7 +24,7 @@ public class Comentario {
     private String texto;
 
     @ManyToOne
-    private Desarrollador desarrollador;
+    private Desarrollador desarrollador;//no deberia ser un Strin donde saque el nombre del desarrollador unicamente????????????
 
 //    @OneToOne  un comentario va a tener una empresa o contador
 //    private Contador contador;

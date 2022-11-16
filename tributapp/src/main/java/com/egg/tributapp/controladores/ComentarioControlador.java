@@ -8,8 +8,6 @@ package com.egg.tributapp.controladores;
 import com.egg.tributapp.entidades.Desarrollador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.ComentarioServicio;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,4 +54,10 @@ public class ComentarioControlador {
         return "comentario.html";
 
     }
+    
+//    @GetMapping("/buscarComentario")
+//    public String buscarComentarioPorUsuario(@RequestParam String nombre){
+//        
+//        
+//    }
 }

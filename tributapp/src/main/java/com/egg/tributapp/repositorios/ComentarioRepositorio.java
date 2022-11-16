@@ -9,15 +9,21 @@ import com.egg.tributapp.entidades.Comentario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author marti
  */
+@Repository
 public interface ComentarioRepositorio extends JpaRepository<Comentario, String> {
 
-//    "SELECT e FROM Editorial e where e.nombre LIKE :nombre"
-    @Query("SELECT c FROM Comentario c WHERE e.nombre= :nombre")
-    public Comentario buscarPorNombre(@Param("nombre") String nombre);
-
+//    @Query("SELECT c FROM Comentario c WHERE c.nombre= :nombre")
+//    public Comentario buscarPorNombre(@Param("nombre") String nombre);
+    
+//    @Query("SELECT c FROM Comentario c WHERE c.nombre LIKE %?1%")
+//    public Comentario buscarPorPalabra( String nombre);
+    
+    
 }

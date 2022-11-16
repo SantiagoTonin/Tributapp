@@ -1,10 +1,9 @@
 package com.egg.tributapp.entidades;
 
 import com.egg.tributapp.enumeraciones.Contratacion;
-import com.egg.tributapp.enumeraciones.Rol;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -13,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 /**
  *
  * @author martin
@@ -30,10 +30,13 @@ public class Desarrollador extends Usuario {
     @Basic(fetch = FetchType.LAZY)
     private byte[] foto;
 
+    @Column
     private String cuitCuil;
 
+    @Column
     private Double salario;
 
+    @Column
     @OneToMany
     private List<Comentario> comentarios;
 //    @ManyToOne

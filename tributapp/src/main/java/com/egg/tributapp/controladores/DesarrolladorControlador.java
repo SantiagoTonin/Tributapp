@@ -33,14 +33,14 @@ public class DesarrolladorControlador {
 
     }
 
-     @PostMapping("/cargar")
+    @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, MultipartFile foto,
+            @RequestParam String password2, MultipartFile foto, String cuil, Double salario,
             ModelMap modelo) throws MiException, IOException {
         try {
 
-            desarrolladorServicio.registrar(nombre, email, password, password2, foto);
+            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil, salario);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
@@ -76,11 +76,11 @@ public class DesarrolladorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(MultipartFile archivo, @PathVariable String id,
             String nombre, String email, String pass, String pass2,
-            MultipartFile foto, ModelMap modelo) throws MiException, IOException {
+            MultipartFile foto, String cuit, Double salario, ModelMap modelo) throws MiException, IOException {
 
         try {
 
-            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto);
+            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit, salario);
 
             modelo.put("Exito", "Desarrollador actualizado");
 

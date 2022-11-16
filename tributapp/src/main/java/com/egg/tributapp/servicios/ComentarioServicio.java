@@ -6,15 +6,15 @@ import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.ComentarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author marti
  */
+@Service
 public class ComentarioServicio {
 
     @Autowired
@@ -51,7 +51,7 @@ public class ComentarioServicio {
 
     }
 
-    @Transactional()
+    @Transactional
     public List<Comentario> listarComentarios() {
 
         List<Comentario> comentarios = new ArrayList();
@@ -61,11 +61,12 @@ public class ComentarioServicio {
         return comentarios;
     }
 
-    @Transactional
-    public List<Comentario> listarComentariosPorNombre(String nombre) {
-
-        List<Comentario> comentarios = (List<Comentario>) comentarioRepositorio.buscarPorNombre(nombre);
-
-        return comentarios;
-    }
+//    @Transactional
+//    public List<Comentario> listarComentariosPorNombre(Desarrollador desarrollador) {
+//
+//        String nombre = desarrollador.getNombre();
+//        List<Comentario> comentarios = (List<Comentario>) comentarioRepositorio.buscarPorNombre(nombre);
+//
+//        return comentarios;
+//    }
 }
