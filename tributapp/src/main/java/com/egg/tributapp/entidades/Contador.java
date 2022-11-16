@@ -26,7 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Contador extends Usuario {
    
-   
+   aaa
    private Integer telefono;
    private Integer matricula;
    private String provincia;
