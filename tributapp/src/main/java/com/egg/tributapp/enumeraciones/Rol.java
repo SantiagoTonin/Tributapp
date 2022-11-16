@@ -3,8 +3,9 @@ package com.egg.tributapp.enumeraciones;
 
 
  public enum Rol {
-    USER,
+    DESARROLLADOR,
     CONTADOR,
     ADMIN;
+
     
 }
