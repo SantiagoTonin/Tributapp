@@ -1,11 +1,10 @@
 
 package com.egg.tributapp.enumeraciones;
 
-
- public enum Rol {
+public enum Rol {
+    ADMIN,
     DESARROLLADOR,
-    CONTADOR,
-    ADMIN;
+    EMPRESA,
+    CONTADOR;
 
-    
 }
