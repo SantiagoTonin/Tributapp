@@ -25,7 +25,8 @@ public class DesarrolladorControlador {
 
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
-
+    
+    
     @GetMapping("/cargarDesarrollador")
     public String cargar() {
 
@@ -36,11 +37,11 @@ public class DesarrolladorControlador {
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, MultipartFile foto, String cuil, Double salario,
+            @RequestParam String password2, MultipartFile foto, String cuil,
             ModelMap modelo) throws MiException, IOException {
         try {
 
-            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil, salario);
+            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
@@ -76,11 +77,11 @@ public class DesarrolladorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(MultipartFile archivo, @PathVariable String id,
             String nombre, String email, String pass, String pass2,
-            MultipartFile foto, String cuit, Double salario, ModelMap modelo) throws MiException, IOException {
+            MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
 
         try {
 
-            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit, salario);
+            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
@@ -97,9 +98,12 @@ public class DesarrolladorControlador {
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id) {
-
+        
         desarrolladorServicio.Eliminar(id);
-
-        return "redirect:/noticia/lista";
+        
+        return "redirect:/desarrollador/lista";
     }
+    
+    
+    
 }

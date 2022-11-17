@@ -20,14 +20,12 @@ public class ComentarioServicio {
     @Autowired
     private ComentarioRepositorio comentarioRepositorio;
 
-//    private String id;
-//    private String texto;
-//    private Desarrollador desarrollador;
     @Transactional
     public void nuevoComentario(String texto, Desarrollador desarrollador) throws MiException {
         validar(texto);
 
         Comentario comentario = new Comentario();
+        
         comentario.setTexto(texto);
         comentario.setDesarrollador(desarrollador);
 
