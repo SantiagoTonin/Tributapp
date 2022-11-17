@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,4 +20,14 @@ public enum Rol {
     EMPRESA,
    
 
+=======
+
+package com.egg.tributapp.enumeraciones;
+
+public enum Rol {
+    ADMIN,
+    DESARROLLADOR,
+    EMPRESA,
+    CONTADOR;
+>>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
 }

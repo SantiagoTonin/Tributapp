@@ -5,6 +5,7 @@
  */
 package com.egg.tributapp.controladores;
 
+<<<<<<< HEAD
 import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.ContadorServicio;
@@ -19,10 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+=======
+>>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
 /**
  *
  * @author Joel
  */
+<<<<<<< HEAD
 
 @Controller
 @RequestMapping("/contador")
@@ -105,4 +109,8 @@ public class ContadorControlador {
 
         return "redirect:/contador/lista";
     }
+=======
+public class ContadorControlador {
+    
+>>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
 }
