@@ -62,7 +62,7 @@ public class DesarrolladorControlador {
         List<Desarrollador> desarrollador = desarrolladorServicio.listarDesarrolladores();
         modelo.addAttribute("desarrolladores", desarrollador);
 
-        return "desarrollador_list.html";
+        return "DesarrolladorList.html";
     }
 
     @GetMapping("/modificar/{id}")
