@@ -1,5 +1,5 @@
 
-package com.egg.tributapp.repositorio;
+package com.egg.tributapp.repositorios;
 
 
 import com.egg.tributapp.entidades.Admin;

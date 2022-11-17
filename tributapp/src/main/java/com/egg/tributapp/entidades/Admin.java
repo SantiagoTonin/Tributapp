@@ -29,8 +29,8 @@ public class Admin {
     private String email;
     private String password;
     private String password2;
-    
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
-   
+
 }

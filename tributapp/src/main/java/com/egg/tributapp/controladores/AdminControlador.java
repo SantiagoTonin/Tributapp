@@ -1,7 +1,6 @@
-package com.egg.tributapp.controlador;
+package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Admin;
-import com.egg.tributapp.repositorio.AdminRepositorio;
 import com.egg.tributapp.servicios.AdminServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

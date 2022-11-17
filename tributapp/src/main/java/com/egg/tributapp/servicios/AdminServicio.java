@@ -3,7 +3,7 @@ package com.egg.tributapp.servicios;
 
 import com.egg.tributapp.entidades.Admin;
 import com.egg.tributapp.enumeraciones.Rol;
-import com.egg.tributapp.repositorio.AdminRepositorio;
+import com.egg.tributapp.repositorios.AdminRepositorio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -64,8 +64,6 @@ public class AdminServicio {
         }
         
     }
-    
-    
     
     @Transactional 
     public void eliminar (String id){
