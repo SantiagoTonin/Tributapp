@@ -17,9 +17,9 @@ public class EmpresaServicio {
     private EmpresaRepositorio empresaRepositorio;
 
     @Transactional
-    public void registrarEmpresa(String razonSocial, String direccion, String nombre, String email) throws Exception {
+    public void registrarEmpresa(String razonSocial, String direccion, String nombre, String email, String password, String password2) throws Exception {
 
-        validar(razonSocial, direccion, nombre, email);
+        validar(razonSocial, direccion, nombre, email, password, password2);
 
         Empresa empresa = new Empresa();
 
@@ -27,6 +27,8 @@ public class EmpresaServicio {
         empresa.setNombre(nombre);
         empresa.setDireccion(direccion);
         empresa.setEmail(email);
+        empresa.setPassword(password);
+        empresa.setPassword2(password2);
         empresa.setActivo(Boolean.TRUE);
         empresa.setAlta(new Date());
         empresa.setRol(Rol.EMPRESA);
@@ -54,7 +56,7 @@ public class EmpresaServicio {
         return empresaRepositorio.getOne(id);
     }
 
-    public void validar(String razonSocial, String direccion, String nombre, String email) throws Exception {
+    public void validar(String razonSocial, String direccion, String nombre, String email, String password, String password2) throws Exception {
 
         if (razonSocial.isEmpty() || razonSocial == null) {
             throw new Exception("la razon Social no puede ser nulo o vacio");
@@ -67,6 +69,12 @@ public class EmpresaServicio {
         }
         if (nombre.isEmpty() || nombre == null) {
             throw new Exception("el nombre no puede ser nulo o vacio");
+        }
+         if (password.isEmpty()|| password==null ||password.length()<=5 ) {
+               throw new Exception("el password no puede ser nulo o vacio o tener menos de 5 caracteres"); 
+        }
+        if (!password.equals(password2)) {
+            throw new Exception("el password no coincide");
         }
 
     }
