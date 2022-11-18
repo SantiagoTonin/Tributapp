@@ -13,10 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- *
- * @author martin
- */
+
 @Entity
 @Getter
 @Setter
@@ -36,9 +33,9 @@ public class Desarrollador extends Usuario {
     @Column
     private Double salario;
 
-    @Column
-    @OneToMany
-    private List<Comentario> comentarios;
+//    @Column
+//    @OneToMany
+//    private List<Comentario> comentarios;
 //    @ManyToOne
 //    private Empresa empresa;
 //
