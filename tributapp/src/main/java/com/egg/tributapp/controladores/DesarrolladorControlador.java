@@ -29,7 +29,7 @@ public class DesarrolladorControlador {
     @GetMapping("/cargarDesarrollador")
     public String cargar() {
 
-        return "desarrollador_cargar.html";
+        return "CreateDev.html";
 
     }
 
