@@ -1,32 +1,61 @@
+
 <nav th:fragment="nav_bar" class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><i class="bi bi-info-circle"></i> Tributapp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Inicio</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Desarrolladores
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li>
-                        <li><a class="dropdown-item" href="#">Lista de desarrolladores</a></li>
-                    </ul>
-                </li>
+      <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Desarrollador
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li> -->
+              <li><a class="dropdown-item " href="#">Administrar desarrolladores</a></li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit" style="background-color: 
-                        #D6E4E5; border-color: #497174; color: #497174"><i class="bi bi-search"></i></button>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Empresa
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Nueva empresa</a></li> -->
+              <li><a class="dropdown-item " href="#">Administrar empresas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contador
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Nuevo contador</a></li> -->
+              <li><a class="dropdown-item " href="#">Administrar contadores</a></li>
+            </ul>
+          </li>
+        </ul>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <!-- <input class="form-control me-2" type="search" aria-label="Search" placeholder="Buscar en el sitio">
+          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button> -->
+          <div class="input-group">
+            
+            
+              <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Buscar en el sitio">
+              <button type="button" class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+          </div>
 
 
-            </form>
+          <a href="#" class="btn btn-secondary blogin" tabindex="-1" role="button" aria-disabled="true">Ingresar</a>
+          <a href="#" class="btn btn-secondary bsignup" tabindex="-1" role="button" aria-disabled="true">Registrarse</a>
+
         </div>
+        
+      </div>
     </div>
-</nav>
+  </nav>

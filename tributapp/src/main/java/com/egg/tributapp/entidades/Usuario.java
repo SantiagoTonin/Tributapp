@@ -1,7 +1,7 @@
 
 package com.egg.tributapp.entidades;
 
-import com.egg.tributapp.enumeraciones.Contratacion;
+
 import com.egg.tributapp.enumeraciones.Rol;
 import java.util.Date;
 import javax.persistence.EnumType;
@@ -17,13 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-<<<<<<< HEAD
-/**
- *
- * @author marti
- */
-=======
->>>>>>> JuanB
+
 @Getter
 @Setter
 @NoArgsConstructor
