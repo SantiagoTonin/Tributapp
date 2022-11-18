@@ -64,7 +64,7 @@ public class EmpresaControlador {
 
         modelo.addAttribute("empresas", empresas);
 
-        return "empresa_listar";
+        return "Empresa_Listar.html";
 
     }
     
