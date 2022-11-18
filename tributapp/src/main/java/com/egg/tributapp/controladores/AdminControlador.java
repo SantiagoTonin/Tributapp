@@ -26,7 +26,7 @@ public class AdminControlador {
     }
 
     @PostMapping("/registroAdmin")
-    public String registriAdmin(@RequestParam String name, @RequestParam String email,
+    public String registroAdmin(@RequestParam String name, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) throws Exception {
 
         validar(name, email, password, password2);
@@ -65,7 +65,7 @@ public class AdminControlador {
 
     }
 
-    @PostMapping("/modificoAdmin/{id}")
+    @PostMapping("/modificarAdmin/{id}")
     public String modificarAdmin(@PathVariable String id, String name, String email,
             String password, String password2, ModelMap modelo) {
         try {
@@ -82,8 +82,8 @@ public class AdminControlador {
     }
     
   
-    @DeleteMapping ("/elimicarAdmin/{id}")
-    public String elminarAdmin(@PathVariable String id, ModelMap modelo) {
+    @DeleteMapping ("/eliminarAdmin/{id}")
+    public String eliminarAdmin(@PathVariable String id, ModelMap modelo) {
 
         try {
 

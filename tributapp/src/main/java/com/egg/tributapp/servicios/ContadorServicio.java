@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.egg.tributapp.servicios;
 
-<<<<<<< HEAD
+
 import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.enumeraciones.Rol;
 import com.egg.tributapp.excepciones.MiException;
@@ -19,13 +15,8 @@ import org.springframework.stereotype.Service;
 
 
 
-=======
->>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
-/**
- *
- * @author Joel
- */
-<<<<<<< HEAD
+
+
 @Service
 public class ContadorServicio {
     @Autowired
@@ -132,8 +123,5 @@ public class ContadorServicio {
 
     }
 
-=======
-public class ContadorServicio {
-    
->>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
+
 }

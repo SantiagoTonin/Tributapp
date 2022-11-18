@@ -33,9 +33,9 @@ public class Desarrollador extends Usuario {
     @Column
     private Double salario;
 
-    @Column
-    @OneToMany
-    private List<Comentario> comentarios;
+//    @Column
+//    @OneToMany
+    //private List<Comentario> comentarios;
 //    @ManyToOne
 //    private Empresa empresa;
 //

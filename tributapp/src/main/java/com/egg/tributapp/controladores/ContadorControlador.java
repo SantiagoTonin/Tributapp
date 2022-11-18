@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.egg.tributapp.controladores;
 
-<<<<<<< HEAD
+
 import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.ContadorServicio;
@@ -20,13 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-=======
->>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
-/**
- *
- * @author Joel
- */
-<<<<<<< HEAD
+
+
 
 @Controller
 @RequestMapping("/contador")
@@ -109,8 +100,5 @@ public class ContadorControlador {
 
         return "redirect:/contador/lista";
     }
-=======
-public class ContadorControlador {
-    
->>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
+
 }

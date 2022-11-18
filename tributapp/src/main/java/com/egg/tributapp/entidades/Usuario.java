@@ -17,13 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-<<<<<<< HEAD
-/**
- *
- * @author marti
- */
-=======
->>>>>>> ec8bcf2a75c42995dfd99a7c46e67856b3d9af38
+
 @Getter
 @Setter
 @NoArgsConstructor
