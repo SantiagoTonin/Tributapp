@@ -37,6 +37,7 @@ public class DesarrolladorServicio {
         desarrollador.setEmail(email);
         desarrollador.setPassword(password);
         desarrollador.setPassword2(password2);
+<<<<<<< HEAD
         desarrollador.setCuitCuil(cuil);
         desarrollador.setSalario(salario);
 
@@ -44,6 +45,14 @@ public class DesarrolladorServicio {
         desarrollador.setFoto(foto.getBytes());
         desarrollador.setContratacion(Contratacion.FREELANCE);
         desarrollador.setActivo(Boolean.TRUE);
+=======
+//        desarrollador.setCuitCuil(cuil);
+//
+//        desarrollador.setRol(Rol.DESARROLLADOR);
+//        desarrollador.setFoto(foto.getBytes());
+//        desarrollador.setContratacion(Contratacion.FREELANCE);
+//        desarrollador.setActivo(Boolean.TRUE);
+>>>>>>> origin/JuanGota
 
         desarrolladorRepositorio.save(desarrollador);
     }

@@ -36,8 +36,12 @@ public class DesarrolladorControlador {
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
+<<<<<<< HEAD
             @RequestParam String password2, MultipartFile foto, String cuil, Double salario,
             ModelMap modelo) throws MiException, IOException {
+=======
+            @RequestParam String password2, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
+>>>>>>> origin/JuanGota
         try {
 
             desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil, salario);
@@ -50,10 +54,11 @@ public class DesarrolladorControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "desarrolador_cargar.html";
+            return "CreateDev.html";
 
         }
-        return "desarrollador.html";
+//        return "DesarrolladorList.html";
+            return "redirect:../desarrollador/lista";
     }
 
     @GetMapping("/lista")
