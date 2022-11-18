@@ -27,7 +27,7 @@ public class DesarrolladorServicio {
     @Transactional
     public void registrar(String nombre, String email, String password,
             String password2, MultipartFile foto,
-            String cuil,Contratacion contratacion) throws MiException, IOException {
+            String cuil,String contratacion) throws MiException, IOException {
 
         validar(nombre, email, password, password2,cuil);
 
@@ -40,9 +40,8 @@ public class DesarrolladorServicio {
         desarrollador.setCuitCuil(cuil);
 
 
-        desarrollador.setRol(Rol.DESARROLLADOR);;
+        desarrollador.setRol(Rol.DESARROLLADOR);
         desarrollador.setFoto(foto.getBytes());
-        desarrollador.setContratacion(contratacion);
         desarrollador.setActivo(Boolean.TRUE);
 
         desarrolladorRepositorio.save(desarrollador);

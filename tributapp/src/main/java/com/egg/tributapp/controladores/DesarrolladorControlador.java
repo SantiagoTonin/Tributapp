@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/desarrollador")
 public class DesarrolladorControlador {
 
+
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
     
@@ -40,10 +41,11 @@ public class DesarrolladorControlador {
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam MultipartFile foto, @RequestParam String cuil,Contratacion con, ModelMap modelo) throws MiException, IOException {
+            @RequestParam String password2, @RequestParam MultipartFile foto, @RequestParam String cuil,@RequestParam String contratacion, ModelMap modelo) throws MiException, IOException {
         try {
 
-            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil,con);
+
+            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil,contratacion);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
