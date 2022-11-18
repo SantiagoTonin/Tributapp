@@ -6,12 +6,14 @@ import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.enumeraciones.Rol;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.ContadorRepositorio;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -23,7 +25,7 @@ public class ContadorServicio {
     private ContadorRepositorio contadorRepositorio;
     
     @Transactional
-    public void registrar(String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
+    public void registrar(String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia,MultipartFile foto) throws MiException, IOException{
         
         validar(nombre, email, password, password2, telefono, matricula, provincia);
         
@@ -31,10 +33,14 @@ public class ContadorServicio {
 
         contador.setNombre(nombre);
         contador.setEmail(email);
-
         contador.setPassword(password);
-
+        contador.setPassword2(password2);
+        contador.setTelefono(telefono);
+        contador.setMatricula(matricula);
+        contador.setProvincia(provincia);
         contador.setRol(Rol.CONTADOR);
+        contador.setFoto(foto.getBytes());
+        
         
         //Imagen imagen = imagenServicio.guardar(archivo);
 
@@ -53,7 +59,7 @@ public class ContadorServicio {
     }
     
     @Transactional
-    public void modificarContador(String id, String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia) throws MiException{
+    public void modificarContador(String id, String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia,MultipartFile foto) throws MiException, IOException{
         
         validar(nombre, email, password, password2, telefono, matricula, provincia);
         
@@ -63,21 +69,10 @@ public class ContadorServicio {
             Contador contador = respuesta.get();
             contador.setNombre(nombre);
             contador.setEmail(email);
-
             contador.setPassword(password);
-
             contador.setRol(Rol.CONTADOR);
-            
-            //String idImagen = null;
-            
-//            if (contador.getImagen() != null) {
-//                idImagen = contador.getImagen().getId();
-//            }
-            
-//            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-//            
-//            usuario.setImagen(imagen);
-            
+            contador.setFoto(foto.getBytes());
+                        
             contadorRepositorio.save(contador);
         }
     }

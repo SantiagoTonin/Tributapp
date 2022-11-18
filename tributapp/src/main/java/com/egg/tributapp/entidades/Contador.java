@@ -2,9 +2,12 @@
 package com.egg.tributapp.entidades;
 
 import com.egg.tributapp.enumeraciones.Rol;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
@@ -19,16 +22,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Contador extends Usuario {
-   
-   
-
-
    private Integer telefono;
    private Integer matricula;
    private String provincia;
    
    @Enumerated(EnumType.STRING)
    private Rol rol;
-//   @OneToOne
-//   private Imagen imagen;
+    
+   @Lob
+   @Basic(fetch = FetchType.LAZY)
+   private byte[] foto;
 }

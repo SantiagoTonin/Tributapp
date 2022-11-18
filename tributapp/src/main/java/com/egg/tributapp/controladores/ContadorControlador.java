@@ -5,6 +5,7 @@ package com.egg.tributapp.controladores;
 import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.ContadorServicio;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -26,23 +28,20 @@ public class ContadorControlador {
     @Autowired
     private ContadorServicio contadorServicio;
     
-    @GetMapping("/")
-    public String index(){
-        return "index.html";
-    }
+    
     
     @GetMapping("/cargarContador") 
     public String cargar(ModelMap modelo) {
                   
-        return "CreateDev.html";
+        return "CreateContador.html";
     }
 
     @PostMapping("/cargar")
     public String cargar(@RequestParam String name,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia, ModelMap modelo) {
+            @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.registrar(name, email, password, password2, telefono, matricula, provincia);
+            contadorServicio.registrar(name, email, password, password2, telefono, matricula, provincia,foto);
             
 
             modelo.put("exito", "El Contador/a fue cargado correctamente!");
@@ -53,7 +52,7 @@ public class ContadorControlador {
             
             modelo.put("error", ex.getMessage());
 
-            return "CreateDev.html";  // volvemos a cargar el formulario.
+            return "CreateContador.html";  // volvemos a cargar el formulario.
         }
         return "index.html";
     }
@@ -78,9 +77,9 @@ public class ContadorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(@RequestParam String name,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia, ModelMap modelo) {
+            @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.modificarContador(email, name, email, password, password2, telefono, matricula, provincia);
+            contadorServicio.modificarContador(email, name, email, password, password2, telefono, matricula, provincia,foto);
                                    
             return "redirect:../lista";
 
