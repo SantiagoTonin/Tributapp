@@ -27,7 +27,7 @@ public class DesarrolladorServicio {
     @Transactional
     public void registrar(String nombre, String email, String password,
             String password2, MultipartFile foto,
-            String cuil) throws MiException, IOException {
+            String cuil, Double salario) throws MiException, IOException {
 
         validar(nombre, email, password, password2);
 
@@ -38,6 +38,7 @@ public class DesarrolladorServicio {
         desarrollador.setPassword(password);
         desarrollador.setPassword2(password2);
         desarrollador.setCuitCuil(cuil);
+        desarrollador.setSalario(salario);
 
         desarrollador.setRol(Rol.DESARROLLADOR);
         desarrollador.setFoto(foto.getBytes());
@@ -69,7 +70,7 @@ public class DesarrolladorServicio {
     @Transactional
     public void modificarDesarrollador(MultipartFile archivo, String idUsuario,
             String nombre, String email, String password,
-            String password2, MultipartFile foto, String cuil) throws MiException, IOException {
+            String password2, MultipartFile foto, String cuil, Double salario) throws MiException, IOException {
 
         validar(nombre, email, password, password2);
 
@@ -90,6 +91,8 @@ public class DesarrolladorServicio {
 
             desarrollador.setFoto(foto.getBytes());
             desarrollador.setCuitCuil(cuil);
+            
+            desarrollador.setSalario(salario);
 
             desarrolladorRepositorio.save(desarrollador);
         }

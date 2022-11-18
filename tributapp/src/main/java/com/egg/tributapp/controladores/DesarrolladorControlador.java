@@ -40,7 +40,7 @@ public class DesarrolladorControlador {
             ModelMap modelo) throws MiException, IOException {
         try {
 
-            desarrolladorServicio.reregistrar(nombre, email, password, password2, foto, cuil, salario);
+            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil, salario);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
