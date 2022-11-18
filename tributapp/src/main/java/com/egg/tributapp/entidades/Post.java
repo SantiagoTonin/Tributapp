@@ -1,7 +1,5 @@
 package com.egg.tributapp.entidades;
 
-import com.egg.tributapp.enumeraciones.Contratacion;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,41 +7,31 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Desarrollador extends Usuario {
+public class Post {
 
-    
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
-    private Contratacion contratacion;
+    private String titulo;
+
+    @Column(nullable = false, columnDefinition = "MEDIUMTEXT")
+    private String texto;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] foto;
 
-    @Column
-    private String cuitCuil;
-
-    @Column
-    private Double salario;
-
-    @Column
-    @OneToMany
-    private List<Comentario> comentarios;
-//    @ManyToOne
-//    private Empresa empresa;
-//
-//    @ManyToOne
-//    private Contador contador;
 }

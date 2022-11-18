@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>TributApp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!--<link href="../static/styles/home.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/home.css?1.0}" media="all">
+</head>
+
+<body>
+    <!-- navbar -->
+    
+    <nav th:replace="fragments/navbar :: nav_bar"></nav>
+    
+    <!-- body -->
+    <div class="body">
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading fw-normal lh-1" align="center"> <strong>¿QUIÉNES SOMOS?</strong></h2>
+                <p class="lead" align="right">Somos un grupo de estudiantes y profesionales argentinos. Al igual que muchos, nos introducimos
+                    en el mundo IT pensando en brindar soluciones, y hoy queremos darle una ayuda a quienes están ingresando 
+                    al mundo laboral, para que sepan cuáles son sus derechos y cómo aprovechar al máximo cada condición.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <img src="/Img/hands.jpg" alt="" width="500">
+
+            </div>
+        </div>
+        <hr class="featurette-divider">
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1" align="center"><strong>¿Cuál es nuestra misión?</strong></h2>
+                <p class="lead">Queremos brindar los conocimientos necesarios a los diferentes desarrolladores
+                    para que puedan insertarse laboralmente de forma correcta, aprovechar al máximo  .</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img class="imiagen" src="https://www.telam.com.ar/thumbs/bluesteel/advf/imagenes/2020/12/5fd5e80d3a205_1200.jpg" alt="" width="500">
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="container marketing">
+
+            <div class="row">
+                <div class="col-lg-4" id="pix" align="center">
+                    <img class="imiagen" src="https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_960_720.png" alt="" heigth="140" width="140">
+
+                    <h2 class="fw-normal">DEVELOPER</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text"><a th:href="@{/desarrollador/cargarDesarrollador}">REGISTRATE</a></span>
+                        </button></p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4" id="pix" align="center">
+                    <img class="imiagen" src="https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_960_720.png" alt="" heigth="150" width="150">
+
+                    <h2 class="fw-normal">CONTADOR</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">SABER MAS</span>
+                      </button></p>
+                </div><!-- /.col-lg-4 -->
+
+                <div class="col-lg-4" id="pix" align="center">
+                    <img class="imiagen" src="https://cdn-icons-png.flaticon.com/512/440/440696.png" alt="" heigth="140" width="140">
+
+                    <h2 class="fw-normal">EMPRESA</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">SABER MAS</span>
+                      </button></p>
+                </div><!-- /.col-lg-4 -->
+            </div>
+            
+             <hr class="featurette-divider">
+
+        </div>
+        <!-- FOOTER -->
+        
+        <footer th:replace="fragments/footer :: footer"></footer>
+
+        <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
