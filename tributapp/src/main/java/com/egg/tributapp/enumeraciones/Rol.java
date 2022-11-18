@@ -7,4 +7,5 @@ public enum Rol {
     DESARROLLADOR,
     EMPRESA,
     CONTADOR;
+
 }
