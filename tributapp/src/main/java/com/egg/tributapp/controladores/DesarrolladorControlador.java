@@ -30,15 +30,14 @@ public class DesarrolladorControlador {
     @GetMapping("/cargarDesarrollador")
     public String cargar() {
 
-        return "desarrollador_cargar.html";
+        return "CreateDev.html";
 
     }
 
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, MultipartFile foto, String cuil,
-            ModelMap modelo) throws MiException, IOException {
+            @RequestParam String password2, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
         try {
 
             desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil);
@@ -51,10 +50,11 @@ public class DesarrolladorControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "desarrolador_cargar.html";
+            return "CreateDev.html";
 
         }
-        return "desarrollador.html";
+//        return "DesarrolladorList.html";
+            return "redirect:../desarrollador/lista";
     }
 
     @GetMapping("/lista")
