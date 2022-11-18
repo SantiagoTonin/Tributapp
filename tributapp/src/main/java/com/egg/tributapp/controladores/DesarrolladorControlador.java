@@ -1,10 +1,13 @@
 package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Desarrollador;
+import com.egg.tributapp.enumeraciones.Contratacion;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import java.io.IOException;
 import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,22 +28,22 @@ public class DesarrolladorControlador {
 
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
-
+    
+    
     @GetMapping("/cargarDesarrollador")
-    public String cargar() {
+    public String cargar(ModelMap modelo) {
 
-        return "CreateDev.html";
+        return "login.html";
 
     }
 
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, MultipartFile foto, String cuil, Double salario,
-            ModelMap modelo) throws MiException, IOException {
+            @RequestParam String password2, @RequestParam MultipartFile foto, @RequestParam String cuil,Contratacion con, ModelMap modelo) throws MiException, IOException {
         try {
 
-            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil, salario);
+            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil,con);
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
@@ -50,10 +53,11 @@ public class DesarrolladorControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "desarrolador_cargar.html";
+            return "login.html";
 
         }
-        return "desarrollador.html";
+//        return "DesarrolladorList.html";
+            return "redirect:../desarrollador/lista";
     }
 
     @GetMapping("/lista")
@@ -62,7 +66,7 @@ public class DesarrolladorControlador {
         List<Desarrollador> desarrollador = desarrolladorServicio.listarDesarrolladores();
         modelo.addAttribute("desarrolladores", desarrollador);
 
-        return "desarrollador_list.html";
+        return "DesarrolladorList.html";
     }
 
     @GetMapping("/modificar/{id}")
@@ -76,11 +80,11 @@ public class DesarrolladorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(MultipartFile archivo, @PathVariable String id,
             String nombre, String email, String pass, String pass2,
-            MultipartFile foto, String cuit, Double salario, ModelMap modelo) throws MiException, IOException {
+            MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
 
         try {
 
-            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit, salario);
+            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
@@ -97,9 +101,12 @@ public class DesarrolladorControlador {
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id) {
-
+        
         desarrolladorServicio.Eliminar(id);
-
-        return "redirect:/noticia/lista";
+        
+        return "redirect:/desarrollador/lista";
     }
+    
+    
+    
 }

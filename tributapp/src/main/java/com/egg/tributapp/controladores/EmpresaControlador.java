@@ -34,30 +34,28 @@ public class EmpresaControlador {
     public String registarEmpresa(ModelMap modelo) {
         return "empresa_registrar";
     }
-    
-    
+
     @PostMapping("/registroEmpresa")
-    public String registroEmpresa(@RequestParam String razonSocial, @RequestParam String direcion, @RequestParam String name, @RequestParam String email,
+    public String registroEmpresa(@RequestParam String razonSocial, @RequestParam String direccion,
+            @RequestParam String name, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) throws Exception {
 
-        validar(name, razonSocial, direcion, email, password, password2);
-
         try {
-            empresaServicio.registrarEmpresa(razonSocial, direcion, name, email, password, password2);
-                    
+            empresaServicio.registrarEmpresa(razonSocial, direccion, name, email, password, password2);
+
             modelo.put("exito", "Empresa registrada exitosamente");
-            
+
         } catch (Exception ex) {
 
-            modelo.put("error", ex.getMessage());
+            modelo.put("Error", ex.getMessage());
 
-            return "index";
+            return "login.html";
         }
 
-        return "empresa_registrar";
+        return "redirect:../desarrollador/lista";
     }
-    
-     @GetMapping("/listarEmpresa")
+
+    @GetMapping("/listarEmpresa")
     public String listarEmpresa(ModelMap modelo) {
 
         List<Empresa> empresas = empresaServicio.listarEmpresas();
@@ -67,8 +65,8 @@ public class EmpresaControlador {
         return "empresa_listar";
 
     }
-    
-     @DeleteMapping ("/eliminarEmpresa/{id}")
+
+    @DeleteMapping("/eliminarEmpresa/{id}")
     public String eliminarAdmin(@PathVariable String id, ModelMap modelo) {
 
         try {
@@ -86,8 +84,9 @@ public class EmpresaControlador {
         }
 
     }
-    
-      public void validar(String name, String razonSocial, String direcion, String email, String password, String password2) throws Exception {
+
+    public void validar(String name, String razonSocial, String direcion, String email, String password,
+            String password2) throws Exception {
 
         if (name.isEmpty() || name == null) {
             throw new Exception("el nombre no puede ser nulo o vacio");
@@ -95,7 +94,7 @@ public class EmpresaControlador {
         if (razonSocial.isEmpty() || razonSocial == null) {
             throw new Exception("la Razon Social no puede ser nulo o vacio");
         }
-         if (direcion.isEmpty() || direcion == null) {
+        if (direcion.isEmpty() || direcion == null) {
             throw new Exception("la direccion no puede ser nulo o vacio");
         }
         if (email.isEmpty() || email == null) {
@@ -109,5 +108,5 @@ public class EmpresaControlador {
         }
 
     }
-        
+
 }
