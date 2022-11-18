@@ -71,7 +71,7 @@ public class DesarrolladorControlador {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
-        return "desarrollador_modificar.html";
+        return "Update.html";
     }
 
     @PostMapping("/modificar/{id}")
@@ -85,13 +85,13 @@ public class DesarrolladorControlador {
 
             modelo.put("Exito", "Desarrollador actualizado");
 
-            return "redirect:../lista";
+            return "redirect:../desarrollador/lista";
 
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
 
-            return "desarrollador_modificar.html";
+            return "Update.html";
 
         }
     }

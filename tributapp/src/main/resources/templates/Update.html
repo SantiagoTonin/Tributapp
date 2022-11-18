@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TributApp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=desarrolladorice-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <!--<link href="../static/styles/home.css" rel="stylesheet">-->
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/home.css?1.0}" media="all">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/Navbar.css?1.0}" media="all">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/Update.css?1.0}" media="all">
+    </head>
+    <body>
+        <nav th:replace="fragments/navbar :: nav_bar"></nav>
+        <div class="container-form">
+
+            <form th:action="@{/desarrollador/modificar/__${desarrollador.id}__}" th:method="POST" enctype="multipart/form-data">
+
+                <input hidden th:value="${id}" name="id">
+                <div class="mb-3">
+                    <input th:value="${desarrollador.nombre}" type="text" class="form-control" name="nombre" placeholder="Nombre y apellido">
+
+                </div>
+                <div class="mb-3">
+                    <input th:value="${desarrollador.email}" type="email" class="form-control" name="email" placeholder="Email">
+
+                </div>
+                <div class="mb-3">
+                    <input th:value="${desarrollador.password}" type="password" class="form-control" name="password" placeholder="Contraseña">
+
+                </div>
+                <div class="mb-3">
+                    <input th:value="${desarrollador.password2}" type="password" class="form-control" name="password2" placeholder="Repetir Contraseña">
+
+                </div>
+
+                <div class="mb-3">
+                    <input th:value="${desarrollador.cuitCuil}" type="text" class="form-control" name="cuil" placeholder="Cuil">
+                </div>
+
+                <div class="mb-3 radio-boton">
+
+                    <input type="radio" name="contratacion" id="free" checked="checked">
+                    <label for="free" >Freelance</label>
+                    <input type="radio" name="contratacion" id="depen">
+                    <label for="depen" >Relacion de Dependencia</label>
+
+                </div>
+
+                <div class="mb-3">
+                    <input type="file" class="form-control" placeholder="Foto" name="foto">
+                </div>
+
+                <div th:if="${ Error != null}">
+                    <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+                </div>
+
+                <button class="btn btn-secondary" type="submit">Registrar</button>
+            </form>
+
+        </div>
+        
+        <footer th:replace="fragments/footer :: footer"></footer>
+
+        <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+                integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+    </body>
+</html>
