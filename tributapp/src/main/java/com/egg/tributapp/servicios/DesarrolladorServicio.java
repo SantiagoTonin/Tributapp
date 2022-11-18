@@ -1,9 +1,13 @@
 package com.egg.tributapp.servicios;
 
 import com.egg.tributapp.entidades.Desarrollador;
+import com.egg.tributapp.enumeraciones.Contratacion;
+import com.egg.tributapp.enumeraciones.Rol;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.DesarrolladorRepositorio;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -18,11 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class DesarrolladorServicio {
 
     @Autowired
-    DesarrolladorRepositorio desarrolladorRepositorio;
+    private DesarrolladorRepositorio desarrolladorRepositorio;
 
     @Transactional
     public void registrar(String nombre, String email, String password,
-            String password2) throws MiException {
+            String password2, MultipartFile foto,
+            String cuil, Double salario) throws MiException, IOException {
 
         validar(nombre, email, password, password2);
 
@@ -32,8 +37,14 @@ public class DesarrolladorServicio {
         desarrollador.setEmail(email);
         desarrollador.setPassword(password);
         desarrollador.setPassword2(password2);
+        desarrollador.setCuitCuil(cuil);
+        desarrollador.setSalario(salario);
 
-//        desarrollador.setRol(Rol.DESARROLLADOR);
+        desarrollador.setRol(Rol.DESARROLLADOR);
+        desarrollador.setFoto(foto.getBytes());
+        desarrollador.setContratacion(Contratacion.FREELANCE);
+        desarrollador.setActivo(Boolean.TRUE);
+
         desarrolladorRepositorio.save(desarrollador);
     }
 
@@ -57,27 +68,32 @@ public class DesarrolladorServicio {
     }
 
     @Transactional
-    public void modificarDesarrollador(String idUsuario, String nombre, String email, String password, String password2) throws MiException {
+    public void modificarDesarrollador(MultipartFile archivo, String idUsuario,
+            String nombre, String email, String password,
+            String password2, MultipartFile foto, String cuil, Double salario) throws MiException, IOException {
 
         validar(nombre, email, password, password2);
 
         Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(idUsuario);
+
         if (respuesta.isPresent()) {
 
             Desarrollador desarrollador = respuesta.get();
-            desarrollador.setNombre(nombre);
-            desarrollador.setEmail(email);
-//            desarrollador.setPassword(password);
-//            desarrollador.setPassword2(password2);
-//            desarrollador.setPassword(new BCryptPasswordEncoder().encode(password));
-//            desarrollador.setRol(Rol.USER);
-            String idImagen = null;
 
-//            if (desarrollador.getImagen() != null) {
-//                idImagen = desarrollador.getImagen().getId();
-//            }
-//            Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-//            desarrollador.setImagen(imagen);
+            desarrollador.setNombre(nombre);
+
+            desarrollador.setEmail(email);
+            //falta la dependencia security
+//            desarrollador.setPassword(new BCryptPasswordEncoder().encode(password));
+            desarrollador.setRol(Rol.DESARROLLADOR);
+
+            desarrollador.setContratacion(Contratacion.FREELANCE);
+
+            desarrollador.setFoto(foto.getBytes());
+            desarrollador.setCuitCuil(cuil);
+            
+            desarrollador.setSalario(salario);
+
             desarrolladorRepositorio.save(desarrollador);
         }
 
@@ -87,9 +103,32 @@ public class DesarrolladorServicio {
         return desarrolladorRepositorio.getOne(id);
     }
 
-    public void Eliminar(Desarrollador desarrolador) {
+    @Transactional
+    public void Eliminar(String id) {
 
-        desarrolladorRepositorio.delete(desarrolador);
+        desarrolladorRepositorio.deleteById(id);
+
+    }
+
+    @Transactional
+    public void softEliminar(String id) {
+
+        Desarrollador desarrollador = desarrolladorRepositorio.getOne(id);
+
+        desarrollador.setActivo(Boolean.FALSE);
+
+    }
+
+    @Transactional
+    public void darDeAlta(String id) {
+
+        Desarrollador desarrollador = desarrolladorRepositorio.getOne(id);
+
+        desarrollador.setAlta(new Date());
+
+        desarrollador.setActivo(Boolean.TRUE);
+
+        desarrolladorRepositorio.save(desarrollador);
 
     }
 
@@ -103,9 +142,10 @@ public class DesarrolladorServicio {
         return desarrolladores;
     }
 
-    public Desarrollador buscarPorEmail(String email) {
+    @Transactional()
+    public Desarrollador buscarPorNombre(String nombre) {
 
-        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorEmail(email);
+        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorNombre(nombre);
 
         return desarrollador;
     }
