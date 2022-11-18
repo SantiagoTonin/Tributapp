@@ -82,7 +82,7 @@ public class AdminControlador {
     }
     
   
-    @DeleteMapping ("/elimicarAdmin/{id}")
+    @DeleteMapping ("/eliminarAdmin/{id}")
     public String elminarAdmin(@PathVariable String id, ModelMap modelo) {
 
         try {

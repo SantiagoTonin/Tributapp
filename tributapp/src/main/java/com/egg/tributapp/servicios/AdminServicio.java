@@ -66,7 +66,7 @@ public class AdminServicio {
     }
     
     @Transactional 
-    public void eliminar (String id){
+    public void eliminar(String id){
         
         adminRepositorio.deleteById(id);
     }
