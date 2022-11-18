@@ -28,7 +28,5 @@ public class Empresa extends Usuario {
     private String razonSocial;
     private String direccion;
 
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
 
 }

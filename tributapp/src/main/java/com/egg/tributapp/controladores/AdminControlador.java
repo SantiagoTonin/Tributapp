@@ -29,8 +29,6 @@ public class AdminControlador {
     public String registroAdmin(@RequestParam String name, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) throws Exception {
 
-        validar(name, email, password, password2);
-
         try {
             adminServicio.registrarAdmin(name, email, password, password2);
 
@@ -97,23 +95,6 @@ public class AdminControlador {
 
             return "eliminar_admin";
 
-        }
-
-    }
-
-    public void validar(String name, String email, String password, String password2) throws Exception {
-
-        if (name.isEmpty() || name == null) {
-            throw new Exception("el nombre no puede ser nulo o vacio");
-        }
-        if (email.isEmpty() || email == null) {
-            throw new Exception("el email no puede ser nulo o vacio");
-        }
-        if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new Exception("el password no puede ser nulo o vacio o tener menos de 5 caracteres");
-        }
-        if (!password.equals(password2)) {
-            throw new Exception("el password no coincide");
         }
 
     }

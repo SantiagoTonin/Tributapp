@@ -1,11 +1,13 @@
 package com.egg.tributapp.entidades;
 
 import com.egg.tributapp.enumeraciones.Rol;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,5 +34,8 @@ public class Admin {
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
+    
+    @OneToMany
+    private List<Post> post;
 
 }
