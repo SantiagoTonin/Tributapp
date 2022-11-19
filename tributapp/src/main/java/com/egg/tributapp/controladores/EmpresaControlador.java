@@ -33,7 +33,7 @@ public class EmpresaControlador {
     public String registarEmpresa(ModelMap modelo) {
         return "empresa_registrar";
     }
-    
+
     
     @PostMapping("/registroEmpresa")
     public String registroEmpresa(@RequestParam String razonSocial, @RequestParam String direccion, @RequestParam String nombre, @RequestParam String email,
@@ -41,9 +41,9 @@ public class EmpresaControlador {
 
         try {
             empresaServicio.registrarEmpresa(razonSocial, direccion, nombre, email, password, password2);
-                    
+
             modelo.put("exito", "Empresa registrada exitosamente");
-            
+
         } catch (Exception ex) {
 
             modelo.put("error", ex.getMessage());
@@ -53,8 +53,8 @@ public class EmpresaControlador {
 
         return "empresa_registrar";
     }
-    
-     @GetMapping("/listarEmpresa")
+
+    @GetMapping("/listarEmpresa")
     public String listarEmpresa(ModelMap modelo) {
 
         List<Empresa> empresas = empresaServicio.listarEmpresas();
@@ -64,8 +64,36 @@ public class EmpresaControlador {
         return "empresa_listar";
 
     }
-    
-     @DeleteMapping ("/eliminarEmpresa/{id}")
+
+    @GetMapping("/modificarEmpresa/{id}")
+    public String modificarEmpresa(@PathVariable String id, ModelMap modelo) {
+
+        modelo.put("empresa", empresaServicio.getone(id));
+
+        return "modificar_empresa";
+
+    }
+
+    @PostMapping("/modificoEmpresa/{id}")
+    public String modificoEmpresa(@PathVariable String id, String razonSocial, String direccion,
+            String nombre, String email,
+            String password, String password2, ModelMap modelo) {
+
+        try {
+
+            empresaServicio.modificar(id, razonSocial, direccion, nombre, email, password, password2);
+
+            return ("redirect:..//listarEmpresa");
+
+        } catch (Exception ex) {
+
+            modelo.put("error", ex.getMessage());
+
+            return "modificar_empresa";
+        }
+    }
+
+    @DeleteMapping("/eliminarEmpresa/{id}")
     public String eliminarAdmin(@PathVariable String id, ModelMap modelo) {
 
         try {
@@ -83,5 +111,5 @@ public class EmpresaControlador {
         }
 
     }
-    
+
 }

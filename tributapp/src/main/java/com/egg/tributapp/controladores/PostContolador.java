@@ -63,6 +63,34 @@ public class PostContolador {
 
     }
 
+    @GetMapping("/modificarPost/{id}")
+    public String modificarPost(@PathVariable String id, ModelMap modelo) {
+
+        modelo.put("post", postServicio.getOne(id));
+
+        return "post_eliminar";
+
+    }
+
+    @PostMapping("/modificoPost/{id}")
+    public String modificoEmpresa(@PathVariable String id, String tiitulo,
+            String texto, MultipartFile foto, ModelMap modelo) {
+
+        try {
+
+            postServicio.modificar(id, tiitulo, texto, foto);
+
+            return ("redirect:..//listarPost");
+
+        } catch (Exception ex) {
+
+            modelo.put("error", ex.getMessage());
+
+            return "post_eliminar";
+        }
+    }
+
+    
     @DeleteMapping("/eliminarPost/{id}")
     public String eliminarPost(@PathVariable String id, ModelMap modelo) {
 
