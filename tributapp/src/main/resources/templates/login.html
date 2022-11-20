@@ -31,6 +31,7 @@
         <p class="li activo ">Desarrollador</p>
         <p class="li">Empresa</p>
       </div>
+
       <div class="bloque activo">
         <div class="container-form">
 
@@ -75,7 +76,7 @@
             </div>
 
             <div th:if="${ Error != null}">
-              <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+              <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
             <button class="btn btn-secondary" type="submit">Registrar</button>
@@ -113,7 +114,7 @@
             </div>
 
             <div th:if="${ Error != null}">
-              <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+              <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
             <button class="btn btn-secondary" type="submit">Registrar</button>

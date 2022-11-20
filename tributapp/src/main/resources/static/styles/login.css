@@ -46,14 +46,14 @@
 
 .li {
   background: rgb(13, 14, 21);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: bold;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   border-radius: 2px;
   padding: 0px 4px;
   padding-bottom: 4px;
   text-transform: uppercase;
-  margin-bottom: 0px !important;
+  margin-bottom: 16px !important;
 }
 
 
@@ -62,7 +62,7 @@
 }
 
 .pestaña p:hover {
-  background: rgb(7, 2, 51);
+  background: rgb(18, 3, 152);
   color: rgb(255, 255, 255);
 
 }
@@ -90,10 +90,8 @@
   background: rgb(2, 86, 45);
   color: rgb(253, 253, 253);
   border: 1px solid #1f2029;
-
-
-
 }
+
 
 
 main {
