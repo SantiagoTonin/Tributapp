@@ -85,7 +85,7 @@ public class DesarrolladorControlador {
 
             modelo.put("Exito", "Desarrollador actualizado");
 
-            return "redirect:../desarrollador/lista";
+            return "redirect:/..desarrollador/lista";
 
         } catch (MiException ex) {
 
