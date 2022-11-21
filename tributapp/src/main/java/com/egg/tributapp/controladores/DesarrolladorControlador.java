@@ -57,12 +57,12 @@ public class DesarrolladorControlador {
     }
 
     @GetMapping("/lista")
-    public String listar(ModelMap modelo, @RequestParam("palabraClave") String palabraClave) {
+    public String listar(ModelMap modelo) {
 
         List<Desarrollador> desarrollador = desarrolladorServicio.listarDesarrolladores();
         modelo.addAttribute("desarrolladores", desarrollador);
 
-        return "desarrollador_list.html";
+        return "DesarrolladorList.html";
     }
 
     @GetMapping("/modificar/{id}")
@@ -70,7 +70,7 @@ public class DesarrolladorControlador {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
-        return "desarrollador_modificar.html";
+        return "Update.html";
     }
 
     @PostMapping("/modificar/{id}")
@@ -84,13 +84,13 @@ public class DesarrolladorControlador {
 
             modelo.put("Exito", "Desarrollador actualizado");
 
-            return "redirect:../lista";
+            return "redirect:/desarrollador/lista";
 
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
 
-            return "desarrollador_modificar.html";
+            return "Update.html";
 
         }
     }

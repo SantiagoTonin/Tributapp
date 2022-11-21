@@ -204,6 +204,7 @@ public class DesarrolladorServicio implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
+        System.out.println(email + "!!!!!!!!!!!!!!!!!!!!");
         Desarrollador desarrollador = desarrolladorRepositorio.buscarPorEmail(email);
 
         if (desarrollador != null) {
