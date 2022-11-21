@@ -19,14 +19,19 @@
 
 <body>
 
+  <nav th:replace="fragments/navbar :: nav_bar"></nav>
 
-  <img class="img-imp" src="/Img/impuesto2.jpg" alt="">
+  <div class="wrapp">
+    
+    <img class="img-imp" src="/Img/impuesto2.jpg" alt="">
+  </div>
   <div class="container-grid">
     <div class="grid-item">
       <div class="pestaña">
-        <p class="li activo">Desarrollador</p>
+        <p class="li activo ">Desarrollador</p>
         <p class="li">Empresa</p>
       </div>
+
       <div class="bloque activo">
         <div class="container-form">
 
@@ -71,7 +76,7 @@
             </div>
 
             <div th:if="${ Error != null}">
-              <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+              <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
             <button class="btn btn-secondary" type="submit">Registrar</button>
@@ -109,7 +114,7 @@
             </div>
 
             <div th:if="${ Error != null}">
-              <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+              <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
             <button class="btn btn-secondary" type="submit">Registrar</button>
@@ -150,14 +155,14 @@
         </div>
         <button class="btn" type="submit">Login</button>
         <div th:if="${error != null}">
-          <p th:text="${error}" style="font-size: medium; text-align: center; color:red;"></p>
+          <p  class="msjError"th:text="${error}" style="font-size: medium;"></p>
         </div>
       </form>
     </div>
 
   </div>
 
-
+<nav th:replace="fragments/Footer :: footer"></nav>
 
   <script defer="">
     const li = document.querySelectorAll(".li")
@@ -222,6 +227,7 @@
     // ]]>
   </script>
 
+<script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
 
   <script>
     var returnedSuggestion = ''

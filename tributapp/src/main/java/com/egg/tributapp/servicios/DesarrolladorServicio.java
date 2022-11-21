@@ -50,22 +50,22 @@ public class DesarrolladorServicio {
     private void validar(String nombre, String email, String password, String password2,String cuil) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("el nombre no puede ser nulo o estar vacio");
+            throw new MiException("*El nombre no puede ser nulo o estar vacio");
         }
         if (email.isEmpty() || nombre == null) {
-            throw new MiException("el email no puede ser nulo o estar vacio");
+            throw new MiException("*El email no puede ser nulo o estar vacio");
 
         }
         if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new MiException("la contraseña no puede ser nulo o estar vacio o ser menor a 5 caracteres");
+            throw new MiException("*La contraseña no puede ser nulo o estar vacio o ser menor a 5 caracteres");
             
         }
         if (!password.equals(password2)) {
-            throw new MiException("Las contraseñas ingresadas deben ser iguales");
+            throw new MiException("*Las contraseñas ingresadas deben ser iguales");
             
         }
         if (cuil.isEmpty() || nombre == null) {
-            throw new MiException("el cuil no puede ser nulo o estar vacio");
+            throw new MiException("*El cuil no puede ser nulo o estar vacio");
 
         }
     }

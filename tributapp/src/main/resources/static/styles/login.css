@@ -8,12 +8,21 @@
   position: relative;
   gap: 5rem;
 }
+
+.wrapp {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: -98;
+  background-attachment: fixed;
+  filter: blur(5px);
+}
+
 .img-imp {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   position: absolute;
   z-index: -99;
-  background-attachment: fixed;
 }
 
 .container-form {
@@ -21,27 +30,47 @@
   width: 800px;
   left: 50%;
   background: rgb(31, 32, 41);
-  padding: 30px;
+  padding: 0px 30px 30px 30px;
 }
 
 .pestaña {
   display: flex;
   color: rgb(249, 242, 242);
-  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: x-large;
   font-weight: 600;
   background: rgb(31, 32, 41);
+  margin-top: 10px;
+
+
 }
 
+.li {
+  background: rgb(13, 14, 21);
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  border-radius: 2px;
+  padding: 0px 4px;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px !important;
+}
+
+
 .pestaña p {
-  margin-right: 2rem;
   cursor: pointer;
+}
+
+.pestaña p:hover {
+  background: rgb(18, 3, 152);
+  color: rgb(255, 255, 255);
+
 }
 
 .linea {
   height: 100vh;
   box-shadow: rgba(254, 254, 254, 0.84) 7px 16px 300px 20px;
-  border-left: 3px solid rgb(18, 8, 6);
+  border-left: 6px solid rgb(18, 8, 6);
 }
 
 
@@ -58,7 +87,11 @@
 
 .activo {
   display: block;
+  background: rgb(2, 86, 45);
+  color: rgb(253, 253, 253);
+  border: 1px solid #1f2029;
 }
+
 
 
 main {
@@ -90,9 +123,14 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked+label {
   background-color: rgb(1, 204, 101);
   color: white;
+}
+
+.msjError{
+  color: red;
+  text-align: left;
 }
 
 /* From uiverse.io by @alexruix */
