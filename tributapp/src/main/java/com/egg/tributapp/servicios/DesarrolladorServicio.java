@@ -10,74 +10,101 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /*
  * @author martin
  */
 @Service
-public class DesarrolladorServicio {
+public class DesarrolladorServicio implements UserDetailsService {
 
     @Autowired
     private DesarrolladorRepositorio desarrolladorRepositorio;
 
+    //registro con validacion
     @Transactional
     public void registrar(String nombre, String email, String password,
-            String password2, MultipartFile foto,
-            String cuil,String contratacion) throws MiException, IOException {
+            String password2, String contratacion, MultipartFile foto,
+            String cuil) throws MiException, IOException {
 
-        validar(nombre, email, password, password2,cuil);
+        validar(nombre, email, password, password2, contratacion, foto, cuil);
 
         Desarrollador desarrollador = new Desarrollador();
 
         desarrollador.setNombre(nombre);
         desarrollador.setEmail(email);
-        desarrollador.setPassword(password);
-        desarrollador.setPassword2(password2);
+        desarrollador.setPassword(new BCryptPasswordEncoder().encode(password));
         desarrollador.setCuitCuil(cuil);
-
-
         desarrollador.setRol(Rol.DESARROLLADOR);
         desarrollador.setFoto(foto.getBytes());
+
+        if (contratacion.equals("1")) {
+
+            desarrollador.setContratacion(Contratacion.FREELANCE.getNameEnum());
+        }
+        if (contratacion.equals("2")) {
+
+            System.out.println("llegue aqui!!!!!!!!!!");
+            desarrollador.setContratacion(Contratacion.ENDEPENCIA.getNameEnum());
+        }
         desarrollador.setActivo(Boolean.TRUE);
 
         desarrolladorRepositorio.save(desarrollador);
     }
 
-    private void validar(String nombre, String email, String password, String password2,String cuil) throws MiException {
+    private void validar(String nombre, String email, String password, String password2, String contratacion, MultipartFile foto, String cuil) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("*El nombre no puede ser nulo o estar vacio");
+            throw new MiException("el nombre no puede ser nulo o estar vacio");
         }
         if (email.isEmpty() || nombre == null) {
-            throw new MiException("*El email no puede ser nulo o estar vacio");
+            throw new MiException("el email no puede ser nulo o estar vacio");
 
         }
         if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new MiException("*La contraseña no puede ser nulo o estar vacio o ser menor a 5 caracteres");
-            
+            throw new MiException("la contraseña no puede ser nulo o estar vacio");
+
         }
         if (!password.equals(password2)) {
-            throw new MiException("*Las contraseñas ingresadas deben ser iguales");
-            
+            throw new MiException("Las contraseñas ingresadas deben ser iguales");
+
         }
-        if (cuil.isEmpty() || nombre == null) {
-            throw new MiException("*El cuil no puede ser nulo o estar vacio");
+        if (contratacion == null) {
+            throw new MiException("Debe seleccionar una de las opciones");
+        }
+        if (foto.isEmpty()) {
+            throw new MiException("Debe colocar una foto");
+
+        }
+        if (cuil.isEmpty() || cuil == null) {
+
+            throw new MiException("Debe ingresar el cuit o cuil");
 
         }
     }
 
+    //actualizacion desarrollador con validacion
     @Transactional
-    public void modificarDesarrollador(MultipartFile archivo, String id,
-            String nombre, String email, String password,
+    public void modificarDesarrollador( String idUsuario,
+            String nombre, String email, String password, String contratacion,
             String password2, MultipartFile foto, String cuil) throws MiException, IOException {
 
-        validar(nombre, email, password, password2, cuil);
+        validar(nombre, email, password, password2, contratacion, foto, cuil);
 
-        Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(id);
+        Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(idUsuario);
 
         if (respuesta.isPresent()) {
 
@@ -90,21 +117,29 @@ public class DesarrolladorServicio {
 //            desarrollador.setPassword(new BCryptPasswordEncoder().encode(password));
             desarrollador.setRol(Rol.DESARROLLADOR);
 
-            desarrollador.setContratacion(Contratacion.FREELANCE);
+            if (contratacion.equals("1")) {
+
+                desarrollador.setContratacion(Contratacion.ENDEPENCIA.getNameEnum());
+            }
+            if (contratacion.equals("2")) {
+
+                desarrollador.setContratacion(Contratacion.FREELANCE.getNameEnum());
+            }
 
             desarrollador.setFoto(foto.getBytes());
             desarrollador.setCuitCuil(cuil);
-            
 
             desarrolladorRepositorio.save(desarrollador);
         }
 
     }
 
+    //metodo getOne para encontrar un desarrollador por su id
     public Desarrollador getOne(String id) {
         return desarrolladorRepositorio.getOne(id);
     }
 
+    //metodo eliminar
     @Transactional
     public void Eliminar(String id) {
 
@@ -112,6 +147,7 @@ public class DesarrolladorServicio {
 
     }
 
+    //soft delete para q al desactivar al usuario, no sean eliminados sus datos de la BD
     @Transactional
     public void softEliminar(String id) {
 
@@ -121,6 +157,7 @@ public class DesarrolladorServicio {
 
     }
 
+    //metodo para dar de alta donde se guarda la fecha de alta
     @Transactional
     public void darDeAlta(String id) {
 
@@ -134,6 +171,7 @@ public class DesarrolladorServicio {
 
     }
 
+//    metodo leer o listar
     @Transactional()
     public List<Desarrollador> listarDesarrolladores() {
 
@@ -144,6 +182,7 @@ public class DesarrolladorServicio {
         return desarrolladores;
     }
 
+    //query buscar por nombre, falta terminar
     @Transactional()
     public Desarrollador buscarPorNombre(String nombre) {
 
@@ -152,4 +191,43 @@ public class DesarrolladorServicio {
         return desarrollador;
     }
 
+//prueba de query
+//    @Transactional()
+//    public List<Desarrollador> listarDesarrolladores(String palabraClave) {
+//
+//        List<Desarrollador> desarrolladores = new ArrayList();
+//
+//        desarrolladores = desarrolladorRepositorio.findAll();
+//
+//        return desarrolladores;
+//    }
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorEmail(email);
+
+        if (desarrollador != null) {
+
+            List<GrantedAuthority> permisos = new ArrayList<>();
+
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + desarrollador.getRol().toString());
+
+            permisos.add(p);
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+
+            HttpSession session = attr.getRequest().getSession(true);
+
+            session.setAttribute("usuariosession", desarrollador);
+            
+            
+
+            return new User(desarrollador.getEmail(), desarrollador.getPassword(), permisos);
+
+        } else {
+
+            return null;
+
+        }
+    }
 }

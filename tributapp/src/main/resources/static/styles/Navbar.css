@@ -4,7 +4,7 @@ body {
 
 .blogin {
     background-color: #EB6440;
-    border-color:#EB6440;
+    border-color: #EB6440;
 }
 
 .blogin:hover {
@@ -14,14 +14,14 @@ body {
 }
 
 .bsignup {
-    background-color:#497174;
-    border-color:#497174;
-    color:#EFF5F5;
+    background-color: #497174;
+    border-color: #497174;
+    color: #EFF5F5;
 }
 
 .bsignup:hover {
-    background-color:#EFF5F5;
+    background-color: #EFF5F5;
     border-color: #497174;
-    color:#497174;
+    color: #497174;
 }
 

@@ -1,13 +1,10 @@
 package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Desarrollador;
-import com.egg.tributapp.enumeraciones.Contratacion;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import java.io.IOException;
 import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,11 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/desarrollador")
 public class DesarrolladorControlador {
 
-
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
-    
-    
+
     @GetMapping("/cargarDesarrollador")
     public String cargar(ModelMap modelo) {
 
@@ -40,13 +35,13 @@ public class DesarrolladorControlador {
 
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
-            @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam MultipartFile foto, @RequestParam String cuil,@RequestParam String contratacion, ModelMap modelo) throws MiException, IOException {
+            @RequestParam String email, @RequestParam String password, String contratacion,
+            @RequestParam String password2, MultipartFile foto, String cuil,
+            ModelMap modelo) throws MiException, IOException {
+
         try {
 
-
-            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil,contratacion);
-
+            desarrolladorServicio.registrar(nombre, email, password, password2, contratacion, foto, cuil);
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
         } catch (MiException ex) {
@@ -58,17 +53,16 @@ public class DesarrolladorControlador {
             return "login.html";
 
         }
-//        return "DesarrolladorList.html";
-            return "redirect:../desarrollador/lista";
+        return "login.html";
     }
 
     @GetMapping("/lista")
-    public String listar(ModelMap modelo) {
+    public String listar(ModelMap modelo, @RequestParam("palabraClave") String palabraClave) {
 
         List<Desarrollador> desarrollador = desarrolladorServicio.listarDesarrolladores();
         modelo.addAttribute("desarrolladores", desarrollador);
 
-        return "DesarrolladorList.html";
+        return "desarrollador_list.html";
     }
 
     @GetMapping("/modificar/{id}")
@@ -76,39 +70,37 @@ public class DesarrolladorControlador {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
-        return "Update.html";
+        return "desarrollador_modificar.html";
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(MultipartFile archivo, @PathVariable String id,
-            String nombre, String email, String password, String password2,
+    public String modificar(@PathVariable String id,
+            String nombre, String email, String password, String password2, String contratacion,
             MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
 
         try {
-            
-            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, password, password2, foto, cuit);
+
+            desarrolladorServicio.modificarDesarrollador( id, nombre, email, password, contratacion, password2, foto, cuit);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
-            return "redirect:/desarrollador/lista";
+            return "redirect:../lista";
 
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
 
-            return "Update.html";
+            return "desarrollador_modificar.html";
 
         }
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id) {
-        
+
         desarrolladorServicio.Eliminar(id);
-        
+
         return "redirect:/desarrollador/lista";
     }
-    
-    
-    
+
 }

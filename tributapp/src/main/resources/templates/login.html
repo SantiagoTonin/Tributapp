@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <link rel="stylesheet" th:href="@{/styles/login.css?1.0}" media="all">
   <link rel="stylesheet" th:href="@{/styles/Navbar.css?1.0}" media="all">
   <title>Document</title>
@@ -24,7 +24,7 @@
   <nav th:replace="fragments/navbar :: nav_bar"></nav>
 
   <div class="wrapp">
-    
+
     <img class="img-imp" src="/Img/impuesto2.jpg" alt="">
   </div>
   <div class="container-grid">
@@ -38,17 +38,20 @@
         <div class="container-form">
 
 
-          <form  class="formulario" id="formulario" th:action="@{/desarrollador/cargar}" th:method="POST" enctype="multipart/form-data">
+          <form class="formulario" id="formulario" th:action="@{/desarrollador/cargar}" th:method="POST"
+            enctype="multipart/form-data">
 
             <!-- Grupo: Nombre -->
             <div class="mb-3">
               <div class="formulario__grupo" id="grupo__nombre">
                 <label for="nombre" class="formulario__label">Nombre y Apellido</label>
                 <div class="formulario__grupo-input">
-                  <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="ej: Santiago Tonin">
+                  <input type="text" class="formulario__input" name="nombre" id="nombre"
+                    placeholder="ej: Santiago Tonin">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener
+                  numeros, letras y guion bajo.</p>
               </div>
 
             </div>
@@ -57,10 +60,12 @@
               <div class="formulario__grupo" id="grupo__email">
                 <label for="email" class="formulario__label">Email</label>
                 <div class="formulario__grupo-input">
-                  <input type="email" class="formulario__input" name="email" id="email" placeholder="ej: email@email.com" th:value="${email}">
+                  <input type="email" class="formulario__input" name="email" id="email"
+                    placeholder="ej: email@email.com" th:value="${email}">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">El email solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                <p class="formulario__input-error">El email solo puede contener letras, numeros, puntos, guiones y guion
+                  bajo.</p>
               </div>
 
             </div>
@@ -73,7 +78,7 @@
                   <input type="password" class="formulario__input" name="password" id="password" placeholder="****">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+                <p class="formulario__input-error">La contraseña tiene que ser mayor 5 digitos.</p>
               </div>
 
             </div>
@@ -102,10 +107,10 @@
 
             <div class="mb-3 radio-boton">
 
-              <input type="radio" name="contratacion" value="1" id="free" checked="checked" >
-              <label  class="radio-label" for="free" >Freelance</label>
+              <input type="radio" name="contratacion" value="1" id="free" checked="checked">
+              <label class="radio-label" for="free">Freelance</label>
               <input type="radio" name="contratacion" value="2" id="depen">
-              <label  class="radio-label" for="depen" >Relacion de Dependencia</label>
+              <label class="radio-label" for="depen">Relacion de Dependencia</label>
 
             </div>
 
@@ -126,29 +131,82 @@
       <div class="bloque">
         <div class="container-form ">
 
-          <form th:action="@{/empresa/registroEmpresa}" th:method="POST">
+          <form class="formulario" id="formulario"  th:action="@{/empresa/registroEmpresa}" th:method="POST">
 
             <div class="mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Nombre y apellido" >
+              <div class="formulario__grupo" id="grupo__nombre">
+                <label for="nombre" class="formulario__label">Nombre</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input" name="nombre" id="nombre"
+                    placeholder="ej: Santiago Tonin">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener
+                  numeros, letras y guion bajo.</p>
+              </div>
             </div>
             <div class="mb-3">
 
               <div class="mb-3">
-                <input type="text" class="form-control" name="razonSocial" placeholder="Razon Social" >
+
+                <div class="formulario__grupo" id="grupo__nombre">
+                  <label for="nombre" class="formulario__label">Razon Social</label>
+                  <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="razonSocial" id="nombre"
+                      placeholder="ej: alias">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">Razon Social tiene que ser de 4 a 16 dígitos y solo puede contener
+                    numeros, letras y guion bajo.</p>
+                </div>
+
               </div>
-              <input type="email" class="form-control" name="email" placeholder="Email" >
+
+              <div class="formulario__grupo" id="grupo__email">
+                <label for="email" class="formulario__label">Email</label>
+                <div class="formulario__grupo-input">
+                  <input type="email" class="formulario__input" name="email" id="email"
+                    placeholder="ej: email@email.com" th:value="${email}">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El email solo puede contener letras, numeros, puntos, guiones y guion
+                  bajo.</p>
+              </div>
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" name="password"  >
+              <div class="formulario__grupo" id="grupo__password">
+                <label for="password" class="formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                  <input type="password" class="formulario__input" name="password" id="password" placeholder="****">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La contraseña tiene que ser mayor 5 digitos</p>
+              </div>
 
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" name="password2"  >
+              <div class="formulario__grupo" id="grupo__password2">
+                <label for="password2" class="formulario__label">Repetir Contraseña</label>
+                <div class="formulario__grupo-input">
+                  <input type="password" class="formulario__input" name="password2" id="password2" placeholder="****">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+              </div>
 
             </div>
 
             <div class="mb-3">
-              <input type="text" class="form-control" name="direccion" placeholder="Direccion" >
+              <div class="formulario__grupo" id="grupo__nombre">
+                <label for="nombre" class="formulario__label">Direccion</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input" name="direccion" id="nombre"
+                    placeholder="ej: Calle Falsa 123">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La Direccion tiene que ser de 4 a 16 dígitos y solo puede contener
+                  numeros, letras y guion bajo.</p>
+              </div>
             </div>
 
             <div th:if="${ Error != null}">
@@ -193,14 +251,14 @@
         </div>
         <button class="btn" type="submit">Login</button>
         <div th:if="${error != null}">
-          <p  class="msjError"th:text="${error}" style="font-size: medium;"></p>
+          <p class="msjError" th:text="${error}" style="font-size: medium;"></p>
         </div>
       </form>
     </div>
 
   </div>
 
-<nav th:replace="fragments/Footer :: footer"></nav>
+  <nav th:replace="fragments/Footer :: footer"></nav>
 
   <script defer="">
     const li = document.querySelectorAll(".li")
@@ -265,8 +323,8 @@
     // ]]>
   </script>
 
-<script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
   <script>
     var returnedSuggestion = ''
@@ -314,91 +372,91 @@
 
   <script>
     const formulario = document.getElementById('formulario');
-const inputs = document.querySelectorAll('#formulario input');
+    const inputs = document.querySelectorAll('#formulario input');
 
-const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
-	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	cuil: /^\d{11}$/ // 7 a 14 numeros.
-}
+    const expresiones = {
+      usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+      nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+      password: /^.{4,12}$/, // 4 a 12 digitos.
+      email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      cuil: /^\d{11}$/ // 7 a 14 numeros.
+    }
 
-const campos = {
-	usuario: false,
-	nombre: false,
-	password: false,
-	email: false,
-	cuil: false
-}
+    const campos = {
+      usuario: false,
+      nombre: false,
+      password: false,
+      email: false,
+      cuil: false
+    }
 
-const validarFormulario = (e) => {
-	switch (e.target.name) {
-		case "usuario":
-			validarCampo(expresiones.usuario, e.target, 'usuario');
-		break;
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
-		case "password":
-			validarCampo(expresiones.password, e.target, 'password');
-			validarPassword2();
-		break;
-		case "password2":
-			validarPassword2();
-		break;
-		case "email":
-			validarCampo(expresiones.email, e.target, 'email');
-		break;
-		case "cuil":
-			validarCampo(expresiones.cuil, e.target, 'cuil');
-		break;
-	}
-}
+    const validarFormulario = (e) => {
+      switch (e.target.name) {
+        case "usuario":
+          validarCampo(expresiones.usuario, e.target, 'usuario');
+          break;
+        case "nombre":
+          validarCampo(expresiones.nombre, e.target, 'nombre');
+          break;
+        case "password":
+          validarCampo(expresiones.password, e.target, 'password');
+          validarPassword2();
+          break;
+        case "password2":
+          validarPassword2();
+          break;
+        case "email":
+          validarCampo(expresiones.email, e.target, 'email');
+          break;
+        case "cuil":
+          validarCampo(expresiones.cuil, e.target, 'cuil');
+          break;
+      }
+    }
 
-const validarCampo = (expresion, input, campo) => {
-	if(expresion.test(input.value)){
-		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos[campo] = true;
-	} else {
-		document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos[campo] = false;
-	}
-}
+    const validarCampo = (expresion, input, campo) => {
+      if (expresion.test(input.value)) {
+        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        campos[campo] = true;
+      } else {
+        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+        campos[campo] = false;
+      }
+    }
 
-const validarPassword2 = () => {
-	const inputPassword1 = document.getElementById('password');
-	const inputPassword2 = document.getElementById('password2');
+    const validarPassword2 = () => {
+      const inputPassword1 = document.getElementById('password');
+      const inputPassword2 = document.getElementById('password2');
 
-	if(inputPassword1.value !== inputPassword2.value){
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos['password'] = false;
-	} else {
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos['password'] = true;
-	}
-}
+      if (inputPassword1.value !== inputPassword2.value) {
+        document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
+        document.querySelector(`#grupo__password2 i`).classList.remove('fa-check-circle');
+        document.querySelector(`#grupo__password2 .formulario__input-error`).classList.add('formulario__input-error-activo');
+        campos['password'] = false;
+      } else {
+        document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo__password2 i`).classList.remove('fa-times-circle');
+        document.querySelector(`#grupo__password2 i`).classList.add('fa-check-circle');
+        document.querySelector(`#grupo__password2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        campos['password'] = true;
+      }
+    }
 
-inputs.forEach((input) => {
-	input.addEventListener('keyup', validarFormulario);
-	input.addEventListener('blur', validarFormulario);
-});
+    inputs.forEach((input) => {
+      input.addEventListener('keyup', validarFormulario);
+      input.addEventListener('blur', validarFormulario);
+    });
   </script>
 </body>
 

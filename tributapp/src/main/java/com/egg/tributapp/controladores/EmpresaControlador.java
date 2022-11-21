@@ -38,11 +38,12 @@ public class EmpresaControlador {
 
     @PostMapping("/registroEmpresa")
     public String registroEmpresa(@RequestParam String razonSocial, @RequestParam String direccion,
-            @RequestParam String name, @RequestParam String email,
+            @RequestParam String nombre, @RequestParam String email,
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) throws Exception {
 
         try {
-            empresaServicio.registrarEmpresa(razonSocial, direccion, name, email, password, password2);
+            System.out.println("password" + password);
+            empresaServicio.registrarEmpresa(razonSocial, direccion, nombre, email, password, password2);
 
             modelo.put("exito", "Empresa registrada exitosamente");
 
@@ -111,30 +112,6 @@ public class EmpresaControlador {
 
             return "empresa_eliminar";
 
-        }
-
-    }
-
-    public void validar(String name, String razonSocial, String direcion, String email, String password,
-            String password2) throws Exception {
-
-        if (name.isEmpty() || name == null) {
-            throw new Exception("el nombre no puede ser nulo o vacio");
-        }
-        if (razonSocial.isEmpty() || razonSocial == null) {
-            throw new Exception("la Razon Social no puede ser nulo o vacio");
-        }
-        if (direcion.isEmpty() || direcion == null) {
-            throw new Exception("la direccion no puede ser nulo o vacio");
-        }
-        if (email.isEmpty() || email == null) {
-            throw new Exception("el email no puede ser nulo o vacio");
-        }
-        if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new Exception("el password no puede ser nulo o vacio o tener menos de 5 caracteres");
-        }
-        if (!password.equals(password2)) {
-            throw new Exception("el password no coincide");
         }
 
     }

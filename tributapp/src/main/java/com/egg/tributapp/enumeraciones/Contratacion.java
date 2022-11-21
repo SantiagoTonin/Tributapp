@@ -5,13 +5,17 @@
  */
 package com.egg.tributapp.enumeraciones;
 
+import lombok.Getter;
+
 /**
  *
  * @author marti
  */
+@Getter
 public enum Contratacion {
-    FREELANCE("freelance"),
-    ENDEPENCIA("endependecia");
+    FREELANCE("FREELANCE"),
+    ENDEPENCIA("ENDEPENDECIA");
+
 
     private final String nameEnum;
 
@@ -19,3 +23,4 @@ public enum Contratacion {
         this.nameEnum = nameEnum;
     }
 }
+

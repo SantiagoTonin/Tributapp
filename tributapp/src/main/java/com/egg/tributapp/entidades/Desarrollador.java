@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Desarrollador extends Usuario {
 
-    private Contratacion contratacion;
+    private String contratacion;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
