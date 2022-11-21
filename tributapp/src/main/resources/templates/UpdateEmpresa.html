@@ -16,10 +16,10 @@
         
         <div class="container-form ">
 
-          <form th:action="@{/empresa/modificoEmpresa/__${empresa.id}__}" method="POST">
-              <input hidden th:value="${id}" name="id">
+          <form th:action="@{/empresa/modificarEmpresa/__${empresa.id}__}" method="POST">
+              <input hidden="" th:value="${id}" name="id">
             <div class="mb-3">
-              <input th:value="${empresa.nombre}" type="text" class="form-control" name="name" placeholder="Nombre y apellido" >
+              <input th:value="${empresa.nombre}" type="text" class="form-control" name="nombre" placeholder="Nombre y apellido" >
             </div>
             <div class="mb-3">
 

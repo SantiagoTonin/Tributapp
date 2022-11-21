@@ -74,7 +74,7 @@ public class EmpresaServicio {
         empresaRepositorio.deleteById(id);
     }
 
-    public Empresa getone(String id) {
+    public Empresa getOne(String id) {
 
         return empresaRepositorio.getOne(id);
     }

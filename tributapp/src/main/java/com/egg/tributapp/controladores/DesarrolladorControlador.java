@@ -81,16 +81,16 @@ public class DesarrolladorControlador {
 
     @PostMapping("/modificar/{id}")
     public String modificar(MultipartFile archivo, @PathVariable String id,
-            String nombre, String email, String pass, String pass2,
+            String nombre, String email, String password, String password2,
             MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
 
         try {
-
-            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit);
+            
+            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, password, password2, foto, cuit);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
-            return "redirect:../desarrollador/lista";
+            return "redirect:/desarrollador/lista";
 
         } catch (MiException ex) {
 

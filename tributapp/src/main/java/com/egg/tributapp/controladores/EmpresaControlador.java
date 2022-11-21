@@ -67,25 +67,24 @@ public class EmpresaControlador {
 
     }
     
-        @GetMapping("/modificarEmpresa/{id}")
+    @GetMapping("/modificarEmpresa/{id}")
     public String modificarEmpresa(@PathVariable String id, ModelMap modelo) {
 
-        modelo.put("empresa", empresaServicio.getone(id));
+        modelo.put("empresa", empresaServicio.getOne(id));
 
         return "UpdateEmpresa.html";
 
     }
 
-    @PostMapping("/modificoEmpresa/{id}")
+    @PostMapping("/modificarEmpresa/{id}")
     public String modificoEmpresa(@PathVariable String id, String razonSocial, String direccion,
-            String nombre, String email,
-            String password, String password2, ModelMap modelo) {
+            String nombre, String email, String password, String password2, ModelMap modelo) {
 
         try {
-
+            System.out.println(id + "---------------");
             empresaServicio.modificar(id, razonSocial, direccion, nombre, email, password, password2);
 
-            return ("redirect:../empresa/listarEmpresa");
+            return "redirect:/empresa/listarEmpresa";
 
         } catch (Exception ex) {
 
@@ -104,7 +103,7 @@ public class EmpresaControlador {
 
             empresaServicio.eliminar(id);
 
-            return ("redirect:..//listarEmpresa");
+            return "redirect:/empresa/listarEmpresa";
 
         } catch (Exception ex) {
 
