@@ -71,13 +71,13 @@ public class DesarrolladorServicio {
     }
 
     @Transactional
-    public void modificarDesarrollador(MultipartFile archivo, String idUsuario,
+    public void modificarDesarrollador(MultipartFile archivo, String id,
             String nombre, String email, String password,
             String password2, MultipartFile foto, String cuil) throws MiException, IOException {
 
-        validar(nombre, email, password, password2,cuil);
+        validar(nombre, email, password, password2, cuil);
 
-        Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(idUsuario);
+        Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
 

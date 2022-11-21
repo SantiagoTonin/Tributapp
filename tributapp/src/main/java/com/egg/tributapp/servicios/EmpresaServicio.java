@@ -6,6 +6,7 @@ import com.egg.tributapp.repositorios.EmpresaRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,28 @@ public class EmpresaServicio {
         empresas = empresaRepositorio.findAll();
 
         return empresas;
+    }
+    
+    @Transactional
+    public void modificar(String id, String razonSocial, String direccion, String nombre, String email, String password, String password2) throws Exception {
+
+        validar(razonSocial, direccion, nombre, email, password, password2);
+
+        Optional<Empresa> respuestaEmp = empresaRepositorio.findById(id);
+
+        if (respuestaEmp.isPresent()) {
+
+            Empresa empresa = respuestaEmp.get();
+
+            empresa.setRazonSocial(razonSocial);
+            empresa.setNombre(nombre);
+            empresa.setDireccion(direccion);
+            empresa.setEmail(email);
+
+            empresaRepositorio.save(empresa);
+
+        }
+
     }
 
     @Transactional

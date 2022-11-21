@@ -41,18 +41,18 @@
                     <th scope="col"><strong>Razón Social</strong></th>
                     <th scope="col"><strong>Dirección</strong></th>
                     <th scope="col"><strong>Developers</strong></th>
-                    <th scope="col" sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificar/__${empresa.id}__}"><strong>Acciones</strong></th>
+<!--                    <th scope="col" sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificar/__${empresas.id}__}"><strong>Acciones</strong></th>-->
                 </tr>
             </thead>
             <tbody th:each="empresa : ${empresas}">
                 <tr>
                     <td scope="row" th:text="${empresa.id}"></td>
                     <th th:text="${empresa.nombre}"></th>
-                    <td scope="row" th:text="${empresa.razon_social}"></td>
+                    <td scope="row" th:text="${empresa.razonSocial}"></td>
                     <th scope="row" th:text="${empresa.direccion}"></th>
-                    <td scope="row" th:text="${empresa.developers}"></td>
+<!--                    <td scope="row" th:text="${empresa.developers}"></td>-->
                     <th>
-                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificar/__${empresa.id}__}"><i class="fas fa-feather-alt"> Modificar</i> </a>
+                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificarEmpresa/__${empresa.id}__}"><i class="fas fa-feather-alt"></i>Modificar </a>
                     </th>
                 </tr>
             </tbody>

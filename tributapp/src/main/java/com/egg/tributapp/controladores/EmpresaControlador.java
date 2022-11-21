@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -52,7 +53,7 @@ public class EmpresaControlador {
             return "login.html";
         }
 
-        return "redirect:../desarrollador/lista";
+        return "redirect:../empresa/lista";
     }
 
     @GetMapping("/listarEmpresa")
@@ -62,8 +63,38 @@ public class EmpresaControlador {
 
         modelo.addAttribute("empresas", empresas);
 
-        return "empresa_listar";
+        return "ListaEmpresas.html";
 
+    }
+    
+        @GetMapping("/modificarEmpresa/{id}")
+    public String modificarEmpresa(@PathVariable String id, ModelMap modelo) {
+
+        modelo.put("empresa", empresaServicio.getone(id));
+
+        return "UpdateEmpresa.html";
+
+    }
+
+    @PostMapping("/modificoEmpresa/{id}")
+    public String modificoEmpresa(@PathVariable String id, String razonSocial, String direccion,
+            String nombre, String email,
+            String password, String password2, ModelMap modelo) {
+
+        try {
+
+            empresaServicio.modificar(id, razonSocial, direccion, nombre, email, password, password2);
+
+            return ("redirect:../empresa/listarEmpresa");
+
+        } catch (Exception ex) {
+
+            modelo.put("error", ex.getMessage());
+
+            return "UpdateEmpresa.html";
+        }
+        
+        
     }
 
     @DeleteMapping("/eliminarEmpresa/{id}")
