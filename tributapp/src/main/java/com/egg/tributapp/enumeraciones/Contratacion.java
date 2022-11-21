@@ -10,6 +10,12 @@ package com.egg.tributapp.enumeraciones;
  * @author marti
  */
 public enum Contratacion {
-    FREELANCE,
-    ENDEPENCIA;
+    FREELANCE("freelance"),
+    ENDEPENCIA("endependecia");
+
+    private final String nameEnum;
+
+    Contratacion(String nameEnum){
+        this.nameEnum = nameEnum;
+    }
 }

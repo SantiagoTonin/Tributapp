@@ -26,12 +26,39 @@
             <a class="nav-link" href="#">Inicio</a>
           </li>
           <li class="nav-item dropdown">
+<<<<<<< HEAD
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Desarrolladores
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li>
               <li><a class="dropdown-item " href="#">Lista de desarrolladores</a></li>
+=======
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Desarrollador
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li> -->
+              <li><a class="dropdown-item " href="#">Administrar desarrolladores</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Empresa
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Nueva empresa</a></li> -->
+              <li><a class="dropdown-item " href="#">Administrar empresas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contador
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Nuevo contador</a></li> -->
+              <li><a class="dropdown-item " href="#">Administrar contadores</a></li>
+>>>>>>> 56f3299d63178a9d3b235a66646ce926ea2f469d
             </ul>
           </li>
         </ul>
@@ -62,4 +89,8 @@
     crossorigin="anonymous"></script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 56f3299d63178a9d3b235a66646ce926ea2f469d

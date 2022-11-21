@@ -1,10 +1,13 @@
 package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Desarrollador;
+import com.egg.tributapp.enumeraciones.Contratacion;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import java.io.IOException;
 import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,19 +26,26 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/desarrollador")
 public class DesarrolladorControlador {
 
+
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
+<<<<<<< HEAD
 
+=======
+    
+    
+>>>>>>> 56f3299d63178a9d3b235a66646ce926ea2f469d
     @GetMapping("/cargarDesarrollador")
-    public String cargar() {
+    public String cargar(ModelMap modelo) {
 
-        return "CreateDev.html";
+        return "login.html";
 
     }
 
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
+<<<<<<< HEAD
 <<<<<<< HEAD
             @RequestParam String password2, MultipartFile foto, String cuil, Double salario,
             ModelMap modelo) throws MiException, IOException {
@@ -45,6 +55,13 @@ public class DesarrolladorControlador {
         try {
 
             desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil, salario);
+=======
+            @RequestParam String password2, @RequestParam MultipartFile foto, @RequestParam String cuil,@RequestParam String contratacion, ModelMap modelo) throws MiException, IOException {
+        try {
+
+
+            desarrolladorServicio.registrar(nombre, email, password, password2, foto, cuil,contratacion);
+>>>>>>> 56f3299d63178a9d3b235a66646ce926ea2f469d
 
             modelo.put("Exito", "desarrollador fue cargado exitosamente");
 
@@ -54,7 +71,7 @@ public class DesarrolladorControlador {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
 
-            return "CreateDev.html";
+            return "login.html";
 
         }
 //        return "DesarrolladorList.html";
@@ -67,7 +84,7 @@ public class DesarrolladorControlador {
         List<Desarrollador> desarrollador = desarrolladorServicio.listarDesarrolladores();
         modelo.addAttribute("desarrolladores", desarrollador);
 
-        return "desarrollador_list.html";
+        return "DesarrolladorList.html";
     }
 
     @GetMapping("/modificar/{id}")
@@ -75,36 +92,39 @@ public class DesarrolladorControlador {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
-        return "desarrollador_modificar.html";
+        return "Update.html";
     }
 
     @PostMapping("/modificar/{id}")
     public String modificar(MultipartFile archivo, @PathVariable String id,
-            String nombre, String email, String pass, String pass2,
-            MultipartFile foto, String cuit, Double salario, ModelMap modelo) throws MiException, IOException {
+            String nombre, String email, String password, String password2,
+            MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
 
         try {
-
-            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, pass2, pass2, foto, cuit, salario);
+            
+            desarrolladorServicio.modificarDesarrollador(archivo, id, nombre, email, password, password2, foto, cuit);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
-            return "redirect:../lista";
+            return "redirect:/desarrollador/lista";
 
         } catch (MiException ex) {
 
             modelo.put("error", ex.getMessage());
 
-            return "desarrollador_modificar.html";
+            return "Update.html";
 
         }
     }
 
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable String id) {
-
+        
         desarrolladorServicio.Eliminar(id);
-
-        return "redirect:/noticia/lista";
+        
+        return "redirect:/desarrollador/lista";
     }
+    
+    
+    
 }

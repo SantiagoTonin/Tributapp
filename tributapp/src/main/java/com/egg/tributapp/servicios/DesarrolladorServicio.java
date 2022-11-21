@@ -27,9 +27,13 @@ public class DesarrolladorServicio {
     @Transactional
     public void registrar(String nombre, String email, String password,
             String password2, MultipartFile foto,
+<<<<<<< HEAD
             String cuil, Double salario) throws MiException, IOException {
+=======
+            String cuil,String contratacion) throws MiException, IOException {
+>>>>>>> 56f3299d63178a9d3b235a66646ce926ea2f469d
 
-        validar(nombre, email, password, password2);
+        validar(nombre, email, password, password2,cuil);
 
         Desarrollador desarrollador = new Desarrollador();
 
@@ -39,11 +43,10 @@ public class DesarrolladorServicio {
         desarrollador.setPassword2(password2);
 <<<<<<< HEAD
         desarrollador.setCuitCuil(cuil);
-        desarrollador.setSalario(salario);
+
 
         desarrollador.setRol(Rol.DESARROLLADOR);
         desarrollador.setFoto(foto.getBytes());
-        desarrollador.setContratacion(Contratacion.FREELANCE);
         desarrollador.setActivo(Boolean.TRUE);
 =======
 //        desarrollador.setCuitCuil(cuil);
@@ -57,33 +60,37 @@ public class DesarrolladorServicio {
         desarrolladorRepositorio.save(desarrollador);
     }
 
-    private void validar(String nombre, String email, String password, String password2) throws MiException {
+    private void validar(String nombre, String email, String password, String password2,String cuil) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("el nombre no puede ser nulo o estar vacio");
+            throw new MiException("*El nombre no puede ser nulo o estar vacio");
         }
         if (email.isEmpty() || nombre == null) {
-            throw new MiException("el email no puede ser nulo o estar vacio");
+            throw new MiException("*El email no puede ser nulo o estar vacio");
 
         }
         if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new MiException("la contraseña no puede ser nulo o estar vacio");
-
+            throw new MiException("*La contraseña no puede ser nulo o estar vacio o ser menor a 5 caracteres");
+            
         }
         if (!password.equals(password2)) {
-            throw new MiException("Las contraseñas ingresadas deben ser iguales");
+            throw new MiException("*Las contraseñas ingresadas deben ser iguales");
+            
+        }
+        if (cuil.isEmpty() || nombre == null) {
+            throw new MiException("*El cuil no puede ser nulo o estar vacio");
 
         }
     }
 
     @Transactional
-    public void modificarDesarrollador(MultipartFile archivo, String idUsuario,
+    public void modificarDesarrollador(MultipartFile archivo, String id,
             String nombre, String email, String password,
-            String password2, MultipartFile foto, String cuil, Double salario) throws MiException, IOException {
+            String password2, MultipartFile foto, String cuil) throws MiException, IOException {
 
-        validar(nombre, email, password, password2);
+        validar(nombre, email, password, password2, cuil);
 
-        Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(idUsuario);
+        Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(id);
 
         if (respuesta.isPresent()) {
 
@@ -101,7 +108,10 @@ public class DesarrolladorServicio {
             desarrollador.setFoto(foto.getBytes());
             desarrollador.setCuitCuil(cuil);
             
+<<<<<<< HEAD
             desarrollador.setSalario(salario);
+=======
+>>>>>>> 56f3299d63178a9d3b235a66646ce926ea2f469d
 
             desarrolladorRepositorio.save(desarrollador);
         }
