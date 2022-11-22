@@ -47,10 +47,10 @@
 
                 <div class="mb-3 radio-boton">
 
-                    <input type="radio" name="contratacion" value="1" id="free" checked="checked">
-                    <label class="radio-label" for="free">Freelance</label>
-                    <input type="radio" name="contratacion" value="2" id="depen">
-                    <label class="radio-label" for="depen">Relacion de Dependencia</label>
+                    <input type="radio" value="1" name="contratacion" id="free" checked="checked">
+                    <label for="free" >Freelance</label>
+                    <input type="radio" value="2" name="contratacion" id="depen">
+                    <label for="depen" >Relacion de Dependencia</label>
 
                 </div>
 
@@ -58,8 +58,8 @@
                     <input type="file" class="form-control" placeholder="Foto" name="foto">
                 </div>
 
-                <div th:if="${ Error != null}">
-                    <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+                <div th:if="${error != null}">
+                    <p th:text="${error}" style="font-size: medium; text-align: center; color:red;"></p>
                 </div>
 
                 <button class="btn btn-secondary" type="submit">Registrar</button>

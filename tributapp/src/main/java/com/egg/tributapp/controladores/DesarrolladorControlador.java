@@ -80,7 +80,10 @@ public class DesarrolladorControlador {
 
         try {
 
+            System.out.println("!!!" +id+"!!!"+nombre+"!!!"+email+"!!!"+password+"!!!"+password2+"!!!!"+contratacion+"!!!!"+cuit);
+
             desarrolladorServicio.modificarDesarrollador( id, nombre, email, password, contratacion, password2, foto, cuit);
+
 
             modelo.put("Exito", "Desarrollador actualizado");
 
