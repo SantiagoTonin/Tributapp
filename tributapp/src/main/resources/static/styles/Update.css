@@ -1,18 +1,17 @@
-.container-grid {
-    background-color: #497174;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    position: relative;
-    gap: 5rem;
-  }
-  .img-imp {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: -99;
-    background-attachment: fixed;
-  }
+body {
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    
+}
+
+footer {
+    margin-top: auto;
+}
+
+
   
   .container-form {
     border-radius: 10px;

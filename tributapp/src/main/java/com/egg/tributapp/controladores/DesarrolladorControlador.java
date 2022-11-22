@@ -105,5 +105,22 @@ public class DesarrolladorControlador {
 
         return "redirect:/desarrollador/lista";
     }
+    
+    @GetMapping(value = "/busquedaDesarrollador")
+    public String busquedaDesarrollador (ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+       
+        try {
+            
+            List<Desarrollador> desarrollador = desarrolladorServicio.buscarDesarrolladorNombre(param);
+            
+            modelo.addAttribute("desarrollador", desarrollador);
+            return "busquedaDev.html";
+                    
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+        }
+        
+        return null;
+    }
 
 }

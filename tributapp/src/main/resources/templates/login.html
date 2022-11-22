@@ -122,7 +122,7 @@
               <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
-            <button class="btn btn-secondary" type="submit">Registrar</button>
+            <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
           </form>
         </div>
       </div>
@@ -213,7 +213,7 @@
               <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
-            <button class="btn btn-secondary" type="submit">Registrar</button>
+            <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
 
           </form>
 
@@ -249,7 +249,7 @@
           <input autocomplete="off" id="logpass" placeholder="Password" class="input-field" name="password"
             type="password">
         </div>
-        <button class="btn" type="submit">Login</button>
+        <button class="btnLogin" type="submit">Login</button>
         <div th:if="${error != null}">
           <p class="msjError" th:text="${error}" style="font-size: medium;"></p>
         </div>

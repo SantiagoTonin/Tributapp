@@ -184,12 +184,12 @@ public class DesarrolladorServicio implements UserDetailsService {
 
     //query buscar por nombre, falta terminar
     @Transactional()
-    public Desarrollador buscarPorNombre(String nombre) {
-
-        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorNombre(nombre);
-
-        return desarrollador;
-    }
+//    public Desarrollador buscarPorNombre(String nombre) {
+//
+//        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorNombre(nombre);
+//
+//        return desarrollador;
+//    }
 
 //prueba de query
 //    @Transactional()
@@ -230,5 +230,18 @@ public class DesarrolladorServicio implements UserDetailsService {
             return null;
 
         }
+    }
+    
+    
+    @Transactional
+    public List<Desarrollador> buscarDesarrolladorNombre(String param) throws Exception{
+
+        try {
+            List <Desarrollador> devName = desarrolladorRepositorio.buscarDesarrolladorNombre(param);
+            return devName;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+            
+    }
     }
 }
