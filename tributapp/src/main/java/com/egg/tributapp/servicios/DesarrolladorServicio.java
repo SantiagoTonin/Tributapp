@@ -119,11 +119,11 @@ public class DesarrolladorServicio implements UserDetailsService {
 
             if (contratacion.equals("1")) {
 
-                desarrollador.setContratacion(Contratacion.ENDEPENCIA.getNameEnum());
+                desarrollador.setContratacion(Contratacion.FREELANCE.getNameEnum());
             }
             if (contratacion.equals("2")) {
 
-                desarrollador.setContratacion(Contratacion.FREELANCE.getNameEnum());
+                desarrollador.setContratacion(Contratacion.ENDEPENCIA.getNameEnum());
             }
 
             desarrollador.setFoto(foto.getBytes());

@@ -54,7 +54,7 @@ public class EmpresaControlador {
             return "login.html";
         }
 
-        return "redirect:../empresa/lista";
+        return "redirect:/empresa/listarEmpresa";
     }
 
     @GetMapping("/listarEmpresa")
@@ -67,7 +67,7 @@ public class EmpresaControlador {
         return "ListaEmpresas.html";
 
     }
-    
+
     @GetMapping("/modificarEmpresa/{id}")
     public String modificarEmpresa(@PathVariable String id, ModelMap modelo) {
 
@@ -93,27 +93,32 @@ public class EmpresaControlador {
 
             return "UpdateEmpresa.html";
         }
-        
-        
+
     }
 
-    @DeleteMapping("/eliminarEmpresa/{id}")
+    @GetMapping("/eliminarEmpresa/{id}")
     public String eliminarAdmin(@PathVariable String id, ModelMap modelo) {
+
+        empresaServicio.eliminar(id);
+
+        return "redirect:/empresa/listarEmpresa";
+
+    }
+
+    @GetMapping(value = "/busqueda")
+    public String busquedaEmpresa(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
 
         try {
 
-            empresaServicio.eliminar(id);
+            List<Empresa> empresa = empresaServicio.buscarEmpresaNombre(param);
 
-            return "redirect:/empresa/listarEmpresa";
+            modelo.addAttribute("empresas", empresa);
+            return "busqueda.html";
 
         } catch (Exception ex) {
-
             modelo.put("error", ex.getMessage());
-
-            return "empresa_eliminar";
-
         }
-
+        return null;
     }
 
 }

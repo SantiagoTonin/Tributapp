@@ -101,4 +101,17 @@ public class EmpresaServicio {
         }
 
     }
+
+
+    @Transactional
+    public List<Empresa> buscarEmpresaNombre(String param) throws Exception{
+
+        try {
+            List<Empresa> empresaName = empresaRepositorio.buscarEmpresaNombre(param);
+            return empresaName;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+            
+    }
+}
 }
