@@ -11,5 +11,5 @@ package com.egg.tributapp.enumeraciones;
  */
 public enum Contratacion {
     FREELANCE,
-    ENDEPENCIA;
+    ENDEPENDENCIA;
 }

@@ -69,17 +69,17 @@ public class ContadorControlador {
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
       
-        modelo.put("contadores", contadorServicio.getOne(id));
+        modelo.put("contador", contadorServicio.getOne(id));
                 
         return "ContadorUpdate.html";
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@RequestParam String nombre,
+    public String modificar(@PathVariable String id,@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.modificarContador(email, nombre, email, password, password2, telefono, matricula, provincia,foto);
+            contadorServicio.modificarContador(id,nombre, email, password, password2, telefono, matricula, provincia, foto);
                                    
             return "redirect:../lista";
 
@@ -87,7 +87,7 @@ public class ContadorControlador {
                        
             modelo.put("error", ex.getMessage());
             
-            return "contador_modificar.html";
+            return "ContadorUpdate.html";
         }
 
     }

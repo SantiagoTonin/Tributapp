@@ -60,7 +60,7 @@ public class ContadorServicio {
     }
     
     @Transactional
-    public void modificarContador(String id, String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia,MultipartFile foto) throws MiException, IOException{
+    public void modificarContador(String id,String nombre, String email, String password, String password2, Integer telefono, Integer matricula, String provincia,MultipartFile foto) throws MiException, IOException{
         
         validar(nombre, email, password, password2, telefono, matricula, provincia);
         
@@ -72,7 +72,10 @@ public class ContadorServicio {
             contador.setEmail(email);
             contador.setPassword(password);
             contador.setRol(Rol.CONTADOR);
-            //contador.setFoto(foto.getBytes());
+            contador.setTelefono(telefono);
+            contador.setMatricula(matricula);
+            contador.setProvincia(provincia);
+            contador.setFoto(foto.getBytes());
                         
             contadorRepositorio.save(contador);
         }
