@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
+
 @Service
 public class ContadorServicio {
     @Autowired
@@ -71,7 +72,7 @@ public class ContadorServicio {
             contador.setEmail(email);
             contador.setPassword(password);
             contador.setRol(Rol.CONTADOR);
-            contador.setFoto(foto.getBytes());
+            //contador.setFoto(foto.getBytes());
                         
             contadorRepositorio.save(contador);
         }

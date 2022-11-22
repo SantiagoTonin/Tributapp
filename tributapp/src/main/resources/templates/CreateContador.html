@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
 
-                <form th:action="@{contador/cargar}" th:method="POST" enctype="multipart/form-data">
+                <form th:action="@{/contador/cargar}" th:method="POST" enctype="multipart/form-data">
 
                     <div class="mb-3">
                         <input type="text" class="form-control" name="nombre" placeholder="Nombre y apellido" />
@@ -39,11 +39,11 @@
 
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="telefono" placeholder="Teléfono" />
+                        <input type="number" class="form-control" name="telefono" placeholder="Teléfono" />
 
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="matricula" placeholder="Matrícula" />
+                        <input type="number" class="form-control" name="matricula" placeholder="Matrícula" />
 
                     </div>
                     <div class="mb-3">

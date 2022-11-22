@@ -31,17 +31,17 @@ public class ContadorControlador {
     
     
     @GetMapping("/cargarContador") 
-    public String cargar(ModelMap modelo) {
+    public String cargarContador(ModelMap modelo) {
                   
         return "CreateContador.html";
     }
 
     @PostMapping("/cargar")
-    public String cargar(@RequestParam String name,
+    public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.registrar(name, email, password, password2, telefono, matricula, provincia,foto);
+            contadorServicio.registrar(nombre, email, password, password2, telefono, matricula, provincia,foto);
             
 
             modelo.put("exito", "El Contador/a fue cargado correctamente!");
@@ -51,7 +51,7 @@ public class ContadorControlador {
 
             
             modelo.put("error", ex.getMessage());
-
+            
             return "CreateContador.html";  // volvemos a cargar el formulario.
         }
         return "index.html";
@@ -62,24 +62,24 @@ public class ContadorControlador {
         List<Contador> contadores = contadorServicio.listarContadores();
         modelo.addAttribute("contadores", contadores);
 
-        return "contador_list.html";
+        return "ContadorList.html";
     }
 
     
-    @GetMapping("/modificar/{isbn}")
+    @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, ModelMap modelo) {
       
         modelo.put("contadores", contadorServicio.getOne(id));
                 
-        return "contador_modificar.html";
+        return "ContadorUpdate.html";
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@RequestParam String name,
+    public String modificar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
             @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.modificarContador(email, name, email, password, password2, telefono, matricula, provincia,foto);
+            contadorServicio.modificarContador(email, nombre, email, password, password2, telefono, matricula, provincia,foto);
                                    
             return "redirect:../lista";
 

@@ -26,8 +26,8 @@ public class Contador extends Usuario {
    private Integer matricula;
    private String provincia;
    
-   @Enumerated(EnumType.STRING)
-   private Rol rol;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     
    @Lob
    @Basic(fetch = FetchType.LAZY)

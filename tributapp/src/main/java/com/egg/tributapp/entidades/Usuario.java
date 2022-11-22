@@ -1,7 +1,7 @@
 
 package com.egg.tributapp.entidades;
 
-import com.egg.tributapp.enumeraciones.Contratacion;
+
 import com.egg.tributapp.enumeraciones.Rol;
 import java.util.Date;
 import javax.persistence.EnumType;
@@ -37,7 +37,7 @@ public abstract class Usuario {
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date alta;
 
     private Boolean activo = false;
