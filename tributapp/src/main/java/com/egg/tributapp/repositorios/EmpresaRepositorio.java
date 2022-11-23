@@ -16,7 +16,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmpresaRepositorio extends JpaRepository<Empresa, String> {
-    
-  @Query(value = "SELECT * FROM empresa WHERE empresa.nombre LIKE %:param%",nativeQuery = true)
+
+  @Query(value = "SELECT * FROM empresa WHERE empresa.nombre LIKE %:param%", nativeQuery = true)
   List<Empresa> buscarEmpresaNombre(@Param("param") String param);
+
+  @Query("SELECT a FROM Empresa a WHERE a.email = :email")
+
+  public Empresa buscarPorEmail(@Param("email") String email);
 }
