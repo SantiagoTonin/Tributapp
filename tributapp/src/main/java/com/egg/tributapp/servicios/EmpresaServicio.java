@@ -38,12 +38,12 @@ public class EmpresaServicio {
 
     }
 
-    public List<Empresa> listarEmpresas() {
-
-        List<Empresa> empresas = new ArrayList();
-        empresas = empresaRepositorio.findAll();
-
-        return empresas;
+    public List<Empresa> listarEmpresas(String palabraClave) {
+        if (palabraClave != null) {
+            return empresaRepositorio.findAll(palabraClave);    
+        }
+        
+        return empresaRepositorio.findAll();
     }
     
     @Transactional

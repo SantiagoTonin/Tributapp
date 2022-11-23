@@ -33,44 +33,57 @@
         - developers
     -->
     <div class="container">
-        <table class="table table-white">
-            <thead> 
-                <tr>
-                    <th scope="col"><strong>ID</strong></th>
-                    <th scope="col"><strong>Nombre</strong></th>
-                    <th scope="col"><strong>Razón Social</strong></th>
-                    <th scope="col"><strong>Dirección</strong></th>
-                    <th scope="col"><strong>Developers</strong></th>
-<!--                    <th scope="col" sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificar/__${empresas.id}__}"><strong>Acciones</strong></th>-->
-                </tr>
-            </thead>
-            <tbody th:each="empresa : ${empresas}">
-                <tr>
-                    <td scope="row" th:text="${empresa.id}"></td>
-                    <th th:text="${empresa.nombre}"></th>
-                    <td scope="row" th:text="${empresa.razonSocial}"></td>
-                    <th scope="row" th:text="${empresa.direccion}"></th>
-<!--                    <td scope="row" th:text="${empresa.developers}"></td>-->
-                    <th>
-                        <a sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificarEmpresa/__${empresa.id}__}"><i class="fas fa-feather-alt"></i>Modificar </a>
-                    </th>
-                </tr>
-            </tbody>
+      <table class="table table-white">
+        <thead>
+          <tr>
+            <th scope="col"><strong>Buscar</strong></th>
+          </tr>
+          <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Nombre</strong></th>
+            <th scope="col"><strong>Razón Social</strong></th>
+            <th scope="col"><strong>Dirección</strong></th>
+            <th scope="col"><strong>Acciones</strong></th>
+            <!--                    <th scope="col" sec:authorize="hasRole('ADMIN')" th:href="@{/empresa/modificar/__${empresas.id}__}"><strong>Acciones</strong></th>-->
+          </tr>
+        </thead>
+        <tbody th:each="empresa : ${empresas}">
+          <tr>
+            <td scope="row" th:text="${empresa.id}"></td>
+            <th th:text="${empresa.nombre}"></th>
+            <td scope="row" th:text="${empresa.razonSocial}"></td>
+            <th scope="row" th:text="${empresa.direccion}"></th>
+            <!--                    <td scope="row" th:text="${empresa.developers}"></td>-->
+            <th>
+              <a
+                sec:authorize="hasRole('ADMIN')"
+                th:href="@{/empresa/modificarEmpresa/__${empresa.id}__}"
+                ><i class="fas fa-feather-alt"></i>Modificar
+              </a>
+            </th>
+          </tr>
+        </tbody>
 
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mt-3 mensajeError">
-                <div class="card-body"> 
-                    <h5 class="card-title">Error</h5>
-                    <p class="card-text"></p>
-                </div>
-            </div>
+        <div
+          th:if="${error != null}"
+          class="card text-white bg-danger mb-3 mt-3 mensajeError"
+        >
+          <div class="card-body">
+            <h5 class="card-title">Error</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
 
-            <div th:if="${exito != null}" class="card text-white bg-succes mb-3 mt-3 mensajeExito"> 
-                <div class="card-body"> 
-                    <h5 class="card-title">¡Éxito!</h5>
-                    <p class="card-text" th:text="${exito}"></p>
-                </div>
-            </div>
-        </table>
+        <div
+          th:if="${exito != null}"
+          class="card text-white bg-succes mb-3 mt-3 mensajeExito"
+        >
+          <div class="card-body">
+            <h5 class="card-title">¡Éxito!</h5>
+            <p class="card-text" th:text="${exito}"></p>
+          </div>
+        </div>
+      </table>
     </div>
 
     <!--    footer-->

@@ -54,13 +54,14 @@ public class EmpresaControlador {
             return "login.html";
         }
 
-        return "redirect:../empresa/lista";
+        return "redirect:../empresa/listarEmpresa";
     }
 
     @GetMapping("/listarEmpresa")
     public String listarEmpresa(ModelMap modelo) {
 
-        List<Empresa> empresas = empresaServicio.listarEmpresas();
+        String palabraClave = "Empresa";
+        List<Empresa> empresas = empresaServicio.listarEmpresas(palabraClave);
 
         modelo.addAttribute("empresas", empresas);
 
