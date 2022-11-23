@@ -22,8 +22,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Contador extends Usuario {
-   private Integer telefono;
-   private Integer matricula;
+   private String telefono;
+   private String matricula;
    private String provincia;
    
     @Enumerated(EnumType.STRING)

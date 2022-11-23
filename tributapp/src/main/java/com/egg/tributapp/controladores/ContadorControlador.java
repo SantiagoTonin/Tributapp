@@ -39,9 +39,12 @@ public class ContadorControlador {
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
+            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
+
+
+                
         try {
-            contadorServicio.registrar(nombre, email, password, password2, telefono, matricula, provincia,foto);
+            contadorServicio.registrar(nombre, email, password, password2, telefono,matricula, provincia,foto);
             
 
             modelo.put("exito", "El Contador/a fue cargado correctamente!");
@@ -52,9 +55,9 @@ public class ContadorControlador {
             
             modelo.put("error", ex.getMessage());
             
-            return "CreateContador.html";  // volvemos a cargar el formulario.
+             return "login.html";  // volvemos a cargar el formulario.
         }
-        return "index.html";
+        return "login.html";
     }
 
     @GetMapping("/lista")
@@ -77,7 +80,7 @@ public class ContadorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam Integer telefono, @RequestParam Integer matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
+            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula, @RequestParam String provincia,MultipartFile foto, ModelMap modelo) throws IOException {
         try {
             contadorServicio.modificarContador(id,nombre, email, password, password2, telefono, matricula, provincia, foto);
                                    
