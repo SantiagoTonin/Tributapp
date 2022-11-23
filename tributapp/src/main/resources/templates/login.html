@@ -32,6 +32,7 @@
       <div class="pestaña">
         <p class="li activo ">Desarrollador</p>
         <p class="li">Empresa</p>
+        <p class="li">Contador</p>
       </div>
 
       <div class="bloque activo">
@@ -131,13 +132,13 @@
       <div class="bloque">
         <div class="container-form ">
 
-          <form class="formulario" id="formulario"  th:action="@{/empresa/registroEmpresa}" th:method="POST">
+          <form class="formulario1" id="formulario1" th:action="@{/empresa/registroEmpresa}" th:method="POST">
 
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__nombre">
+              <div class="formulario__grupo" id="grupo__nombre1">
                 <label for="nombre" class="formulario__label">Nombre</label>
                 <div class="formulario__grupo-input">
-                  <input type="text" class="formulario__input" name="nombre" id="nombre"
+                  <input type="text" class="formulario__input" name="nombre" id="nombre1"
                     placeholder="ej: Santiago Tonin">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
@@ -152,8 +153,7 @@
                 <div class="formulario__grupo" id="grupo__nombre">
                   <label for="nombre" class="formulario__label">Razon Social</label>
                   <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="razonSocial" id="nombre"
-                      placeholder="ej: alias">
+                    <input type="text" class="formulario__input" name="razonSocial" id="nombre" placeholder="ej: alias">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                   </div>
                   <p class="formulario__input-error">Razon Social tiene que ser de 4 a 16 dígitos y solo puede contener
@@ -211,6 +211,141 @@
 
             <div th:if="${ Error != null}">
               <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
+            </div>
+
+            <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+
+
+
+      <div class="bloque">
+        <div class="container-form">
+          <form th:action="@{/contador/cargar}" th:method="POST" enctype="multipart/form-data">
+
+            <!-- Grupo: Nombre -->
+            <div class="mb-3">
+              <div class="formulario__grupo" id="grupo__nombre">
+                <label for="nombre" class="formulario__label">Nombre y Apellido</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input" name="nombre" id="nombre"
+                    placeholder="ej: Santiago Tonin">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener
+                  numeros, letras y guion bajo.</p>
+              </div>
+
+            </div>
+            <!-- Grupo: email Electronico -->
+            <div class="mb-3">
+              <div class="formulario__grupo" id="grupo__email">
+                <label for="email" class="formulario__label">Email</label>
+                <div class="formulario__grupo-input">
+                  <input type="email" class="formulario__input" name="email" id="email"
+                    placeholder="ej: email@email.com" th:value="${email}">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El email solo puede contener letras, numeros, puntos, guiones y guion
+                  bajo.</p>
+              </div>
+
+            </div>
+
+            <!-- Grupo: Contraseña -->
+            <div class="mb-3">
+              <div class="formulario__grupo" id="grupo__password">
+                <label for="password" class="formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                  <input type="password" class="formulario__input" name="password" id="password" placeholder="****">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La contraseña tiene que ser mayor 5 digitos.</p>
+              </div>
+
+            </div>
+            <div class="mb-3">
+              <div class="formulario__grupo" id="grupo__password2">
+                <label for="password2" class="formulario__label">Repetir Contraseña</label>
+                <div class="formulario__grupo-input">
+                  <input type="password" class="formulario__input" name="password2" id="password2" placeholder="****">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+              </div>
+
+            </div>
+
+            <!-- Grupo: Teléfono -->
+            <div class="formulario__grupo" id="grupo__telefono">
+              <label for="telefono" class="formulario__label">Teléfono</label>
+              <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="4491234567">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+              </div>
+              <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+            </div>
+
+
+            <!-- Grupo: Matricula -->
+            <div class="mb-3">
+
+              <div class="formulario__grupo" id="grupo__telefono">
+                <label for="telefono" class="formulario__label">Matricula</label>
+                <div class="formulario__grupo-input">
+                  <input type="text" class="formulario__input" name="matricula" id="telefono" placeholder="4491234567">
+                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La Matricula solo puede contener numeros y el maximo son 14 dígitos.</p>
+              </div>
+              
+            </div>
+
+
+            <div class="mb-3">
+              <label for="telefono" class="formulario__label">Provincias</label>
+              <input list="provincia" class="form-control" placeholder="Seleccione una provincia" name="provincia">
+              <datalist id="provincia">
+                <option value="Buenos Aires"></option>
+                <option value="Capital Federal"></option>
+                <option value="Catamarca"></option>
+                <option value="Chaco"></option>
+                <option value="Chubut"></option>
+                <option value="Córdoba"></option>
+                <option value="Corrientes"></option>
+                <option value="Entre Ríos"></option>
+                <option value="Formosa"></option>
+                <option value="Jujuy"></option>
+                <option value="La Pampa"></option>
+                <option value="La Rioja"></option>
+                <option value="Mendoza"></option>
+                <option value="Misiones"></option>
+                <option value="Neuquén"></option>
+                <option value="Río Negro"></option>
+                <option value="Salta"></option>
+                <option value="San Juan"></option>
+                <option value="San Luis"></option>
+                <option value="Santa Cruz"></option>
+                <option value="Santa Fe"></option>
+                <option value="Santiago del Estero"></option>
+                <option value="Tierra del Fuego"></option>
+                <option value="Tucumán"></option>
+
+                
+              </datalist>
+            </div>
+
+            <div class="mb-3">
+              <input type="file" class="form-control" placeholder="Foto" name="foto">
+            </div>
+
+            <div th:if="${ error != null}">
+              <p th:text="${error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
 
             <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
@@ -326,53 +461,11 @@
   <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
-  <script>
-    var returnedSuggestion = ''
-    let editor, doc, cursor, line, pos
-    document.addEventListener("keydown", (event) => {
-      setTimeout(() => {
-        editor = event.target.closest('.CodeMirror');
-        doc = editor.CodeMirror.getDoc()
-        cursor = doc.getCursor()
-        line = doc.getLine(cursor.line)
-        pos = { line: cursor.line, ch: line.length }
-        if (event.key == "Enter") {
-          var query = doc.getRange({ line: Math.max(0, cursor.line - 10), ch: 0 }, { line: cursor.line, ch: 0 })
-          window.postMessage({ source: 'getSuggestion', payload: { data: query } })
-          //displayGrey(query)
-        }
-        else if (event.key == "ArrowRight") {
-          acceptTab(returnedSuggestion)
-        }
-      }, 0)
-    })
 
-    function acceptTab(text) {
-      if (suggestionDisplayed) {
-        doc.replaceRange(text, pos)
-        suggestionDisplayed = false
-      }
-    }
-    function displayGrey(text) {
-      var element = document.createElement('span')
-      element.innerText = text
-      element.style = 'color:grey'
-      var lineIndex = pos.line;
-      editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(element)
-      suggestionDisplayed = true
-    }
-    window.addEventListener('message', (event) => {
-      if (event.source !== window) return
-      if (event.data.source == 'return') {
-        returnedSuggestion = event.data.payload.data
-        displayGrey(event.data.payload.data)
-      }
-    })
-  </script>
 
   <script>
     const formulario = document.getElementById('formulario');
-    const inputs = document.querySelectorAll('#formulario input');
+    const inputs = document.querySelectorAll('#formulario');
 
     const expresiones = {
       usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -396,6 +489,7 @@
           validarCampo(expresiones.usuario, e.target, 'usuario');
           break;
         case "nombre":
+          console.log(e)
           validarCampo(expresiones.nombre, e.target, 'nombre');
           break;
         case "password":
@@ -458,6 +552,8 @@
       input.addEventListener('blur', validarFormulario);
     });
   </script>
+
+
 </body>
 
 </html>
