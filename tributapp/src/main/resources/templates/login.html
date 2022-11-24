@@ -224,87 +224,87 @@
 
       <div class="bloque">
         <div class="container-form">
-          <form th:action="@{/contador/cargar}" th:method="POST" enctype="multipart/form-data">
-
+          <form  class="formulario" id="formulario-contador" th:action="@{/contador/cargar}" th:method="POST" enctype="multipart/form-data">
+      
             <!-- Grupo: Nombre -->
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__nombre">
+              <div class="formulario__grupo" id="grupo__nombreContador">
                 <label for="nombre" class="formulario__label">Nombre y Apellido</label>
                 <div class="formulario__grupo-input">
-                  <input type="text" class="formulario__input" name="nombre" id="nombre"
+                  <input type="text" class="formulario__input" name="nombre" id="nombreContador"
                     placeholder="ej: Santiago Tonin">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener
                   numeros, letras y guion bajo.</p>
               </div>
-
+      
             </div>
             <!-- Grupo: email Electronico -->
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__email">
+              <div class="formulario__grupo" id="grupo__emailContador">
                 <label for="email" class="formulario__label">Email</label>
                 <div class="formulario__grupo-input">
-                  <input type="email" class="formulario__input" name="email" id="email"
+                  <input type="email" class="formulario__input" name="email" id="emailContador"
                     placeholder="ej: email@email.com" th:value="${email}">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">El email solo puede contener letras, numeros, puntos, guiones y guion
                   bajo.</p>
               </div>
-
+      
             </div>
-
+      
             <!-- Grupo: Contraseña -->
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__password">
+              <div class="formulario__grupo" id="grupo__passwordContador">
                 <label for="password" class="formulario__label">Contraseña</label>
                 <div class="formulario__grupo-input">
-                  <input type="password" class="formulario__input" name="password" id="password" placeholder="****">
+                  <input type="password" class="formulario__input" name="password" id="passwordContador" placeholder="****">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">La contraseña tiene que ser mayor 5 digitos.</p>
               </div>
-
+      
             </div>
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__password2">
+              <div class="formulario__grupo" id="grupo__password2Contador">
                 <label for="password2" class="formulario__label">Repetir Contraseña</label>
                 <div class="formulario__grupo-input">
-                  <input type="password" class="formulario__input" name="password2" id="password2" placeholder="****">
+                  <input type="password" class="formulario__input" name="password2" id="password2Contador" placeholder="****">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
               </div>
-
+      
             </div>
-
+      
             <!-- Grupo: Teléfono -->
-            <div class="formulario__grupo" id="grupo__telefono">
+            <div class="formulario__grupo" id="grupo__Telefono">
               <label for="telefono" class="formulario__label">Teléfono</label>
               <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="4491234567">
+                <input type="text" class="formulario__input" name="telefono" id="Telefono" placeholder="4491234567">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
               </div>
-              <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+              <p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 12 dígitos.</p>
             </div>
-
-
+      
+      
             <!-- Grupo: Matricula -->
             <div class="mb-3">
-
-              <div class="formulario__grupo" id="grupo__telefono">
+      
+              <div class="formulario__grupo" id="grupo__matricula">
                 <label for="telefono" class="formulario__label">Matricula</label>
                 <div class="formulario__grupo-input">
-                  <input type="text" class="formulario__input" name="matricula" id="telefono" placeholder="4491234567">
+                  <input type="text" class="formulario__input" name="matricula" id="matricula" placeholder="12345678">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
-                <p class="formulario__input-error">La Matricula solo puede contener numeros y el maximo son 14 dígitos.</p>
+                <p class="formulario__input-error">La Matricula Solo puede contener 5 digitos.</p>
               </div>
               
             </div>
-
-
+      
+      
             <div class="mb-3">
               <label for="telefono" class="formulario__label">Provincias</label>
               <input list="provincia" class="form-control" placeholder="Seleccione una provincia" name="provincia">
@@ -333,23 +333,23 @@
                 <option value="Santiago del Estero"></option>
                 <option value="Tierra del Fuego"></option>
                 <option value="Tucumán"></option>
-
+      
                 
               </datalist>
             </div>
-
+      
             <div class="mb-3">
               <input type="file" class="form-control" placeholder="Foto" name="foto">
             </div>
-
+      
             <div th:if="${ error != null}">
               <p th:text="${error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
-
+      
             <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
-
+      
           </form>
-
+      
         </div>
 
       </div>
@@ -647,6 +647,101 @@
     });
   </script>
 
+<!--formContador-regex-->
+
+<script>
+  const formularioContador = document.getElementById('formulario-contador');
+  const inputsContador = document.querySelectorAll('#formulario-contador');
+
+  const expresionesContador = {
+    Telefono: /^[0-9\_\-]{7,12}$/, // Letras, numeros, guion y guion_bajo
+    nombreContador: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    password: /^.{4,12}$/, // 4 a 12 digitos.
+    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    matricula: /^[0-9\_\-]{5}$/ // 7 a 14 numeros.
+  }
+
+  const camposContador = {
+    Telefono: false,
+    nombreContador: false,
+    password: false,
+    email: false,
+    matricula: false
+  }
+
+  const validarFormularioContador = (e) => {
+    console.log(e.target.name)
+    switch (e.target.placeholder) {
+      case "4491234567":
+        validarCampoContador(expresionesContador.Telefono, e.target, 'Telefono');
+        break;
+      case "ej: Santiago Tonin":
+        console.log(e)
+        validarCampoContador(expresionesContador.nombreContador, e.target, 'nombreContador');
+        break;
+      case "****":
+        validarCampoContador(expresionesContador.password, e.target, 'passwordContador');
+        validarPasswordContador();
+        break;
+      case "*****":
+        validarPasswordContador();
+        break;
+      case "ej: email@email.com":
+        validarCampoContador(expresionesContador.email, e.target, 'emailContador');
+        break;
+      case "12345678":
+        validarCampoContador(expresionesContador.matricula, e.target, 'matricula');
+        break;
+    }
+  }
+
+  const validarCampoContador = (expresion, input, campo) => {
+
+    if (expresion.test(input.value)) {
+      document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+      document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+      document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+      document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+      document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+      camposContador[campo] = true;
+    } else {
+      document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+      document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+      document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+      document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+      document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+      camposContador[campo] = false;
+    }
+  }
+
+  const validarPasswordContador = () => {
+    const inputPassword1 = document.getElementById('passwordContador');
+    const inputPassword2 = document.getElementById('password2Contador');
+
+    console.log(document.getElementById(`"grupo__password2Contador"`))
+    if (inputPassword1.value !== inputPassword2.value) {
+      document.getElementById(`grupo__password2Contador`).classList.add('formulario__grupo-incorrecto');
+      document.getElementById(`grupo__password2Contador`).classList.remove('formulario__grupo-correcto');
+      document.querySelector(`#grupo__password2Contador i`).classList.add('fa-times-circle');
+      document.querySelector(`#grupo__password2Contador i`).classList.remove('fa-check-circle');
+      document.querySelector(`#grupo__password2Contador .formulario__input-error`).classList.add('formulario__input-error-activo');
+      camposContador['password'] = false;
+    } else {
+      document.getElementById(`grupo__password2Contador`).classList.remove('formulario__grupo-incorrecto');
+      document.getElementById(`grupo__password2Contador`).classList.add('formulario__grupo-correcto');
+      document.querySelector(`#grupo__password2Contador i`).classList.remove('fa-times-circle');
+      document.querySelector(`#grupo__password2Contador i`).classList.add('fa-check-circle');
+      document.querySelector(`#grupo__password2Contador .formulario__input-error`).classList.remove('formulario__input-error-activo');
+      camposContador['password'] = true;
+    }
+
+  }
+
+  inputsContador.forEach((input) => {
+    input.addEventListener('keyup', validarFormularioContador);
+    input.addEventListener('blur', validarFormularioContador);
+  });
+</script>
 
 </body>
 
