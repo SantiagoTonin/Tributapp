@@ -1,7 +1,7 @@
 
 <nav th:fragment="nav_bar" class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
+      <a class="navbar-brand" href="/"><i class="bi bi-info-circle"></i> Tributapp</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,19 +9,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" th:href="@{/}">Inicio</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
               Desarrollador
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" aria-expanded="true">
               <!-- <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li> -->
-              <li><a class="dropdown-item " href="#">Administrar desarrolladores</a></li>
+              <li><a class="dropdown-item " th:href="@{/empresa/listarEmpresa}">Administrar desarrolladores</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('EMPRESA')" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Empresa
             </a>
             <ul class="dropdown-menu">
@@ -30,7 +30,7 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Contador
             </a>
             <ul class="dropdown-menu">
@@ -42,18 +42,9 @@
       </div>
         
         <div class="d-grid gap-2 d-flex justify-content-md-end">
-          <!-- <input class="form-control me-2" type="search" aria-label="Search" placeholder="Buscar en el sitio">
-          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button> -->
-          <div class="input-group">
-            
-            
-              <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Buscar en el sitio">
-              <button type="button" class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-          </div>
 
-
-          <a href="#" class="btn btn-secondary blogin" tabindex="-1" role="button" aria-disabled="true">Ingresar</a>
-          <a href="#" class="btn btn-secondary bsignup" tabindex="-1" role="button" aria-disabled="true">Registrarse</a>
+          <a th:href="@{/login}" class="btn btn-secondary blogin" tabindex="-1" role="button" aria-disabled="true">Ingresar</a>
+          <a th:href="@{/login}" class="btn btn-secondary bsignup" tabindex="-1" role="button" aria-disabled="true">Registrarse</a>
 
         </div>
         

@@ -29,7 +29,7 @@
   height: auto;
   width: 800px;
   left: 50%;
-  background: rgb(31, 32, 41);
+  background: #1C4544;
   padding: 0px 30px 30px 30px;
 }
 
@@ -38,9 +38,8 @@
   color: rgb(249, 242, 242);
   font-size: x-large;
   font-weight: 600;
-  background: rgb(31, 32, 41);
+  background: #1C4544;
   margin-top: 10px;
-
 
 }
 
@@ -89,10 +88,8 @@
   display: block;
   background: rgb(2, 86, 45);
   color: rgb(253, 253, 253);
-  border: 1px solid #1f2029;
+  
 }
-
-
 
 main {
   display: flex;

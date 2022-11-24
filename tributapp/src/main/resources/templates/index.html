@@ -15,8 +15,8 @@
 
 <body>
     <!-- navbar -->
-    
-    <nav th:replace="fragments/navbar :: nav_bar"></nav> 
+
+    <nav th:replace="fragments/navbar :: nav_bar"></nav>
     
     <!-- body -->
     <div class="body">
@@ -79,7 +79,7 @@
                         <span class="circle" aria-hidden="true">
                         <span class="icon arrow"></span>
                         </span>
-                        <span class="button-text">SABER MAS</span>
+                        <span class="button-text"><a th:href="@{/login}">REGISTRATE</a></span>
                       </button></p>
                 </div><!-- /.col-lg-4 -->
 
@@ -93,7 +93,7 @@
                         <span class="circle" aria-hidden="true">
                         <span class="icon arrow"></span>
                         </span>
-                        <span class="button-text">SABER MAS</span>
+                        <span class="button-text"><a th:href="@{/login}">REGISTRATE</a></span>
                       </button></p>
                 </div><!-- /.col-lg-4 -->
             </div>
@@ -103,6 +103,7 @@
         </div>
         <!-- FOOTER -->
 
+        <footer th:replace="fragments/Footer :: footer"></footer>
 
         <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
