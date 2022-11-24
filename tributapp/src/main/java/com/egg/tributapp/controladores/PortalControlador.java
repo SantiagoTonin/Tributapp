@@ -50,6 +50,19 @@ public class PortalControlador {
             return "redirect:/admin/dashboard";
             
         }
+
+        if (logueado.getRol().toString().equals("DESARROLLADOR")) {
+            
+            return "redirect:/desarrollador/inicio";
+        }
+        if (logueado.getRol().toString().equals("EMPRESA")) {
+            
+            return "redirect:/contador/inicio";
+        }
+        if (logueado.getRol().toString().equals("CONTADOR")) {
+            
+            return "redirect:/empresa/inicio";
+        }
         
         return "index.html";
 
