@@ -276,6 +276,16 @@ input[type="radio"]:checked+label {
 	opacity: 1;
 }
 
+.formulario__grupo-correcto .formulario__label{
+  color: #1ed12d;
+	opacity: 1;
+
+}
+.formulario__grupo-correcto .formulario__input{
+	border: 3px solid #1ed12d;
+} 
+
+
 .formulario__grupo-incorrecto .formulario__label {
 	color: #bb2929;
 }

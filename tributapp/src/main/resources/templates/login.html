@@ -132,37 +132,35 @@
       <div class="bloque">
         <div class="container-form ">
 
-          <form class="formulario1" id="formulario1" th:action="@{/empresa/registroEmpresa}" th:method="POST">
-
+          <form class="formulario" id="formulario-empresa" th:action="@{/empresa/registroEmpresa}" th:method="POST">
+      
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__nombre1">
+              <div class="formulario__grupo" id="grupo__nombreEmpresa">
                 <label for="nombre" class="formulario__label">Nombre</label>
                 <div class="formulario__grupo-input">
-                  <input type="text" class="formulario__input" name="nombre" id="nombre1"
+                  <input type="text" class="formulario__input" name="nombre" id="nombreEmpresa"
                     placeholder="ej: Santiago Tonin">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener
                   numeros, letras y guion bajo.</p>
               </div>
-            </div>
-            <div class="mb-3">
-
+      
               <div class="mb-3">
-
-                <div class="formulario__grupo" id="grupo__nombre">
+      
+                <div class="formulario__grupo" id="grupo__razonSocial">
                   <label for="nombre" class="formulario__label">Razon Social</label>
                   <div class="formulario__grupo-input">
-                    <input type="text" class="formulario__input" name="razonSocial" id="nombre" placeholder="ej: alias">
+                    <input type="text" class="formulario__input" name="razonSocial" id="razonSocial" placeholder="ej: alias">
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                   </div>
                   <p class="formulario__input-error">Razon Social tiene que ser de 4 a 16 dígitos y solo puede contener
                     numeros, letras y guion bajo.</p>
                 </div>
-
+      
               </div>
-
-              <div class="formulario__grupo" id="grupo__email">
+      
+              <div class="formulario__grupo" id="grupo__emailEmpresa">
                 <label for="email" class="formulario__label">Email</label>
                 <div class="formulario__grupo-input">
                   <input type="email" class="formulario__input" name="email" id="email"
@@ -174,33 +172,33 @@
               </div>
             </div>
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__password">
+              <div class="formulario__grupo" id="grupo__passwordEmpresa">
                 <label for="password" class="formulario__label">Contraseña</label>
                 <div class="formulario__grupo-input">
-                  <input type="password" class="formulario__input" name="password" id="password" placeholder="****">
+                  <input type="password" class="formulario__input" name="password" id="passwordEmpresa" placeholder="****">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">La contraseña tiene que ser mayor 5 digitos</p>
               </div>
-
+      
             </div>
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__password2">
+              <div class="formulario__grupo" id="grupo__password2Empresa">
                 <label for="password2" class="formulario__label">Repetir Contraseña</label>
                 <div class="formulario__grupo-input">
-                  <input type="password" class="formulario__input" name="password2" id="password2" placeholder="****">
+                  <input type="password" class="formulario__input" name="password2" id="password2Empresa" placeholder="*****">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
               </div>
-
+      
             </div>
-
+      
             <div class="mb-3">
-              <div class="formulario__grupo" id="grupo__nombre">
+              <div class="formulario__grupo" id="grupo__direccion">
                 <label for="nombre" class="formulario__label">Direccion</label>
                 <div class="formulario__grupo-input">
-                  <input type="text" class="formulario__input" name="direccion" id="nombre"
+                  <input type="text" class="formulario__input" name="direccion" id="direccion"
                     placeholder="ej: Calle Falsa 123">
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
@@ -208,17 +206,17 @@
                   numeros, letras y guion bajo.</p>
               </div>
             </div>
-
+      
             <div th:if="${ Error != null}">
               <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
-
+      
             <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
-
+      
           </form>
-
+      
         </div>
-
+      
       </div>
 
 
@@ -550,6 +548,102 @@
     inputs.forEach((input) => {
       input.addEventListener('keyup', validarFormulario);
       input.addEventListener('blur', validarFormulario);
+    });
+  </script>
+
+  <!--formEmpresa-regex-->
+
+  <script>
+    const formularioEmpresa = document.getElementById('formulario-empresa');
+    const inputsEmpresa = document.querySelectorAll('#formulario-empresa');
+  
+    const expresionesEmpresa = {
+      razonSocial: /^[a-zA-Z0-9\_\-]{2,16}$/, // Letras, numeros, guion y guion_bajo
+      nombreEmpresa: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+      password: /^.{4,12}$/, // 4 a 12 digitos.
+      email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      direccion: /^[a-zA-Z0-9\_\-]{2,16}$/ // 7 a 14 numeros.
+    }
+  
+    const camposEmpresa = {
+      razonSocial: false,
+      nombreEmpresa: false,
+      password: false,
+      email: false,
+      direccion: false
+    }
+  
+    const validarFormularioEmpresa = (e) => {
+      console.log(e.target.name)
+      switch (e.target.placeholder) {
+        case "ej: alias":
+          validarCampoEmpresa(expresionesEmpresa.razonSocial, e.target, 'razonSocial');
+          break;
+        case "ej: Santiago Tonin":
+          console.log(e)
+          validarCampoEmpresa(expresionesEmpresa.nombreEmpresa, e.target, 'nombreEmpresa');
+          break;
+        case "****":
+          validarCampoEmpresa(expresionesEmpresa.password, e.target, 'passwordEmpresa');
+          validarPasswordEmpresa();
+          break;
+        case "*****":
+          validarPasswordEmpresa();
+          break;
+        case "ej: email@email.com":
+          validarCampoEmpresa(expresionesEmpresa.email, e.target, 'emailEmpresa');
+          break;
+        case "ej: Calle Falsa 123":
+          validarCampoEmpresa(expresionesEmpresa.direccion, e.target, 'direccion');
+          break;
+      }
+    }
+  
+    const validarCampoEmpresa = (expresion, input, campo) => {
+  
+      if (expresion.test(input.value)) {
+        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo__${campo} i`).classList.add('fa-check-circle');
+        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-times-circle');
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        camposEmpresa[campo] = true;
+      } else {
+        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__${campo} i`).classList.add('fa-times-circle');
+        document.querySelector(`#grupo__${campo} i`).classList.remove('fa-check-circle');
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+        camposEmpresa[campo] = false;
+      }
+    }
+  
+    const validarPasswordEmpresa = () => {
+      const inputPassword1 = document.getElementById('passwordEmpresa');
+      const inputPassword2 = document.getElementById('password2Empresa');
+  
+      console.log(document.getElementById(`"grupo__password2Empresa"`))
+      if (inputPassword1.value !== inputPassword2.value) {
+        document.getElementById(`grupo__password2Empresa`).classList.add('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__password2Empresa`).classList.remove('formulario__grupo-correcto');
+        document.querySelector(`#grupo__password2Empresa i`).classList.add('fa-times-circle');
+        document.querySelector(`#grupo__password2Empresa i`).classList.remove('fa-check-circle');
+        document.querySelector(`#grupo__password2Empresa .formulario__input-error`).classList.add('formulario__input-error-activo');
+        camposEmpresa['password'] = false;
+      } else {
+        document.getElementById(`grupo__password2Empresa`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo__password2Empresa`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo__password2Empresa i`).classList.remove('fa-times-circle');
+        document.querySelector(`#grupo__password2Empresa i`).classList.add('fa-check-circle');
+        document.querySelector(`#grupo__password2Empresa .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        camposEmpresa['password'] = true;
+      }
+  
+    }
+  
+    inputsEmpresa.forEach((input) => {
+      input.addEventListener('keyup', validarFormularioEmpresa);
+      input.addEventListener('blur', validarFormularioEmpresa);
     });
   </script>
 
