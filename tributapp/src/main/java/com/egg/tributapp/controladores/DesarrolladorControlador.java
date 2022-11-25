@@ -141,7 +141,7 @@ public class DesarrolladorControlador {
 
         System.out.println(desarrollador.getNombre());
 
-        return "index.html";
+        return "DesarrolladorInicio.html";
     }
 
     @GetMapping("/inicio/{id}")
