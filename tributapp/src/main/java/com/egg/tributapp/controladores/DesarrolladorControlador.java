@@ -72,7 +72,7 @@ public class DesarrolladorControlador {
         return "DesarrolladorList.html";
     }
 
-    @GetMapping("/modificar/{id}")
+    @GetMapping("/modificar/{id}")//end al front
     public String modificar(@PathVariable String id, ModelMap modelo) {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
@@ -80,7 +80,7 @@ public class DesarrolladorControlador {
         return "Update.html";
     }
 
-    @PostMapping("/modificar/{id}")
+    @PostMapping("/modificar/{id}")//front al end
     public String modificar(@PathVariable String id,
             String nombre, String email, String password, String password2, String contratacion,
             MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
@@ -94,11 +94,11 @@ public class DesarrolladorControlador {
             return "redirect:/desarrollador/lista";
 
         } catch (MiException ex) {
-            
+
             System.out.println("estoy en el error de modificar" + id + "------------------------------------");
-            
+
             modelo.put("Error", ex.getMessage());
-            
+
             modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
             return "Update.html";
@@ -157,4 +157,8 @@ public class DesarrolladorControlador {
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
 
+    @GetMapping("/info")
+    public String info() {
+        return "index.html";
+    }
 }
