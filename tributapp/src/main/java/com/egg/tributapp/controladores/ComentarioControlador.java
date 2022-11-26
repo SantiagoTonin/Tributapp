@@ -55,9 +55,5 @@ public class ComentarioControlador {
 
     }
     
-//    @GetMapping("/buscarComentario")
-//    public String buscarComentarioPorUsuario(@RequestParam String nombre){
-//        
-//        
-//    }
+
 }

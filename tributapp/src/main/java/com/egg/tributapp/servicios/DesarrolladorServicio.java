@@ -39,7 +39,6 @@ public class DesarrolladorServicio implements UserDetailsService {
     public void registrar(String nombre, String email, String password,
             String password2, String contratacion, MultipartFile foto,
             String cuil) throws MiException, IOException {
-
         validar(nombre, email, password, password2, contratacion, foto, cuil);
 
         Desarrollador desarrollador = new Desarrollador();
@@ -67,15 +66,24 @@ public class DesarrolladorServicio implements UserDetailsService {
 
     private void validar(String nombre, String email, String password, String password2, String contratacion, MultipartFile foto, String cuil) throws MiException {
 
+        List<Desarrollador> emails = desarrolladorRepositorio.findAll();
+
+        for (Desarrollador aux : emails) {
+
+            if (aux.getEmail().equals(email)) {
+
+                throw new MiException("El mail " + email + " ya se encuentra registrado");
+
+            }
+        }
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacio");
         }
-        if (email.isEmpty() || nombre == null) {
+        if (email.isEmpty() || email == null) {
             throw new MiException("el email no puede ser nulo o estar vacio");
-
         }
         if (password.isEmpty() || password == null || password.length() <= 5) {
-            throw new MiException("la contraseña no puede ser nulo o estar vacio");
+            throw new MiException("la contraseña no puede estar vacia y debe tener mas de 5 digitos");
 
         }
         if (!password.equals(password2)) {
@@ -98,12 +106,10 @@ public class DesarrolladorServicio implements UserDetailsService {
 
     //actualizacion desarrollador con validacion
     @Transactional
-    public void modificarDesarrollador( String idUsuario,
+    public void modificarDesarrollador(String idUsuario,
             String nombre, String email, String password, String contratacion,
             String password2, MultipartFile foto, String cuil) throws MiException, IOException {
-
         validar(nombre, email, password, password2, contratacion, foto, cuil);
-
         Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(idUsuario);
 
         if (respuesta.isPresent()) {
@@ -128,7 +134,6 @@ public class DesarrolladorServicio implements UserDetailsService {
 
             desarrollador.setFoto(foto.getBytes());
             desarrollador.setCuitCuil(cuil);
-
             desarrolladorRepositorio.save(desarrollador);
         }
 
@@ -182,28 +187,8 @@ public class DesarrolladorServicio implements UserDetailsService {
         return desarrolladores;
     }
 
-    //query buscar por nombre, falta terminar
-    @Transactional()
-//    public Desarrollador buscarPorNombre(String nombre) {
-//
-//        Desarrollador desarrollador = desarrolladorRepositorio.buscarPorNombre(nombre);
-//
-//        return desarrollador;
-//    }
-
-//prueba de query
-//    @Transactional()
-//    public List<Desarrollador> listarDesarrolladores(String palabraClave) {
-//
-//        List<Desarrollador> desarrolladores = new ArrayList();
-//
-//        desarrolladores = desarrolladorRepositorio.findAll();
-//
-//        return desarrolladores;
-//    }
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
 
         Desarrollador desarrollador = desarrolladorRepositorio.buscarPorEmail(email);
 
@@ -220,8 +205,6 @@ public class DesarrolladorServicio implements UserDetailsService {
             HttpSession session = attr.getRequest().getSession(true);
 
             session.setAttribute("usuariosession", desarrollador);
-            
-            
 
             return new User(desarrollador.getEmail(), desarrollador.getPassword(), permisos);
 
@@ -231,17 +214,21 @@ public class DesarrolladorServicio implements UserDetailsService {
 
         }
     }
-    
-    
+
     @Transactional
-    public List<Desarrollador> buscarDesarrolladorNombre(String param) throws Exception{
+    public List<Desarrollador> buscarDesarrolladorNombre(String param) throws Exception {
 
         try {
-            List <Desarrollador> devName = desarrolladorRepositorio.buscarDesarrolladorNombre(param);
+
+            List<Desarrollador> devName = desarrolladorRepositorio.buscarDesarrolladorNombre(param);
+
             return devName;
+
         } catch (Exception e) {
+
             throw new Exception(e.getMessage());
-            
+
+        }
     }
-    }
+
 }

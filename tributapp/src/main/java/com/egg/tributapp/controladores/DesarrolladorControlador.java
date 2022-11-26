@@ -83,22 +83,23 @@ public class DesarrolladorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,
             String nombre, String email, String password, String password2, String contratacion,
-            MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
+            MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
 
         try {
 
-            System.out.println("!!!" +id+"!!!"+nombre+"!!!"+email+"!!!"+password+"!!!"+password2+"!!!!"+contratacion+"!!!!"+cuit);
-
-            desarrolladorServicio.modificarDesarrollador( id, nombre, email, password, contratacion, password2, foto, cuit);
-
+            desarrolladorServicio.modificarDesarrollador(id, nombre, email, password, contratacion, password2, foto, cuil);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
             return "redirect:/desarrollador/lista";
 
         } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
+            
+            System.out.println("estoy en el error de modificar" + id + "------------------------------------");
+            
+            modelo.put("Error", ex.getMessage());
+            
+            modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
             return "Update.html";
 
@@ -112,32 +113,30 @@ public class DesarrolladorControlador {
 
         return "redirect:/desarrollador/lista";
     }
-    
+
     @GetMapping(value = "/busquedaDesarrollador")
-    public String busquedaDesarrollador (ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
-       
+    public String busquedaDesarrollador(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+
         try {
-            
+
             List<Desarrollador> desarrollador = desarrolladorServicio.buscarDesarrolladorNombre(param);
-            
+
             modelo.addAttribute("desarrollador", desarrollador);
             return "busquedaDev.html";
-                    
+
         } catch (Exception ex) {
             modelo.put("error", ex.getMessage());
         }
-        
+
         return null;
     }
 
-
-
     @GetMapping("/inicio")
-    public String inicioDesarrollador(ModelMap modelo,HttpSession http){
+    public String inicioDesarrollador(ModelMap modelo, HttpSession http) {
 
         Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
 
-        modelo.addAttribute("desarrollador",desarrollador);
+        modelo.addAttribute("desarrollador", desarrollador);
 
         System.out.println(desarrollador.getNombre());
 
@@ -146,10 +145,15 @@ public class DesarrolladorControlador {
 
     @GetMapping("/inicio/{id}")
     public ResponseEntity<byte[]> imagenDesarrollador(@PathVariable String id) {
+
         Desarrollador desarrollador = desarrolladorServicio.getOne(id);
+
         byte[] imagen = desarrollador.getFoto();
+
         HttpHeaders headers = new HttpHeaders();
+
         headers.setContentType(MediaType.IMAGE_JPEG);
+
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
 
