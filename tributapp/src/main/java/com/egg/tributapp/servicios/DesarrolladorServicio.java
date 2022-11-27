@@ -109,7 +109,8 @@ public class DesarrolladorServicio implements UserDetailsService {
     public void modificarDesarrollador(String idUsuario,
             String nombre, String email, String password, String contratacion,
             String password2, MultipartFile foto, String cuil) throws MiException, IOException {
-        validar(nombre, email, password, password2, contratacion, foto, cuil);
+        validar(idUsuario, nombre, email, password, password2, contratacion, foto, cuil);
+
         Optional<Desarrollador> respuesta = desarrolladorRepositorio.findById(idUsuario);
 
         if (respuesta.isPresent()) {
@@ -231,4 +232,45 @@ public class DesarrolladorServicio implements UserDetailsService {
         }
     }
 
+    private void validar(String idUsuario, String nombre, String email, String password, String password2, String contratacion, MultipartFile foto, String cuil) throws MiException {
+        List<Desarrollador> emails = desarrolladorRepositorio.findAll();
+
+        Desarrollador desarrollador = desarrolladorRepositorio.getOne(idUsuario);
+        if (!desarrollador.getEmail().equals(email)) {
+            for (Desarrollador aux : emails) {
+
+                if (aux.getEmail().equals(email)) {
+
+                    throw new MiException("El mail " + email + " ya se encuentra registrado");
+
+                }
+            }
+        }
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiException("el nombre no puede ser nulo o estar vacio");
+        }
+        if (email.isEmpty() || email == null) {
+            throw new MiException("el email no puede ser nulo o estar vacio");
+        }
+        if (password.isEmpty() || password == null || password.length() <= 5) {
+            throw new MiException("la contraseña no puede estar vacia y debe tener mas de 5 digitos");
+
+        }
+        if (!password.equals(password2)) {
+            throw new MiException("Las contraseñas ingresadas deben ser iguales");
+
+        }
+        if (contratacion == null) {
+            throw new MiException("Debe seleccionar una de las opciones");
+        }
+        if (foto.isEmpty()) {
+            throw new MiException("Debe colocar una foto");
+
+        }
+        if (cuil.isEmpty() || cuil == null) {
+
+            throw new MiException("Debe ingresar el cuit o cuil");
+
+        }
+    }
 }

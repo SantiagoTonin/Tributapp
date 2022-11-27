@@ -54,7 +54,7 @@ public class ContadorServicio {
     @Transactional
     public void modificarContador(String id, String nombre, String email, String password, String password2, String telefono, String matricula, String provincia, MultipartFile foto) throws MiException, IOException {
 
-        validar(nombre, email, password, password2, telefono, matricula, provincia);
+        validar(id, nombre, email, password, password2, telefono, matricula, provincia);
 
         Optional<Contador> respuesta = contadorRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -121,4 +121,53 @@ public class ContadorServicio {
 
     }
 
+    private void validar(String id, String nombre, String email, String password, String password2, String telefono, String matricula, String provincia) throws MiException {
+        List<Contador> emails = contadorRepositorio.findAll();
+
+        Contador contador = contadorRepositorio.getOne(id);
+        if (!contador.getEmail().equals(email)) {
+            for (Contador aux : emails) {
+                if (aux.getEmail().equals(email)) {
+                    throw new MiException("El mail " + email + " ya se encuentra registrado");
+                }
+            }
+            if (nombre.isEmpty() || nombre == null) {
+                throw new MiException("el nombre no puede ser nulo o estar vacio");
+            }
+            if (email.isEmpty() || email == null) {
+                throw new MiException("email no puede ser nulo");
+            }
+            if (password.isEmpty() || password == null || password.length() <= 5) {
+                throw new MiException("La contraseña no puede estar vacía, y debe tener más de 5 dígitos");
+            }
+            if (!password.equals(password2)) {
+                throw new MiException("Las contraseñas ingresadas deben ser iguales");
+            }
+
+            if (telefono.isEmpty() || telefono == null) {
+                throw new MiException("El campo telefono no puede estar vacío");
+            }
+            if (matricula.isEmpty() || matricula == null) {
+                throw new MiException("El campo matricula no puede estar vacío");
+            }
+            if (provincia.isEmpty() || provincia == null) {
+                throw new MiException("El campo Provincia no puede ser nulo");
+            }
+        }
+    }
+
+    @Transactional
+    private List<Contador> buscarPorEmail(String email) throws MiException {
+        try {
+            List<Contador> contEmail = (List<Contador>) contadorRepositorio.buscarPorEmail(email);
+
+            return contEmail;
+
+        } catch (Exception e) {
+
+            throw new MiException("No aparecen contadores con el mail buscado");
+
+        }
+
+    }
 }

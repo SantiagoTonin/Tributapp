@@ -41,10 +41,7 @@ public class DesarrolladorControlador {
     }
 
     @PostMapping("/cargar")
-    public String cargar(@RequestParam String nombre,
-            @RequestParam String email, @RequestParam String password, String contratacion,
-            @RequestParam String password2, MultipartFile foto, String cuil,
-            ModelMap modelo) throws MiException, IOException {
+    public String cargar(@RequestParam String nombre, @RequestParam String email, @RequestParam String password, String contratacion, @RequestParam String password2, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
 
         try {
 
@@ -81,9 +78,7 @@ public class DesarrolladorControlador {
     }
 
     @PostMapping("/modificar/{id}")//front al end
-    public String modificar(@PathVariable String id,
-            String nombre, String email, String password, String password2, String contratacion,
-            MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
+    public String modificar(@PathVariable String id, String nombre, String email, String password, String password2, String contratacion, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
 
         try {
 
@@ -162,3 +157,6 @@ public class DesarrolladorControlador {
         return "index.html";
     }
 }
+
+//query contador
+//calculadora

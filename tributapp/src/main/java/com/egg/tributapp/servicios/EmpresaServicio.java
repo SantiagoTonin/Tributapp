@@ -61,7 +61,7 @@ public class EmpresaServicio implements UserDetailsService {
     public void modificar(String id, String razonSocial, String direccion, String nombre, String email, String password,
             String password2) throws Exception {
 
-        validar(razonSocial, direccion, nombre, email, password, password2);
+        validar(id, razonSocial, direccion, nombre, email, password, password2);
 
         Optional<Empresa> respuestaEmp = empresaRepositorio.findById(id);
 
@@ -149,6 +149,42 @@ public class EmpresaServicio implements UserDetailsService {
             return new User(empresa.getEmail(), empresa.getPassword(), permisos);
         } else {
             return null;
+        }
+    }
+
+    private void validar(String id, String razonSocial, String direccion, String nombre, String email, String password, String password2) throws MiException {
+        List<Empresa> emails = empresaRepositorio.findAll();
+
+        Empresa empresa = empresaRepositorio.getOne(id);
+
+        if (!empresa.getEmail().equals(email)) {
+            for (Empresa aux : emails) {
+
+                if (aux.getEmail().equals(email)) {
+
+                    throw new MiException("El mail " + email + " ya se encuentra registrado");
+
+                }
+            }
+            if (razonSocial.isEmpty() || razonSocial == null) {
+                throw new MiException("la razon Social no puede ser nulo o vacio");
+            }
+            if (direccion.isEmpty() || direccion == null) {
+                throw new MiException("la direccion no puede ser nula o vacia");
+            }
+            if (email.isEmpty() || email == null) {
+                throw new MiException("el email no puede ser nulo o vacio");
+            }
+            if (nombre.isEmpty() || nombre == null) {
+                throw new MiException("el nombre no puede ser nulo o vacio");
+            }
+            if (password.isEmpty() || password == null || password.length() <= 5) {
+                throw new MiException("el password no puede estar vacio o tener menos de 5 caracteres");
+            }
+            if (!password.equals(password2)) {
+                throw new MiException("el password no coincide");
+            }
+
         }
     }
 }
