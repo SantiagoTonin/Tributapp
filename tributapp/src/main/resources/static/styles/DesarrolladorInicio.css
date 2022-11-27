@@ -123,6 +123,11 @@ button {
     color: #fff;
   }
   
+  a:hover {
+      text-decoration: none;
+       color: #D6E4E5;
+  }
+  
   a {
       text-decoration: none;
       color: #362828;
@@ -134,3 +139,4 @@ button {
     height: 70px;
   }
 
+  

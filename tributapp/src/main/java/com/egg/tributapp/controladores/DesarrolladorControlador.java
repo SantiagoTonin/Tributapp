@@ -152,10 +152,34 @@ public class DesarrolladorControlador {
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
 
-    @GetMapping("/info")
-    public String info() {
-        return "index.html";
-    }
+//    @GetMapping("/info")
+//    public String info() {
+//        return "DesarrolladorInfo.html";
+//    }
+    
+    
+      @GetMapping("/info")
+      public String info(ModelMap modelo, HttpSession http) {
+          Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+          
+          modelo.addAttribute("desarrollador", desarrollador);
+
+          return "DesarrolladorInfo.html";
+      }
+      
+      @GetMapping("/info/{id}")
+      public ResponseEntity<byte[]> imagenInfo(@PathVariable String id) {
+
+        Desarrollador desarrollador = desarrolladorServicio.getOne(id);
+
+        byte[] imagen = desarrollador.getFoto();
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
+      }
 }
 
 //query contador

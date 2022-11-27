@@ -558,11 +558,11 @@
     const inputsEmpresa = document.querySelectorAll('#formulario-empresa');
   
     const expresionesEmpresa = {
-      razonSocial: /^[a-zA-Z0-9\_\-]{2,16}$/, // Letras, numeros, guion y guion_bajo
+      razonSocial: /^[a-zA-ZÀ-ÿ\s]{2,50}$/, // Letras, numeros, guion y guion_bajo
       nombreEmpresa: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
       password: /^.{4,12}$/, // 4 a 12 digitos.
       email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-      direccion: /^[a-zA-Z0-9\_\-]{2,16}$/ // 7 a 14 numeros.
+      direccion: /^[a-zA-ZÀ-ÿ\s]{2,30}$/ // 7 a 14 numeros.
     }
   
     const camposEmpresa = {

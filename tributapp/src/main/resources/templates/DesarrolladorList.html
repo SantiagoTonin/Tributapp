@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/List.css?1.0}" media="all">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/Navbar.css?1.0}" media="all">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/Info.css?1.0}" media="all">
     </head>
     <body>
 
@@ -40,7 +41,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="dev: ${desarrolladores}">
-                        <td th:text="${dev.foto}"><img th:src="@{}" alt=""/></td>
+                        <td><img class="circulo" th:if="${dev.foto != null}" th:src="@{/desarrollador/inicio/__${dev.id}__}" alt=""/></td>
                         <td th:text="${dev.nombre}"></td>
                         <td th:text="${dev.cuitCuil}"></td>
                         <td th:text="${dev.email}"></td>
