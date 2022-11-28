@@ -180,6 +180,16 @@ public class DesarrolladorControlador {
 
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
       }
+      
+      @GetMapping("/impuestos")
+    public String imp (ModelMap modelo, HttpSession http) {
+          Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+
+          modelo.addAttribute("desarrollador", desarrollador);
+
+          return "DesarrolladorImp.html";
+      }
+      
 }
 
 //query contador
