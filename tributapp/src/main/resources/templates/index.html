@@ -19,9 +19,15 @@
     <nav th:replace="fragments/navbar :: nav_bar"></nav>
     
     <!-- body -->
-    <div class="body">
-        <hr class="featurette-divider">
 
+    
+    <div class="body">
+        <div class="initial-button" align="center">
+            <button class="btt-initial"><a class="box" th:href="@{/infogeneral}" >¡Mantenete actualizad@!</a></button>
+        </div>
+            
+        <hr class="featurette-divider">
+        
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading fw-normal lh-1" align="center"> <strong>¿QUIÉNES SOMOS?</strong></h2>
