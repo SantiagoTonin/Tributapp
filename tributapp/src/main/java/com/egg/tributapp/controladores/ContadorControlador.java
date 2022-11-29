@@ -138,7 +138,7 @@ public class ContadorControlador {
             modelo.put("error", ex.getMessage());
         }
 
-        return null;
+        return "index.html";
     }
 
     @GetMapping(value = "/filtroContador")
