@@ -1,5 +1,6 @@
 package com.egg.tributapp;
 
+import com.egg.tributapp.servicios.ContadorServicio;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +22,14 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public DesarrolladorServicio desarrolladorServicio;
+    
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(desarrolladorServicio).passwordEncoder(new BCryptPasswordEncoder());
+        
     }
+    
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
