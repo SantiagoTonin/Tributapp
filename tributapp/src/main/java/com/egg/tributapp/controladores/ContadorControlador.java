@@ -106,4 +106,73 @@ public class ContadorControlador {
 
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/filtroContador")
+    public String busquedaContadorEmail(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+
+        try {
+
+            List<Contador> contador = contadorServicio.buscarContadorEmail(param);
+
+            modelo.addAttribute("contador", contador);
+            return "index.html";
+
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+        }
+
+        return null;
+    }
+
+    @GetMapping(value = "/filtroContador")
+    public String busquedaContadorProvincia(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+
+        try {
+
+            List<Contador> contador = contadorServicio.buscarContadorProvincia(param);
+
+            modelo.addAttribute("contador", contador);
+            return "index.html";
+
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+        }
+
+        return null;
+    }
+
+    @GetMapping(value = "/filtroContador")
+    public String busquedaContadorNombre(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+
+        try {
+
+            List<Contador> contador = contadorServicio.buscarContadorNombre(param);
+
+            modelo.addAttribute("contador", contador);
+            return "index.html";
+
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+        }
+
+        return null;
+    }
+
+    @GetMapping(value = "/filtroContador")
+    public String busquedaContadorMatricula(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+
+        try {
+
+            List<Contador> contador = contadorServicio.buscarContadorMatricula(param);
+
+            modelo.addAttribute("contador", contador);
+            return "index.html";
+
+        } catch (Exception ex) {
+            modelo.put("error", ex.getMessage());
+        }
+
+        return null;
+    }
+
 }

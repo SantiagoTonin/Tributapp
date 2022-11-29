@@ -157,18 +157,66 @@ public class ContadorServicio {
     }
 
     @Transactional
-    private List<Contador> buscarPorEmail(String email) throws MiException {
+    public List<Contador> buscarContadorNombre(String param) throws Exception {
+
         try {
-            
-            List<Contador> contEmail = (List<Contador>) contadorRepositorio.buscarDesarrolladorEmail(email);
+
+            List<Contador> contName = contadorRepositorio.buscarContadorNombre(param);
+
+            return contName;
+
+        } catch (Exception e) {
+
+            throw new Exception(e.getMessage());
+
+        }
+    }
+
+    @Transactional
+    public List<Contador> buscarContadorProvincia(String param) throws Exception {
+
+        try {
+
+            List<Contador> contProv = contadorRepositorio.buscarContadorProvincia(param);
+
+            return contProv;
+
+        } catch (Exception e) {
+
+            throw new Exception(e.getMessage());
+
+        }
+    }
+
+    @Transactional
+    public List<Contador> buscarContadorEmail(String param) throws Exception {
+
+        try {
+
+            List<Contador> contEmail = contadorRepositorio.buscarContadorEmail(param);
 
             return contEmail;
 
         } catch (Exception e) {
 
-            throw new MiException("No aparecen contadores con el mail buscado");
+            throw new Exception(e.getMessage());
 
         }
+    }
 
+    @Transactional
+    public List<Contador> buscarContadorMatricula(String param) throws Exception {
+
+        try {
+
+            List<Contador> contMatr = contadorRepositorio.buscarContadorMatricula(param);
+
+            return contMatr;
+
+        } catch (Exception e) {
+
+            throw new Exception(e.getMessage());
+
+        }
     }
 }
