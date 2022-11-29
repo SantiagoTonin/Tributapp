@@ -1,4 +1,3 @@
-
 package com.egg.tributapp.entidades;
 
 import com.egg.tributapp.enumeraciones.Rol;
@@ -13,23 +12,21 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
-
 @Entity
-@Getter @Setter
-
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Contador extends Usuario {
-   private String telefono;
-   private String matricula;
-   private String provincia;
-   
+
+    private String telefono;
+    private String matricula;
+    private String provincia;
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
-    
-   @Lob
-   @Basic(fetch = FetchType.LAZY)
-   private byte[] foto;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    public byte[] foto;
 }
