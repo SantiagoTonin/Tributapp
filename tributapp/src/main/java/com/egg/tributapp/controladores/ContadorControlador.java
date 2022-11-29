@@ -107,7 +107,7 @@ public class ContadorControlador {
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/filtroContador")
+    @GetMapping(value = "/busquedaEmail")
     public String busquedaContadorEmail(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
 
         try {
@@ -124,7 +124,7 @@ public class ContadorControlador {
         return null;
     }
 
-    @GetMapping(value = "/filtroContador")
+    @GetMapping(value = "/busquedaProvincia")
     public String busquedaContadorProvincia(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
 
         try {
@@ -141,7 +141,7 @@ public class ContadorControlador {
         return null;
     }
 
-    @GetMapping(value = "/filtroContador")
+    @GetMapping(value = "/busquedaNombre")
     public String busquedaContadorNombre(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
 
         try {
@@ -158,7 +158,7 @@ public class ContadorControlador {
         return null;
     }
 
-    @GetMapping(value = "/filtroContador")
+    @GetMapping(value = "/busquedaMatricula")
     public String busquedaContadorMatricula(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
 
         try {
