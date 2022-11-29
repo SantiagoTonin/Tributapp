@@ -159,7 +159,8 @@ public class ContadorServicio {
     @Transactional
     private List<Contador> buscarPorEmail(String email) throws MiException {
         try {
-            List<Contador> contEmail = (List<Contador>) contadorRepositorio.buscarPorEmail(email);
+            
+            List<Contador> contEmail = (List<Contador>) contadorRepositorio.buscarDesarrolladorEmail(email);
 
             return contEmail;
 

@@ -98,7 +98,7 @@ public class ContadorControlador {
 
         Contador contador = contadorServicio.getOne(id);
 
-        byte[] imagen = contador.getFoto();
+        byte[] imagen = contador.foto;
 
         HttpHeaders headers = new HttpHeaders();
 

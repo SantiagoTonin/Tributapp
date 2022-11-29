@@ -14,22 +14,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContadorRepositorio extends JpaRepository<Contador, String> {
 
-    @Query("SELECT c FROM Contador c WHERE c.matricula LIKE %:matricula%")
-    public Contador buscarPorMatricula(@Param("matricula") String matricula);
-
-    @Query("SELECT c FROM Contador c WHERE c.provincia LIKE %:provincia%")
-    public Contador buscarPorProvincia(@Param("provincia") String provincia);
-
     @Query(value = "SELECT * FROM Contador WHERE Contador.nombre LIKE %:param%", nativeQuery = true)
-    List<Contador> buscarDesarrolladorNombre(@Param("param") String param);
+    List<Contador> buscarContadorNombre(@Param("param") String param);
 
     @Query(value = "SELECT * FROM Contador WHERE Contador.email LIKE %:param%", nativeQuery = true)
     List<Contador> buscarDesarrolladorEmail(@Param("param") String param);
 
     @Query(value = "SELECT * FROM Contador WHERE Contador.matricula LIKE %:param%", nativeQuery = true)
-    List<Contador> buscarDesarrolladorMatricula(@Param("param") String param);
+    List<Contador> buscarContadorMatricula(@Param("param") String param);
 
     @Query(value = "SELECT * FROM Contador WHERE Contador.provincia LIKE %:param%", nativeQuery = true)
-    List<Contador> buscarDesarrolladorProvincia(@Param("param") String param);
+    List<Contador> buscarContadorProvincia(@Param("param") String param);
 
 }
