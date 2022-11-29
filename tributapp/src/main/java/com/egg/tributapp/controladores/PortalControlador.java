@@ -67,4 +67,10 @@ public class PortalControlador {
         return "index.html";
 
     }
+
+    @GetMapping("/infogeneral")
+    public String infoindex(){
+
+        return "infoindex.html";
+    }
 }

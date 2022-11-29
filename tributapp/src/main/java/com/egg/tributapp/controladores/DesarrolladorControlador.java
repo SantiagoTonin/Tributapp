@@ -41,10 +41,7 @@ public class DesarrolladorControlador {
     }
 
     @PostMapping("/cargar")
-    public String cargar(@RequestParam String nombre,
-            @RequestParam String email, @RequestParam String password, String contratacion,
-            @RequestParam String password2, MultipartFile foto, String cuil,
-            ModelMap modelo) throws MiException, IOException {
+    public String cargar(@RequestParam String nombre, @RequestParam String email, @RequestParam String password, String contratacion, @RequestParam String password2, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
 
         try {
 
@@ -72,7 +69,7 @@ public class DesarrolladorControlador {
         return "DesarrolladorList.html";
     }
 
-    @GetMapping("/modificar/{id}")
+    @GetMapping("/modificar/{id}")//end al front
     public String modificar(@PathVariable String id, ModelMap modelo) {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
@@ -80,17 +77,12 @@ public class DesarrolladorControlador {
         return "Update.html";
     }
 
-    @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id,
-            String nombre, String email, String password, String password2, String contratacion,
-            MultipartFile foto, String cuit, ModelMap modelo) throws MiException, IOException {
+    @PostMapping("/modificar/{id}")//front al end
+    public String modificar(@PathVariable String id, String nombre, String email, String password, String password2, String contratacion, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
 
         try {
 
-            System.out.println("!!!" +id+"!!!"+nombre+"!!!"+email+"!!!"+password+"!!!"+password2+"!!!!"+contratacion+"!!!!"+cuit);
-
-            desarrolladorServicio.modificarDesarrollador( id, nombre, email, password, contratacion, password2, foto, cuit);
-
+            desarrolladorServicio.modificarDesarrollador(id, nombre, email, password, contratacion, password2, foto, cuil);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
@@ -98,7 +90,11 @@ public class DesarrolladorControlador {
 
         } catch (MiException ex) {
 
-            modelo.put("error", ex.getMessage());
+            System.out.println("estoy en el error de modificar" + id + "------------------------------------");
+
+            modelo.put("Error", ex.getMessage());
+
+            modelo.put("desarrollador", desarrolladorServicio.getOne(id));
 
             return "Update.html";
 
@@ -112,32 +108,30 @@ public class DesarrolladorControlador {
 
         return "redirect:/desarrollador/lista";
     }
-    
+
     @GetMapping(value = "/busquedaDesarrollador")
-    public String busquedaDesarrollador (ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
-       
+    public String busquedaDesarrollador(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+
         try {
-            
+
             List<Desarrollador> desarrollador = desarrolladorServicio.buscarDesarrolladorNombre(param);
-            
+
             modelo.addAttribute("desarrollador", desarrollador);
             return "busquedaDev.html";
-                    
+
         } catch (Exception ex) {
             modelo.put("error", ex.getMessage());
         }
-        
+
         return null;
     }
 
-
-
     @GetMapping("/inicio")
-    public String inicioDesarrollador(ModelMap modelo,HttpSession http){
+    public String inicioDesarrollador(ModelMap modelo, HttpSession http) {
 
         Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
 
-        modelo.addAttribute("desarrollador",desarrollador);
+        modelo.addAttribute("desarrollador", desarrollador);
 
         System.out.println(desarrollador.getNombre());
 
@@ -146,11 +140,57 @@ public class DesarrolladorControlador {
 
     @GetMapping("/inicio/{id}")
     public ResponseEntity<byte[]> imagenDesarrollador(@PathVariable String id) {
+
         Desarrollador desarrollador = desarrolladorServicio.getOne(id);
+
         byte[] imagen = desarrollador.getFoto();
+
         HttpHeaders headers = new HttpHeaders();
+
         headers.setContentType(MediaType.IMAGE_JPEG);
+
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
 
+//    @GetMapping("/info")
+//    public String info() {
+//        return "DesarrolladorInfo.html";
+//    }
+    
+    
+      @GetMapping("/info")
+      public String info(ModelMap modelo, HttpSession http) {
+          Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+          
+          modelo.addAttribute("desarrollador", desarrollador);
+
+          return "DesarrolladorInfo.html";
+      }
+      
+      @GetMapping("/info/{id}")
+      public ResponseEntity<byte[]> imagenInfo(@PathVariable String id) {
+
+        Desarrollador desarrollador = desarrolladorServicio.getOne(id);
+
+        byte[] imagen = desarrollador.getFoto();
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
+      }
+      
+      @GetMapping("/impuestos")
+    public String imp (ModelMap modelo, HttpSession http) {
+          Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+
+          modelo.addAttribute("desarrollador", desarrollador);
+
+          return "DesarrolladorImp.html";
+      }
+      
 }
+
+//query contador
+//calculadora

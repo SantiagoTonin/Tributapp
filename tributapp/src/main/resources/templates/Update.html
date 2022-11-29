@@ -14,61 +14,61 @@
     </head>
     <body>
         <nav th:replace="fragments/navbar :: nav_bar"></nav>
-        
+
         <div class="container-grid">
             <div class="container-form  ">
 
-            <form th:action="@{/desarrollador/modificar/__${desarrollador.id}__}" method="POST" enctype="multipart/form-data">
-                <figure class="text-center">
-                    <h3 class="text-white-50">Actualiza los datos del desarrollador</h3>
-                </figure>
-                
-                <input hidden th:value="${id}" name="id">
-                <div class="mb-3">
-                    <input th:value="${desarrollador.nombre}" type="text" class="form-control" name="nombre" placeholder="Nombre y apellido">
+                <form th:action="@{/desarrollador/modificar/__${desarrollador.id}__}" method="POST" enctype="multipart/form-data">
+                    <figure class="text-center">
+                        <h3 class="text-white-50">Actualiza los datos del desarrollador</h3>
+                    </figure>
 
-                </div>
-                <div class="mb-3">
-                    <input th:value="${desarrollador.email}" type="email" class="form-control" name="email" placeholder="Email">
+                    <input hidden th:value="${id}" name="id">
+                    <div class="mb-3">
+                        <input th:value="${desarrollador.nombre}" type="text" class="form-control" name="nombre" placeholder="Nombre y apellido">
 
-                </div>
-                <div class="mb-3">
-                    <input  type="password" class="form-control" name="password" placeholder="Contraseña">
+                    </div>
+                    <div class="mb-3">
+                        <input th:value="${desarrollador.email}" type="email" class="form-control" name="email" placeholder="Email">
 
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" name="password2" placeholder="Repetir Contraseña">
+                    </div>
+                    <div class="mb-3">
+                        <input  type="password" class="form-control" name="password" placeholder="Contraseña">
 
-                </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password2" placeholder="Repetir Contraseña">
 
-                <div class="mb-3">
-                    <input th:value="${desarrollador.cuitCuil}" type="text" class="form-control" name="cuit" placeholder="Cuil">
-                </div>
+                    </div>
 
-                <div class="mb-3 radio-boton">
+                    <div class="mb-3">
+                        <input th:value="${desarrollador.cuitCuil}" type="text" class="form-control" name="cuil" placeholder="Cuil">
+                    </div>
 
-                    <input type="radio" value="1" name="contratacion" id="free" checked="checked">
-                    <label for="free" >Freelance</label>
-                    <input type="radio" value="2" name="contratacion" id="depen">
-                    <label for="depen" >Relacion de Dependencia</label>
+                    <div class="mb-3 radio-boton">
 
-                </div>
+                        <input type="radio" value="1" name="contratacion" id="free" checked="checked">
+                        <label for="free" >Freelance</label>
+                        <input type="radio" value="2" name="contratacion" id="depen">
+                        <label for="depen" >Relacion de Dependencia</label>
 
-                <div class="mb-3">
-                    <input type="file" class="form-control" placeholder="Foto" name="foto">
-                </div>
+                    </div>
 
-                <div th:if="${error != null}">
-                    <p th:text="${error}" style="font-size: medium; text-align: center; color:red;"></p>
-                </div>
+                    <div class="mb-3">
+                        <input type="file" class="form-control" placeholder="Foto" name="foto">
+                    </div>
 
-                <button class="btn btn-secondary" type="submit">Registrar</button>
-            </form>
+                    <div th:if="${Error != null}">
+                        <p th:text="${Error}" style="font-size: medium; text-align: center; color:red;"></p>
+                    </div>
 
+                    <button class="btn btn-secondary" type="submit">Registrar</button>
+                </form>
+
+            </div>
         </div>
-        </div>
-        
-        
+
+
         <footer th:replace="fragments/footer :: footer"></footer>
 
         <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>

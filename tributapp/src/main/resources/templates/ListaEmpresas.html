@@ -48,8 +48,8 @@
                         </th>
                     </tr>
                     <tr>
-                        <th scope="col"><strong>ID</strong></th>
-                        <th scope="col"><strong>Nombre</strong></th>
+                        <!--<th scope="col"><strong>ID</strong></th>-->
+                        <th scope="col"><strong>Nombre de la empresa</strong></th>
                         <th scope="col"><strong>Razón Social</strong></th>
                         <th scope="col"><strong>Dirección</strong></th>
                         <th scope="col"><strong>Developers</strong></th>
@@ -58,7 +58,7 @@
                 </thead>
                 <tbody th:each="empresa : ${empresas}">
                     <tr>
-                        <td scope="row" th:text="${empresa.id}"></td>
+<!--                        <td scope="row" th:text="${empresa.id}"></td>-->
                         <th th:text="${empresa.nombre}"></th>
                         <td scope="row" th:text="${empresa.razonSocial}"></td>
                         <th scope="row" th:text="${empresa.direccion}"></th>
