@@ -1,0 +1,56 @@
+.card{
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    text-align: center;
+    border-color: black; 
+}
+
+.container{
+    position: absolute;
+    top: 100px;
+    left: 700px;
+    align-content: center;
+    border-color: black; 
+}
+
+.btn{
+    width: 200px;
+    position: absolute;
+    top: 270px;
+    left: 65px;
+    background-color:#ca4406;
+    
+}
+
+.imagen{
+  display: inline-block;
+  position: relative;
+  left:70px;
+  top:10px;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  
+}
+.imagen2{
+  
+    clip-path: circle(50% at 50% 50%);
+    width: 50px;
+    height: 50px;
+  
+}
+
+footer{
+    position:relative;
+    left:-700px;
+    bottom:-400px;
+    width: 120%;
+}
+
+
+
+
+
+
