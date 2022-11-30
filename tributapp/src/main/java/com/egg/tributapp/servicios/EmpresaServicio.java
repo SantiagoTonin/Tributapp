@@ -93,14 +93,18 @@ public class EmpresaServicio implements UserDetailsService {
 
     public void validar(String razonSocial, String direccion, String nombre, String email, String password,
             String password2) throws Exception {
-        List<Empresa> emails = empresaRepositorio.findAll();
 
-        for (Empresa aux : emails) {
+        if (!email.isEmpty() || email != null) {//borrar en caso de emergencia
 
-            if (aux.getEmail().equals(email)) {
+            List<Empresa> emails = empresaRepositorio.findAll();
 
-                throw new MiException("El mail " + email + " ya se encuentra registrado");
+            for (Empresa aux : emails) {
 
+                if (aux.getEmail().equals(email)) {
+
+                    throw new MiException("El mail " + email + " ya se encuentra registrado");
+
+                }
             }
         }
         if (razonSocial.isEmpty() || razonSocial == null) {

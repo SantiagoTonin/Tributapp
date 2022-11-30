@@ -1,8 +1,10 @@
 package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Desarrollador;
+import com.egg.tributapp.entidades.Empresa;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
+import com.egg.tributapp.servicios.EmpresaServicio;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,6 +34,9 @@ public class DesarrolladorControlador {
 
     @Autowired
     private DesarrolladorServicio desarrolladorServicio;
+
+    @Autowired
+    private EmpresaServicio empresaServicio;
 
     @GetMapping("/cargarDesarrollador")
     public String cargar(ModelMap modelo) {
@@ -152,23 +157,17 @@ public class DesarrolladorControlador {
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
     }
 
-//    @GetMapping("/info")
-//    public String info() {
-//        return "DesarrolladorInfo.html";
-//    }
-    
-    
-      @GetMapping("/info")
-      public String info(ModelMap modelo, HttpSession http) {
-          Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
-          
-          modelo.addAttribute("desarrollador", desarrollador);
+    @GetMapping("/info")
+    public String info(ModelMap modelo, HttpSession http) {
+        Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
 
-          return "DesarrolladorInfo.html";
-      }
-      
-      @GetMapping("/info/{id}")
-      public ResponseEntity<byte[]> imagenInfo(@PathVariable String id) {
+        modelo.addAttribute("desarrollador", desarrollador);
+
+        return "DesarrolladorInfo.html";
+    }
+
+    @GetMapping("/info/{id}")
+    public ResponseEntity<byte[]> imagenInfo(@PathVariable String id) {
 
         Desarrollador desarrollador = desarrolladorServicio.getOne(id);
 
@@ -179,18 +178,60 @@ public class DesarrolladorControlador {
         headers.setContentType(MediaType.IMAGE_JPEG);
 
         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
-      }
-      
-      @GetMapping("/impuestos")
-    public String imp (ModelMap modelo, HttpSession http) {
-          Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+    }
 
-          modelo.addAttribute("desarrollador", desarrollador);
+    @GetMapping("/impuestos")
+    public String imp(ModelMap modelo, HttpSession http) {
+        Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
 
-          return "DesarrolladorImp.html";
-      }
-      
+        modelo.addAttribute("desarrollador", desarrollador);
+
+        List<Empresa> empresa = empresaServicio.listarEmpresas();
+
+        modelo.addAttribute("empresa", empresa);
+
+        return "DesarrolladorImp.html";
+    }
+
+//post mapping que reciba datos de empresa (nombre y email de la empresa) 
+//    desarrolladorImp para crear una empresa    
+    @PostMapping("/impuestosCargaEmpresa")
+    public String registroEmpresa(@RequestParam String razonSocial, @RequestParam String direccion,
+            @RequestParam String nombre, @RequestParam String email,
+            @RequestParam String password, @RequestParam String password2, ModelMap modelo) throws Exception {
+
+        try {
+
+            empresaServicio.registrarEmpresa("a completar", "a completar", nombre, email, "nullo", "nulo");
+
+            modelo.put("exito", "Empresa registrada exitosamente");
+
+        } catch (Exception ex) {
+
+            modelo.put("Error", ex.getMessage());
+
+            return "login.html";
+        }
+
+        return "redirect:/empresa/listarEmpresa";
+    }
+
+    //@PostMapping(/elegirEmpresa) revisar relacion en autores q me envie el id del objeto
+    @PostMapping("/elegirEmpresa")
+    public String setEmpresa(@RequestParam String idEmpresa, @RequestParam String idDesarrollador, ModelMap modelo) {
+
+        try {
+            desarrolladorServicio.elegirEmpresa(idDesarrollador, idEmpresa);
+            modelo.put("Exito", "El desarrollador a elegido correctamente una empresa");
+
+        } catch (Exception e) {
+
+            modelo.put("error", e.getMessage());
+            return "DesarrolladorImp.html";
+
+        }
+
+        return "DesarrolladorImp.html";
+
+    }
 }
-
-//query contador
-//calculadora

@@ -1,10 +1,12 @@
 package com.egg.tributapp.servicios;
 
 import com.egg.tributapp.entidades.Desarrollador;
+import com.egg.tributapp.entidades.Empresa;
 import com.egg.tributapp.enumeraciones.Contratacion;
 import com.egg.tributapp.enumeraciones.Rol;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.DesarrolladorRepositorio;
+import com.egg.tributapp.repositorios.EmpresaRepositorio;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +36,9 @@ public class DesarrolladorServicio implements UserDetailsService {
     @Autowired
     private DesarrolladorRepositorio desarrolladorRepositorio;
 
+    @Autowired
+    private EmpresaRepositorio empresaRepostirio;
+
     //registro con validacion
     @Transactional
     public void registrar(String nombre, String email, String password,
@@ -56,7 +61,6 @@ public class DesarrolladorServicio implements UserDetailsService {
         }
         if (contratacion.equals("2")) {
 
-            System.out.println("llegue aqui!!!!!!!!!!");
             desarrollador.setContratacion(Contratacion.ENDEPENCIA.getNameEnum());
         }
         desarrollador.setActivo(Boolean.TRUE);
@@ -272,5 +276,15 @@ public class DesarrolladorServicio implements UserDetailsService {
             throw new MiException("Debe ingresar el cuit o cuil");
 
         }
+    }
+
+    public void elegirEmpresa(String idDesarrollador, String idEmpresa) {
+
+        Desarrollador desarrollador = desarrolladorRepositorio.getOne(idDesarrollador);
+
+        Empresa empresa = empresaRepostirio.getOne(idEmpresa);
+
+        desarrollador.setEmpresa(empresa);
+
     }
 }
