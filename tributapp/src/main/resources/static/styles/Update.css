@@ -16,7 +16,7 @@ footer {
   .container-form {
     border-radius: 10px;
     height: auto;
-    width: 800px;
+    width: 50vh;
     left: 50%;
     background: rgb(31, 32, 41);
     margin: 35px;
@@ -93,4 +93,9 @@ footer {
   input[type="radio"]:checked + label {
     background-color: rgb(1, 204, 101);
     color: white;
+  }
+  
+  .fondo {
+      
+      background-color: #EFF5F5;
   }
