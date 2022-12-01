@@ -5,6 +5,7 @@ import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.ContadorServicio;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -93,6 +94,18 @@ public class ContadorControlador {
         return "redirect:/contador/lista";
     }
 
+    @GetMapping("/inicio")
+    public String inicioContador(ModelMap modelo,HttpSession http){
+
+        Contador contador = (Contador) http.getAttribute("usuariosession");
+
+        modelo.addAttribute("contador",contador);
+
+        System.out.println(contador.getNombre());
+
+        return "ContadorInicio.html";
+    }
+    
     @GetMapping("/inicio/{id}")
     public ResponseEntity<byte[]> imagenContador(@PathVariable String id) {
 

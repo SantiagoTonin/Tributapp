@@ -8,13 +8,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class ContadorServicio {
+public class ContadorServicio implements UserDetailsService{
 
     @Autowired
     private ContadorRepositorio contadorRepositorio;
@@ -119,6 +128,37 @@ public class ContadorServicio {
 
         contadorRepositorio.delete(contadores);
 
+    }
+    
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+
+        Contador contador = contadorRepositorio.buscarPorEmail(email);
+
+        if (contador != null) {
+
+            List<GrantedAuthority> permisos = new ArrayList<>();
+
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + contador.getRol().toString());
+
+            permisos.add(p);
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+
+            HttpSession session = attr.getRequest().getSession(true);
+
+            session.setAttribute("usuariosession", contador);
+            
+            
+
+            return new User(contador.getEmail(), contador.getPassword(), permisos);
+
+        } else {
+
+            return null;
+
+        }
     }
 
     private void validar(String id, String nombre, String email, String password, String password2, String telefono, String matricula, String provincia) throws MiException {

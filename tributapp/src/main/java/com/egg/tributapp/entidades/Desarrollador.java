@@ -8,11 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Entity
 @Getter
@@ -36,9 +36,11 @@ public class Desarrollador extends Usuario {
 //    @Column
 //    @OneToMany
 //    private List<Comentario> comentarios;
-//    @ManyToOne
-//    private Empresa empresa;
-//
-//    @ManyToOne
-//    private Contador contador;
+    
+//    get mapping de la lista de empresas en el controlador de desarrollador (/impuestos) desarrolladorImp
+//    post mapping que reciba datos de empresa (nombre y email de la empresa) desarrolladorImp para crear una empresa    
+//    como evitar el nulo, llenarlos, variables telefono desde el post
+    @OneToOne
+    private Empresa empresa;
+
 }

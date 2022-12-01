@@ -1,0 +1,68 @@
+.contenedor-perfil{
+  background: linear-gradient(white,orange);
+}
+.contenedor-imagen{
+ text-align: center;
+ height: 300px;
+ padding: 12px;
+ position: relative;
+
+}
+
+.img-perfil {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+}
+
+
+.nombre-desa{
+  font-size: 2rem;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.tooltips{
+  display: inline-block;
+}
+
+.campos-tooltips{
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.campo-info{
+  color: rgb(0, 0, 0);
+}
+.tooltip-box{
+  display: none;
+  background-color: rgb(24, 167, 134);
+  z-index: 100;
+  border-radius: 5px;
+  position: absolute;
+  text-align: left;
+  right: 30%;
+  top: 20%;
+ 
+}
+
+
+
+.tooltip-box::after{
+content: "";
+display: block;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;
+border-right: 15px solid red;
+position: absolute;
+left: -15px;
+bottom: calc(60% - 15px);
+}
+
+.tooltips:hover .tooltip-box{
+  display: inline-block;
+}
+
+.row{
+  justify-content: space-around !important;
+}

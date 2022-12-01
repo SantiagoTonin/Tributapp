@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" th:href="@{/styles/monotributo.css?1.0}" />
   <link rel="stylesheet" type="text/css" th:href="@{/styles/ganancias.css?1.0}" />
   <link rel="stylesheet" type="text/css" th:href="@{/styles/dev.css?1.0}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/Desarrolladorimp.css?1.0}" media="all" />
   <script src="/js/monotributo.js"></script>
   <script src="/js/income_tax.js"></script>
 
@@ -21,157 +22,160 @@
 
 <!-- <nav th:replace="fragments/navbar :: nav_bar"></nav> -->
 
-<nav class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-      <!-- <input class="form-control me-2" type="search" aria-label="Search" placeholder="Buscar en el sitio">
-            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button> -->
-      <div class="input-group">
-
-
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
-
-          <li class="nav-item dropdown me-2">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Menú
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" th:href="@{/desarrollador/inicio}">Ir al inicio</a></li>
-              <li><a class="dropdown-item" th:href="@{/desarrollador/info}">Info</a></li>
-              <!--            <li><a class="dropdown-item" href="#">Calcula tus impuestos</a></li>-->
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a th:href="@{/logout}" class="nav-link me-2" role="button" aria-disabled="true">Cerrar sesión</a>
-          </li>
-
-          <img class="circulo ms-2" th:if="${desarrollador.foto != null}"
-            th:src="@{/desarrollador/inicio/__${desarrollador.id}__}" alt="Foto de Develop">
-
-      </div>
-
-    </div>
-  </div>
-</nav>
 
 <body>
-  <div class="container">
+  <nav class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="card mb-3 mt-3" style="max-width: 960px;">
-      <div class="row g-0">
-        <div class="col-md-4">
 
-          <img class="circulo ms-2" th:if="${desarrollador.foto != null}"
-            th:src="@{/desarrollador/inicio/__${desarrollador.id}__}" alt="Foto de Develop">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+        <!-- <input class="form-control me-2" type="search" aria-label="Search" placeholder="Buscar en el sitio">
+              <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button> -->
+        <div class="input-group">
+
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+
+            <li class="nav-item dropdown me-2">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Menú
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" th:href="@{/desarrollador/inicio}">Ir al inicio</a></li>
+                <li><a class="dropdown-item" th:href="@{/desarrollador/info}">Info</a></li>
+                <!--            <li><a class="dropdown-item" href="#">Calcula tus impuestos</a></li>-->
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a th:href="@{/logout}" class="nav-link me-2" role="button" aria-disabled="true">Cerrar sesión</a>
+            </li>
+
+            <img class="circulo ms-2" th:if="${desarrollador.foto != null}"
+              th:src="@{/desarrollador/inicio/__${desarrollador.id}__}" alt="Foto de Develop">
 
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Hola "<span th:text="${desarrollador.nombre}"></span>"!</h5>
-            <p class="card-text">Tus datos:</p>
-            <div>
-              <p class="card-text">Email: <span th:text="${desarrollador.email}"></span></p>
-              <p class="card-text">Salario: <span th:text="${desarrollador.salario}"></span></p>
-              <p class="card-text">Cuit/Cuil: <span th:text="${desarrollador.cuitCuil}"></span></p>
-            </div>
-          </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="contenedor-perfil">
+    <div class="contenedor-imagen">
+      <div class="tooltips">
+
+        <img class="img-perfil" th:if="${desarrollador.foto != null}"
+          th:src="@{/desarrollador/inicio/__${desarrollador.id}__}" alt="Foto de Develop">
+        <div class="tooltip-box">
+
+          <p class="campos-tooltips">Email: <span class="campo-info" th:text="${desarrollador.email}"></span></p>
+          <p class="campos-tooltips">Cuil: <span class="campo-info" th:text="${desarrollador.cuitCuil}"></span></p>
+          <p class="campos-tooltips">Contratacion: <span class="campo-info" th:text="${desarrollador.contratacion}"></span></p>
         </div>
+        <h2 class="nombre-desa" th:text="${desarrollador.nombre}"></h2>
       </div>
     </div>
 
-    <!-- <div class="d-flex p-2 align-items-center justify-content-center mt-5">
+
+
+
+    <div class="container">
+
+
+
+      <!-- <div class="d-flex p-2 align-items-center justify-content-center mt-5">
                 <img src="https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1600" class="rounded float-start" alt="..." style="width: 150px">
                 <h4 class="ms-3">Bienvenido a tu dashboard *Nombre desarrollador*!</h4>
             </div> -->
 
 
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-5">
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3 afip">
-            <h4 class="my-0 fw-normal">Información tributaria</h4>
-            <div>
-              <fieldset>
-                <h1 style="text-align: center">MONOTRIBUTO</h1>
-                <h4>Calculá tu categoría y cuota mensual</h4>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-2">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3 afip">
+              <h4 class="my-0 fw-normal">Información tributaria</h4>
+              <div>
+                <fieldset>
+                  <h1 style="text-align: center">MONOTRIBUTO</h1>
+                  <h4>Calculá tu categoría y cuota mensual</h4>
 
-                <!-- Opciones del mes -->
-                <p>Eligir periodo:</p>
-                <div class="select-option">
-                  <select name="select_month" id="select_month">
-                    <option value="S_2022">---Elegir una opción---</option>
-                    <option value="S_2022">Segundo semestre 2022</option>
-                    <option value="P_2022">Primer semestre 2022</option>
-                    <option value="S_2021">Segundo semestre 2021</option>
+                  <!-- Opciones del mes -->
+                  <p>Eligir periodo:</p>
+                  <div class="select-option">
+                    <select name="select_month" id="select_month">
+                      <option value="S_2022">---Elegir una opción---</option>
+                      <option value="S_2022">Segundo semestre 2022</option>
+                      <option value="P_2022">Primer semestre 2022</option>
+                      <option value="S_2021">Segundo semestre 2021</option>
 
-                  </select>
-                </div>
+                    </select>
+                  </div>
 
-                <p>Ingresar actividad:</p>
+                  <p>Ingresar actividad:</p>
 
-                <div class="select-option">
-                  <select name="actividad" id="actividad">
-                    <option value="2">---Elegir una opción---</option>
-                    <option value="1">Locación o prestación de servicios</option>
-                    <option value="0">Venta de cosas muebles</option>
-                  </select>
-                </div>
+                  <div class="select-option">
+                    <select name="actividad" id="actividad">
+                      <option value="2">---Elegir una opción---</option>
+                      <option value="1">Locación o prestación de servicios</option>
+                      <option value="0">Venta de cosas muebles</option>
+                    </select>
+                  </div>
 
-                <p>Ingresar situación laboral:</p>
-                <div class="select-option">
-                  <select name="situacion_laboral" id="situacion_laboral">
-                    <option value="2">---Elegir una opción---</option>
-                    <option value="1">Actividad independiente</option>
-                    <option value="0">Empleados en relación de dependencia</option>
-                    <option value="0">Profesional (aporta a caja específica)</option>
-                    <option value="0">Jubilado hasta junio 1994</option>
-                  </select>
-                </div>
+                  <p>Ingresar situación laboral:</p>
+                  <div class="select-option">
+                    <select name="situacion_laboral" id="situacion_laboral">
+                      <option value="2">---Elegir una opción---</option>
+                      <option value="1">Actividad independiente</option>
+                      <option value="0">Empleados en relación de dependencia</option>
+                      <option value="0">Profesional (aporta a caja específica)</option>
+                      <option value="0">Jubilado hasta junio 1994</option>
+                    </select>
+                  </div>
 
-                <p id="label_facturacion">Ingresar facturación anual:</p>
-                <div>
-                  <input type="number" id="facturacion" value="0" />
-                </div>
+                  <p id="label_facturacion">Ingresar facturación anual:</p>
+                  <div>
+                    <input type="number" id="facturacion" value="0" />
+                  </div>
 
-                <div>
-                  <a class="icon document color button" type="submit" id="button_calculate" value="Calculate">
-                    Calcular</a>
-                </div>
-                <p class="result" id="text_cat"></p>
-                <p class="result" id="text_total"></p>
-                <p class="subresult" id="text_impuestos"></p>
-                <p class="subresult" id="text_obra_social"></p>
-                <p class="subresult" id="text_jubilacion"></p>
-              </fieldset>
+                  <div>
+                    <a class="icon document color button" type="submit" id="button_calculate" value="Calculate">
+                      Calcular</a>
+                  </div>
+                  <p class="result" id="text_cat"></p>
+                  <p class="result" id="text_total"></p>
+                  <p class="subresult" id="text_impuestos"></p>
+                  <p class="subresult" id="text_obra_social"></p>
+                  <p class="subresult" id="text_jubilacion"></p>
+                </fieldset>
+              </div>
+
             </div>
 
           </div>
-
         </div>
+
+
+
+        <p><iframe loading="lazy" src="https://joaquinfeltes.github.io/Calculadora_Ganancias/v_2022/" width="100%"
+            height="1000" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark"
+              style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"
+              class="mce_SELRES_start">﻿</span>﻿</iframe></p>
+
       </div>
 
 
-
-      <p><iframe loading="lazy" src="https://joaquinfeltes.github.io/Calculadora_Ganancias/v_2022/" width="100%"
-          height="1000" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark"
-            style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"
-            class="mce_SELRES_start">﻿</span>﻿</iframe></p>
-
     </div>
 
+    <footer th:replace="fragments/footer :: footer"></footer>
 
   </div>
-
-  <footer th:replace="fragments/footer :: footer"></footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
