@@ -8,6 +8,7 @@ package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Admin;
 import com.egg.tributapp.entidades.Empresa;
+import com.egg.tributapp.servicios.DesarrolladorServicio;
 import com.egg.tributapp.servicios.EmpresaServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,10 @@ public class EmpresaControlador {
             @RequestParam String password, @RequestParam String password2, ModelMap modelo) throws Exception {
 
         try {
+            
             System.out.println("password" + password);
             empresaServicio.registrarEmpresa(razonSocial, direccion, nombre, email, password, password2);
-
+            
             modelo.put("exito", "Empresa registrada exitosamente");
 
         } catch (Exception ex) {
