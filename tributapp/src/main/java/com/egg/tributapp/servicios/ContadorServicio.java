@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -37,8 +38,8 @@ public class ContadorServicio implements UserDetailsService{
 
         contador.setNombre(nombre);
         contador.setEmail(email);
-        contador.setPassword(password);
-        contador.setPassword2(password2);
+        contador.setPassword(new BCryptPasswordEncoder().encode(password));
+        //contador.setPassword2(password2);
         contador.setTelefono(telefono);
         contador.setMatricula(matricula);
         contador.setProvincia(provincia);

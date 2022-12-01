@@ -17,6 +17,7 @@ public interface ContadorRepositorio extends JpaRepository<Contador, String> {
     @Query("SELECT u FROM Contador u WHERE u.email = :email")
     public Contador buscarPorEmail(@Param("email")String email);
     
+    
     @Query(value = "SELECT * FROM Contador WHERE Contador.nombre LIKE %:param%", nativeQuery = true)
     List<Contador> buscarContadorNombre(@Param("param") String param);
 

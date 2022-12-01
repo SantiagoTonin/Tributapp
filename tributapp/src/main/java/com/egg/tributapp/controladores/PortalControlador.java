@@ -1,6 +1,7 @@
 package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Desarrollador;
+import com.egg.tributapp.entidades.Usuario;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,8 @@ public class PortalControlador {
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
 
-        Desarrollador logueado=(Desarrollador) session.getAttribute("usuariosession");
+        Usuario logueado=(Usuario) session.getAttribute("usuariosession");
+        
         
         if (logueado.getRol().toString().equals("ADMIN")) {
             
@@ -57,11 +59,11 @@ public class PortalControlador {
         }
         if (logueado.getRol().toString().equals("EMPRESA")) {
             
-            return "redirect:/contador/inicio";
+            return "redirect:/empresa/inicio";
         }
         if (logueado.getRol().toString().equals("CONTADOR")) {
             
-            return "redirect:/empresa/inicio";
+            return "redirect:/contador/inicio";
         }
         
         return "index.html";
