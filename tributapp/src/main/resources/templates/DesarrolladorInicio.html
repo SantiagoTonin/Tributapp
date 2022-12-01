@@ -54,8 +54,25 @@
                         <div class="card-body text-center mt-5">
                             <h5 class="card-title " style="color: #497174;">Bienvenido a tu página principal <span th:text="${desarrollador.nombre}" style="color: #EB6440"></span>!</h5>
                             <p class="card-text" style="color: #497174;">Eres un desarrollador <span th:text="${desarrollador.contratacion}" style="color: #EB6440"></span></p>
+                            
+                            
+                            <p th:if="${desarrollador.empresa.razonSocial != null}" class="card-text" style="color: #497174;">Actualmente te encuentras trabajando en <span th:text="${desarrollador.empresa.razonSocial}" style="color: #EB6440"></span></p>
+                            <p th:unless="${desarrollador.empresa.razonSocial = null}" class="card-text" style="color: #497174;">Elige una empresa para trabajar y contactala! <span style="color: #EB6440"></span>
+                            <select name="empresa">
+                                <option>Empresa</option>
+                                <option th:each="empresa : ${empresas}"
+                                        th:text="${empresa.razonSocial}">
+                                    
+                                </option>
 
+                            </select>
+                            
+                            </p>
+                            
+                            
                         </div>
+                        
+                        
 
                     </div>
                 </div>

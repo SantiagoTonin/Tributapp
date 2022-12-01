@@ -138,7 +138,11 @@ public class DesarrolladorControlador {
 
         modelo.addAttribute("desarrollador", desarrollador);
 
-        System.out.println(desarrollador.getNombre());
+//        System.out.println(desarrollador.getContratacion());
+        
+        List<Empresa> empresas = empresaServicio.listarEmpresas();
+
+        modelo.addAttribute("empresas", empresas);
 
         return "DesarrolladorInicio.html";
     }
@@ -219,7 +223,7 @@ public class DesarrolladorControlador {
     //@PostMapping(/elegirEmpresa) revisar relacion en autores q me envie el id del objeto
     @PostMapping("/elegirEmpresa")
     public String setEmpresa(@RequestParam String idEmpresa, @RequestParam String idDesarrollador, ModelMap modelo) {
-
+        
         try {
             desarrolladorServicio.elegirEmpresa(idDesarrollador, idEmpresa);
             modelo.put("Exito", "El desarrollador a elegido correctamente una empresa");
