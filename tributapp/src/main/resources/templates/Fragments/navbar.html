@@ -9,34 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/}">Inicio</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-              Desarrollador
-            </a>
-            <ul class="dropdown-menu" aria-expanded="true">
-              <!-- <li><a class="dropdown-item" href="#">Nuevo desarrollador</a></li> -->
-              <li><a class="dropdown-item " th:href="@{/empresa/listarEmpresa}">Administrar desarrolladores</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('EMPRESA')" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Empresa
-            </a>
-            <ul class="dropdown-menu">
-              <!-- <li><a class="dropdown-item" href="#">Nueva empresa</a></li> -->
-              <li><a class="dropdown-item " href="#">Administrar empresas</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ADMIN')" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Contador
-            </a>
-            <ul class="dropdown-menu">
-              <!-- <li><a class="dropdown-item" href="#">Nuevo contador</a></li> -->
-              <li><a class="dropdown-item " href="#">Administrar contadores</a></li>
-            </ul>
+            <a class="nav-link" th:href="@{/infogeneral}">Información</a>
           </li>
         </ul>
       </div>

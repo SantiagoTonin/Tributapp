@@ -5,28 +5,58 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Bootstrap demo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/List.css?1.0}" media="all">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/Navbar.css?1.0}" media="all">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/Info.css?1.0}" media="all">
     </head>
     <body>
+        <div class="d-flex flex-row mb-3">
+        <div class="d-flex flex-column p-3 sidebar" style="width: 240px;">
+                <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span class="fs-4">Panel de Admin</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a th:href="@{/desarrollador/lista}" class="nav-link active" aria-current="page"><i class="bi bi-code-slash"></i> Desarrolladores</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/empresa/listarEmpresa}" class="nav-link link-dark"><i class="bi bi-building"></i> Empresas</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark"><i class="bi bi-wallet-fill"></i> Contadores</a>
+                    </li>
 
-        <nav th:replace="fragments/navbar :: nav_bar"></nav>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle mb-5" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>Admin</strong>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow">
+                        <li><a class="dropdown-item" href="#">Modificar mis datos</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+
+            </div>
 
         <div class="container-fluid">
-            <h2 class="text-center mt-5">Lista de desarrolladores</h2>
+            
+            <div class="d-flex align-items-center mt-5 justify-content-between">
+                <h2 class="">Lista de desarrolladores</h2>
+                <form th:action="@{/desarrollador/busquedaDesarrollador}" class="d-flex">
+                    <input class="form-control me-2" type="search" name="param" placeholder="buscar">
+                    <button class="btn blogin" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            
+            </div>
             <table class="table position-relative mt-5">
-
+            
                 <thead>
-                    <tr>
-                        <th>
-                            <form th:action="@{/desarrollador/busquedaDesarrollador}" class="position-absolute top-0 end-0">
-                                <input type="search" name="param" placeholder="buscar">
-                                <button type="submit">buscar</button>
-                            </form>
-                        </th>
-                    </tr>
+                   
                     <tr>
                         <th scope="col">Imagen de perfil</th>
                         <th scope="col">Nombre y Apellido</th>
@@ -49,15 +79,15 @@
                         <td th:text="${dev.activo}"></td>
                         <td th:text="${dev.contratacion}"></td>
                         <td th:text="${dev.salario}"></td>
-                        <td th:text="${dev.alta}"><input type="checkbox"></td>
-                        <td><a th:href="@{/desarrollador/modificar/__${dev.id}__}" class="card-link"><i class="fas fa-feather-alt"></i> Modificar</a></td>
-                        <td><a th:href="@{/desarrollador/eliminar/__${dev.id}__}" class="card-link">Eliminar</a></td>
+                        <td th:text="${dev.alta}"></td>
+                        <td><a th:href="@{/desarrollador/modificar/__${dev.id}__}" class="card-link link-secondary"><i class="fas fa-feather-alt"></i></a></td>
+                        <td><a th:href="@{/desarrollador/eliminar/__${dev.id}__}" class="card-link link-danger"><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <footer th:replace="fragments/footer :: footer"></footer>
+        </div>
+        <script src="https://kit.fontawesome.com/b22605d384.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>
