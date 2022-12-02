@@ -1,3 +1,4 @@
+
 .blogin {
     background-color: #EB6440;
     border-color: #EB6440;
@@ -20,3 +21,10 @@
     border-color: #497174;
     color: #497174;
 }
+
+.sidebar {
+                height: 100vh;
+                background-color: #D6E4E5;
+            }
+            
+      
