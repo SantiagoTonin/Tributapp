@@ -2,88 +2,110 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>+Info</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <!--<link href="../static/styles/home.css" rel="stylesheet">-->
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/home.css?1.0}" media="all">
-    <link rel="stylesheet" th:href="@{/styles/Navbar.css?1.0}" media="all">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <link rel="stylesheet" th:href="@{/styles/infoindex.css?1.0}" media="all">
-    <link
+  <title>+Info</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <!--<link href="../static/styles/home.css" rel="stylesheet">-->
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/home.css?1.0}" media="all">
+  <link rel="stylesheet" th:href="@{/styles/Navbar.css?1.0}" media="all">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" th:href="@{/styles/infoindex.css?1.0}" media="all">
+  <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
     rel="stylesheet">
 </head>
+
 <body>
-    
-    <!-- navbar -->
 
-    <nav th:replace="fragments/navbar :: nav_bar"></nav>
+  <!-- navbar -->
 
-    <!-- body -->
+  <nav th:replace="fragments/navbar :: nav_bar"></nav>
 
-      <div class="header">
-        <h1>Un solo lugar</h1>
-        <h1>Toda la información necesaria</h1>
-    
-        <p>A continuación podrás encontrar información, enlaces y todo lo que necesitas
-            para estar al tanto de las novedades impositivas.
-        </p>
-      </div>
-      <div class="row1-container">
-        <div class="box box-down cyan">
-          <a href="https://www.bcra.gob.ar/publicacionesestadisticas/tipo_de_cambio_minorista.asp" target="_blank"> 
-          <h2>Cotización Dolar</h2>
-          <p class="content">Conocé a cuanto cotiza el dolar minorista.</p>
-          <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
-          </a>
-        </div>
-        <div class="box red">
-          <a href="https://servicioscf.afip.gob.ar/publico/sitio/contenido/novedad/listado.aspx" target="_blank">
-          <h2>Noticias AFIP</h2>
-          <p class="content">Las últimas novedades oficiales, a tu alcance.</p>
-          <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
-        </a>
-        </div>
-    
-        <div class="box box-down blue">
-          <a href="https://www.anses.gob.ar/consulta/constancia-de-cuil" target="_blank">
-          <h2>Constancia de CUIL</h2>
-          <p class="content">Tramitá tu CUIL de manera ágil y eficiente.</p>
-          <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="">
-        </a>
-        </div>
-      </div>
-      <div class="row2-container">
-        <a href="https://www.argentina.gob.ar/interior/feriados-nacionales-2023" target="_blank">
-        <div class="box orange">
-          <h2>Feriados Nacionales</h2>
-          <p class="content">Mantenete al tanto de qué fechas son feriado en nuestro país.</p>
-          <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="">
-        </a>
-        </div>
-      </div>
-      <footer>
+  <!-- body -->
 
-      <!-- FOOTER -->
+  <div class="header">
+    <h1>Un solo lugar</h1>
+    <h1>Toda la información necesaria</h1>
 
-      <footer th:replace="fragments/Footer :: footer"></footer>
+    <p>A continuación podrás encontrar información, enlaces y todo lo que necesitas
+      para estar al tanto de las novedades impositivas.
+    </p>
+  </div>
+  <div class="row1-container">
+    <div class="box box-down cyan">
+      <a href="https://www.bcra.gob.ar/publicacionesestadisticas/tipo_de_cambio_minorista.asp" target="_blank">
+        <h2>Cotización Dolar</h2>
+        <p class="content">Conocé a cuanto cotiza el dolar minorista.</p>
+        <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+      </a>
+    </div>
+    <div class="box red">
+      <a href="https://servicioscf.afip.gob.ar/publico/sitio/contenido/novedad/listado.aspx" target="_blank">
+        <h2>Noticias AFIP</h2>
+        <p class="content">Las últimas novedades oficiales, a tu alcance.</p>
+        <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
+      </a>
+    </div>
 
-      <!-- SCRIPTS -->
-        <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-            crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
+    <div class="box box-down blue">
+      <a href="https://www.anses.gob.ar/consulta/constancia-de-cuil" target="_blank">
+        <h2>Constancia de CUIL</h2>
+        <p class="content">Tramitá tu CUIL de manera ágil y eficiente.</p>
+        <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="">
+      </a>
+    </div>
+  </div>
+  <div class="row2-container">
+    <div class="box orange">
+      <h2>Feriados Nacionales</h2>
+      <a href="https://www.argentina.gob.ar/interior/feriados-nacionales-2023" target="_blank">
+        <p class="content">Mantenete al tanto de qué fechas son feriado en nuestro país.</p>
+        <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="">
+      </a>
+
+      <script>
+        let dataBank = document.querySelector("#dataBank")
+        fetch( "https://www.dolarsi.com/api/api.php?type=valoresprincipales" ,{
+          
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+
+          data.forEach((info) => {
+            const content = document.createElement("div")
+            content.innerHTML = `
+            <h4> Valor dolar : ${info.casa} </h4>
+            `
+            dataBank.append(content)
+          })
+        }) 
+      </script>
+<div id="dataBank"></div>
+
+    </div>
+  </div>
+
+    <!-- FOOTER -->
+
+    <footer th:replace="fragments/Footer :: footer"></footer>
+
+    <!-- SCRIPTS -->
     <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4a1445b54b.js" crossorigin="anonymous"></script>
+    
 </body>
+
 </html>

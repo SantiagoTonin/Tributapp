@@ -154,7 +154,7 @@ a {
 }
 
 /* initial button */
-.box {
+.bottom {
   width: 200px;
   height: auto;
   float: left;
@@ -170,7 +170,7 @@ a {
   font-weight: 900;
 }
 
-.box:before {
+.bottom:before {
   position: absolute;
   content: '';
   left: 0;
@@ -183,7 +183,7 @@ a {
   transform: translateX(100%);
 }
 
-.box:after {
+.bottom:after {
   position: absolute;
   content: '';
   top: 0;
@@ -196,18 +196,18 @@ a {
   transform: translateX(-100%);
 }
 
-.box:hover {
+.bottom:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.box:hover:before {
+.bottom:hover:before {
   border-color: #262626;
   height: 100%;
   transform: translateX(0);
   transition: .3s transform linear, .3s height linear .3s;
 }
 
-.box:hover:after {
+.bottom:hover:after {
   border-color: #262626;
   height: 100%;
   transform: translateX(0);
