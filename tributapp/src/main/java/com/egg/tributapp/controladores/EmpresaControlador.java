@@ -11,6 +11,9 @@ import com.egg.tributapp.entidades.Empresa;
 import com.egg.tributapp.servicios.DesarrolladorServicio;
 import com.egg.tributapp.servicios.EmpresaServicio;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -122,6 +125,17 @@ public class EmpresaControlador {
             modelo.put("error", ex.getMessage());
         }
         return null;
+    }
+
+    @GetMapping("/inicio")
+    public String inicioEmpresa(ModelMap modelo, HttpSession http) {
+
+        Empresa empresa = (Empresa) http.getAttribute("usuariosession");
+
+
+        modelo.addAttribute("empresa", empresa);
+
+        return "EmpresaInicio.html";
     }
    
 }
