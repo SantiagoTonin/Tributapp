@@ -45,7 +45,7 @@
     <body>
         <div class="container">
 
-            <div class="card mb-3 mt-3 " style="width: 50rem; margin: 0 auto; height: 15rem">
+            <div class="card mb-3 mt-3 " style="width: 60rem; margin: 0 auto; height: 15rem">
                 <div class="row g-0">
                     <div class="col-md-4 mx-auto">
                         <img src="https://img.freepik.com/free-vector/low-code-development-concept-illustration_114360-7294.jpg?w=2000" class="img-fluid" alt="...">
@@ -56,18 +56,19 @@
                             <p class="card-text" style="color: #497174;">Eres un desarrollador <span th:text="${desarrollador.contratacion}" style="color: #EB6440"></span></p>
                             
                             
-                            <p th:if="${desarrollador.empresa.razonSocial != null}" class="card-text" style="color: #497174;">Actualmente te encuentras trabajando en <span th:text="${desarrollador.empresa.razonSocial}" style="color: #EB6440"></span></p>
-                            <p th:unless="${desarrollador.empresa.razonSocial = null}" class="card-text" style="color: #497174;">Elige una empresa para trabajar y contactala! <span style="color: #EB6440"></span>
+                            <p class="card-text" style="color: #497174;">Actualmente te encuentras trabajando en <span th:text="${desarrollador?.empresa?.razonSocial}" style="color: #EB6440"></span></p>
+                            
+                            <p class="card-text" style="color: #497174;">Elige una empresa para trabajar y contactala!
                             <select name="empresa">
                                 <option>Empresa</option>
                                 <option th:each="empresa : ${empresas}"
                                         th:text="${empresa.razonSocial}">
                                     
                                 </option>
-
+                                
                             </select>
-                            
                             </p>
+                            
                             
                             
                         </div>

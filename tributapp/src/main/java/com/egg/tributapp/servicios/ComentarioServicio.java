@@ -21,15 +21,13 @@ public class ComentarioServicio {
     private ComentarioRepositorio comentarioRepositorio;
 
     @Transactional
-    public void nuevoComentario(String texto, Desarrollador desarrollador) throws MiException {
+    public void nuevoComentario(String texto) throws MiException {
 
         validar(texto);
 
         Comentario comentario = new Comentario();
 
         comentario.setTexto(texto);
-        comentario.setDesarrollador(desarrollador);
-
         comentarioRepositorio.save(comentario);
 
     }
@@ -60,12 +58,14 @@ public class ComentarioServicio {
         return comentarios;
     }
 
-//    @Transactional
-//    p  ublic List<Comentario> listarComentariosPorNombre(Desarrollador desarrollador) {
-//
-//        String nombre = desarrollador.getNombre();
-//        List<Comentario> comentarios = (List<Comentario>) comentarioRepositorio.buscarPorNombre(nombre);
-//
-//        return comentarios;
-//    }
+    // @Transactional
+    // p ublic List<Comentario> listarComentariosPorNombre(Desarrollador
+    // desarrollador) {
+    //
+    // String nombre = desarrollador.getNombre();
+    // List<Comentario> comentarios = (List<Comentario>)
+    // comentarioRepositorio.buscarPorNombre(nombre);
+    //
+    // return comentarios;
+    // }
 }
