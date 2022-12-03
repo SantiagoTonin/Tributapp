@@ -7,6 +7,8 @@ import com.egg.tributapp.enumeraciones.Rol;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.DesarrolladorRepositorio;
 import com.egg.tributapp.repositorios.EmpresaRepositorio;
+import com.egg.tributapp.repositorios.UsuarioRepositorio;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,6 +40,9 @@ public class DesarrolladorServicio implements UserDetailsService {
 
     @Autowired
     private EmpresaRepositorio empresaRepostirio;
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     //registro con validacion
     @Transactional
@@ -278,13 +283,18 @@ public class DesarrolladorServicio implements UserDetailsService {
         }
     }
 
+    @Transactional
     public void elegirEmpresa(String idDesarrollador, String idEmpresa) {
 
-        Desarrollador desarrollador = desarrolladorRepositorio.getOne(idDesarrollador);
 
-        Empresa empresa = empresaRepostirio.getOne(idEmpresa);
+        Desarrollador desarrollador = (Desarrollador) usuarioRepositorio.buscarPorEmail(idDesarrollador);
+
+        Empresa empresa = (Empresa) usuarioRepositorio.buscarPorEmail(idEmpresa);
+
 
         desarrollador.setEmpresa(empresa);
+        desarrollador.setContratacion(Contratacion.ENDEPENCIA.toString());
+        desarrolladorRepositorio.save(desarrollador);
 
     }
 }

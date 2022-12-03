@@ -122,6 +122,9 @@
             <div th:if="${ Error != null}">
               <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
             </div>
+            <div th:if="${ Exito != null}">
+              <p th:text="${Exito}" style="font-size: medium; text-align: left; color:green;"></p>
+            </div>
 
             <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
           </form>
@@ -209,6 +212,9 @@
       
             <div th:if="${ Error != null}">
               <p th:text="${Error}" style="font-size: medium; text-align: left; color:red;"></p>
+            </div>
+            <div th:if="${ exito != null}">
+              <p th:text="${exito}" style="font-size: medium; text-align: left; color:green;"></p>
             </div>
       
             <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
@@ -344,6 +350,9 @@
       
             <div th:if="${ error != null}">
               <p th:text="${error}" style="font-size: medium; text-align: left; color:red;"></p>
+            </div>
+            <div th:if="${ exitoo != null}">
+              <p th:text="${exitoo}" style="font-size: medium; text-align: left; color:green;"></p>
             </div>
       
             <button class="btnLogin btnLogin-secondary" type="submit">Registrar</button>
@@ -562,7 +571,7 @@
       nombreEmpresa: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
       password: /^.{4,12}$/, // 4 a 12 digitos.
       email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-      direccion: /^[a-zA-ZÀ-ÿ\s]{2,30}$/ // 7 a 14 numeros.
+      direccion: /^[a-zA-ZÀ-ÿ0-9\s]{2,30}$/ // 2 a 30 numeros.
     }
   
     const camposEmpresa = {

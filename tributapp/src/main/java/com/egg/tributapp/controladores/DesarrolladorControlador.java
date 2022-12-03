@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,7 +47,9 @@ public class DesarrolladorControlador {
     }
 
     @PostMapping("/cargar")
-    public String cargar(@RequestParam String nombre, @RequestParam String email, @RequestParam String password, String contratacion, @RequestParam String password2, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
+    public String cargar(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
+            String contratacion, @RequestParam String password2, MultipartFile foto, String cuil, ModelMap modelo)
+            throws MiException, IOException {
 
         try {
 
@@ -74,7 +77,7 @@ public class DesarrolladorControlador {
         return "DesarrolladorList.html";
     }
 
-    @GetMapping("/modificar/{id}")//end al front
+    @GetMapping("/modificar/{id}") // end al front
     public String modificar(@PathVariable String id, ModelMap modelo) {
 
         modelo.put("desarrollador", desarrolladorServicio.getOne(id));
@@ -82,12 +85,14 @@ public class DesarrolladorControlador {
         return "Update.html";
     }
 
-    @PostMapping("/modificar/{id}")//front al end
-    public String modificar(@PathVariable String id, String nombre, String email, String password, String password2, String contratacion, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
+    @PostMapping("/modificar/{id}") // front al end
+    public String modificar(@PathVariable String id, String nombre, String email, String password, String password2,
+            String contratacion, MultipartFile foto, String cuil, ModelMap modelo) throws MiException, IOException {
 
         try {
 
-            desarrolladorServicio.modificarDesarrollador(id, nombre, email, password, contratacion, password2, foto, cuil);
+            desarrolladorServicio.modificarDesarrollador(id, nombre, email, password, contratacion, password2, foto,
+                    cuil);
 
             modelo.put("Exito", "Desarrollador actualizado");
 
@@ -115,7 +120,8 @@ public class DesarrolladorControlador {
     }
 
     @GetMapping(value = "/busquedaDesarrollador")
-    public String busquedaDesarrollador(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+    public String busquedaDesarrollador(ModelMap modelo,
+            @RequestParam(value = "param", required = false) String param) {
 
         try {
 
@@ -134,13 +140,13 @@ public class DesarrolladorControlador {
     @GetMapping("/inicio")
     public String inicioDesarrollador(ModelMap modelo, HttpSession http) {
 
-        Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
-
-        modelo.addAttribute("desarrollador", desarrollador);
-
         List<Empresa> empresas = empresaServicio.listarEmpresas();
 
         modelo.addAttribute("empresas", empresas);
+
+        Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+
+        modelo.addAttribute("desarrollador", desarrollador);
 
         return "DesarrolladorInicio.html";
     }
@@ -195,8 +201,8 @@ public class DesarrolladorControlador {
         return "DesarrolladorImp.html";
     }
 
-//post mapping que reciba datos de empresa (nombre y email de la empresa) 
-//    desarrolladorImp para crear una empresa    
+    // post mapping que reciba datos de empresa (nombre y email de la empresa)
+    // desarrolladorImp para crear una empresa
     @PostMapping("/impuestosCargaEmpresa")
     public String registroEmpresa(@RequestParam String razonSocial, @RequestParam String direccion,
             @RequestParam String nombre, @RequestParam String email,
@@ -218,7 +224,8 @@ public class DesarrolladorControlador {
         return "redirect:/empresa/listarEmpresa";
     }
 
-    //@PostMapping(/elegirEmpresa) revisar relacion en autores q me envie el id del objeto
+    // @PostMapping(/elegirEmpresa) revisar relacion en autores q me envie el id del
+    // objeto
     @PostMapping("/elegirEmpresa")
     public String setEmpresa(@RequestParam String idEmpresa, @RequestParam String idDesarrollador, ModelMap modelo) {
 
@@ -229,11 +236,11 @@ public class DesarrolladorControlador {
         } catch (Exception e) {
 
             modelo.put("error", e.getMessage());
-            return "DesarrolladorImp.html";
+            return "redirect:/desarrollador/inicio";
 
         }
 
-        return "DesarrolladorImp.html";
+        return "redirect:/desarrollador/inicio";
 
     }
 }

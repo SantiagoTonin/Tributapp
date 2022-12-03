@@ -47,7 +47,7 @@ public class ContadorControlador {
         try {
             contadorServicio.registrar(nombre, email, password, password2, telefono, matricula, provincia, foto);
 
-            modelo.put("exito", "El Contador/a fue cargado correctamente!");
+            modelo.put("exitoo", "El Contador/a fue cargado correctamente!");
 
         } catch (MiException ex) {
 
