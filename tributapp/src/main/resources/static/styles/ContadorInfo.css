@@ -1,0 +1,112 @@
+.contenedor-tarjeta {
+  width: 75%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  border: 2px solid rgb(45, 41, 41);
+  border-radius: 3px;
+  background-image: url(https://img.freepik.com/fotos-premium/fondo-textura-papel-gris-tarjeta_7189-1801.jpg);
+  background-size: cover;
+  margin: 22px auto;
+}
+
+.contenedor-imagen {
+  height: 335px;
+  width: 20%;
+  display: flex;
+  margin-right: 15px;
+}
+
+.contenedor-datos {
+  width: 80%;
+  height: 150px;
+  font-size: medium;
+}
+
+.campos {
+  display: inline-flex;
+  margin: 14px 36px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-size: bold;
+}
+
+.datos {
+  font-family: 'Kanit', sans-serif;
+  padding-left: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.boton-comentario {
+  margin-left: 10px;
+}
+
+.titulo {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  text-decoration: underline;
+  display: inline-block;
+
+}
+
+.comentarios {
+  padding: 10px;
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  margin-top: 5px;
+}
+
+.ver-comentarios {
+  margin-left: 39%;
+  margin-bottom: 10px;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 800,
+    'GRAD' 0,
+    'opsz' 48;
+  margin-right: 2px;
+}
+
+.ver-comentarios {
+  text-decoration: none;
+  color: blue;
+  background-color: transparent;
+  text-transform: capitalize;
+  text-decoration: underline;
+  border: 0px solid white;
+  cursor: pointer;
+}
+
+
+.ver-comentarios:active {
+  color: blueviolet;
+}
+
+.botonAdd-comentario {
+  text-decoration: none;
+  font-weight: bold;
+  background-color: rgb(0, 0, 0);
+  margin-left: 716px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  width: auto;
+  height: 30px;
+  color: white;
+}
+
+.botonAdd-comentario:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.botonAdd-comentario:active {
+  background-color: rgb(16, 3, 91);
+}

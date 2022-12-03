@@ -1,7 +1,9 @@
 package com.egg.tributapp.controladores;
 
+import com.egg.tributapp.entidades.Comentario;
 import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.excepciones.MiException;
+import com.egg.tributapp.servicios.ComentarioServicio;
 import com.egg.tributapp.servicios.ContadorServicio;
 import java.io.IOException;
 import java.util.List;
@@ -27,6 +29,9 @@ public class ContadorControlador {
     @Autowired
     private ContadorServicio contadorServicio;
 
+    @Autowired
+    private ComentarioServicio comentarioServicio;
+
     @GetMapping("/cargarContador")
     public String cargarContador(ModelMap modelo) {
 
@@ -36,7 +41,8 @@ public class ContadorControlador {
     @PostMapping("/cargar")
     public String cargar(@RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula, @RequestParam String provincia, MultipartFile foto, ModelMap modelo) throws IOException {
+            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula,
+            @RequestParam String provincia, MultipartFile foto, ModelMap modelo) throws IOException {
 
         try {
             contadorServicio.registrar(nombre, email, password, password2, telefono, matricula, provincia, foto);
@@ -47,7 +53,7 @@ public class ContadorControlador {
 
             modelo.put("error", ex.getMessage());
 
-            return "login.html";  // volvemos a cargar el formulario.
+            return "login.html"; // volvemos a cargar el formulario.
         }
         return "login.html";
     }
@@ -71,9 +77,11 @@ public class ContadorControlador {
     @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable String id, @RequestParam String nombre,
             @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula, @RequestParam String provincia, MultipartFile foto, ModelMap modelo) throws IOException {
+            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula,
+            @RequestParam String provincia, MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.modificarContador(id, nombre, email, password, password2, telefono, matricula, provincia, foto);
+            contadorServicio.modificarContador(id, nombre, email, password, password2, telefono, matricula, provincia,
+                    foto);
 
             return "redirect:../lista";
 
@@ -95,17 +103,17 @@ public class ContadorControlador {
     }
 
     @GetMapping("/inicio")
-    public String inicioContador(ModelMap modelo,HttpSession http){
+    public String inicioContador(ModelMap modelo, HttpSession http) {
 
         Contador contador = (Contador) http.getAttribute("usuariosession");
 
-        modelo.addAttribute("contador",contador);
+        modelo.addAttribute("contador", contador);
 
         System.out.println(contador.getNombre());
 
         return "ContadorInicio.html";
     }
-    
+
     @GetMapping("/inicio/{id}")
     public ResponseEntity<byte[]> imagenContador(@PathVariable String id) {
 
@@ -121,7 +129,8 @@ public class ContadorControlador {
     }
 
     @GetMapping(value = "/busquedaEmail")
-    public String busquedaContadorEmail(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+    public String busquedaContadorEmail(ModelMap modelo,
+            @RequestParam(value = "param", required = false) String param) {
 
         try {
 
@@ -138,7 +147,8 @@ public class ContadorControlador {
     }
 
     @GetMapping(value = "/busquedaProvincia")
-    public String busquedaContadorProvincia(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+    public String busquedaContadorProvincia(ModelMap modelo,
+            @RequestParam(value = "param", required = false) String param) {
 
         try {
 
@@ -155,7 +165,8 @@ public class ContadorControlador {
     }
 
     @GetMapping(value = "/busquedaNombre")
-    public String busquedaContadorNombre(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+    public String busquedaContadorNombre(ModelMap modelo,
+            @RequestParam(value = "param", required = false) String param) {
 
         try {
 
@@ -172,7 +183,8 @@ public class ContadorControlador {
     }
 
     @GetMapping(value = "/busquedaMatricula")
-    public String busquedaContadorMatricula(ModelMap modelo, @RequestParam(value = "param", required = false) String param) {
+    public String busquedaContadorMatricula(ModelMap modelo,
+            @RequestParam(value = "param", required = false) String param) {
 
         try {
 
@@ -186,6 +198,52 @@ public class ContadorControlador {
         }
 
         return null;
+    }
+
+    @GetMapping("/listaInfo")
+    public String listaInfo(ModelMap modelo) {
+        List<Contador> contadores = contadorServicio.listarContadores();
+        List<Comentario> comentario = comentarioServicio.listarComentarios();
+        modelo.addAttribute("comentario",comentario);
+        modelo.addAttribute("contadores", contadores);
+
+        return "ContadorInfo.html";
+    }
+
+    @GetMapping("/info/{id}")
+    public ResponseEntity<byte[]> imagenInfo(@PathVariable String id) {
+
+        Contador contador = contadorServicio.getOne(id);
+
+        byte[] imagen = contador.getFoto();
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
+    }
+
+    @PostMapping("/cargarComen")
+    public String cargarComentario(@RequestParam String texto,
+            ModelMap modelo) throws MiException {
+
+        try {
+
+            comentarioServicio.nuevoComentario(texto);
+
+            modelo.put("Exito", "El comentario fue cargado con exito");
+
+        } catch (MiException ex) {
+
+            modelo.put("Error", ex.getMessage());
+            
+            return "ContadorInfo.html";
+        
+        }
+
+        return "ContadorInfo.html";
+
     }
 
 }

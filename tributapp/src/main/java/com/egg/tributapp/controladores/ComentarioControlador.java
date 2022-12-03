@@ -39,7 +39,7 @@ public class ComentarioControlador {
 
         try {
 
-            comentarioServicio.nuevoComentario(texto, desarrollador);
+            comentarioServicio.nuevoComentario(texto);
 
             modelo.put("Exito", "El comentario fue cargado con exito");
 
