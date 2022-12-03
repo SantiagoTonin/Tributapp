@@ -1,0 +1,14 @@
+#img{
+    position: relative;
+    width: 35rem;
+}
+.card-body{
+    margin-left: 150px;
+    position: relative;
+    top:120px;
+}
+.divVolver{
+    position: relative;
+    top:250px;
+}
+

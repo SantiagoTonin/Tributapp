@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContadorRepositorio extends JpaRepository<Contador, String> {
 
-    @Query("SELECT u FROM Contador u WHERE u.email = :email")
+    @Query("SELECT u FROM Usuario u WHERE u.email = :email")
     public Contador buscarPorEmail(@Param("email")String email);
     
     

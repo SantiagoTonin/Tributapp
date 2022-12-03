@@ -64,7 +64,7 @@ public class ContadorServicio implements UserDetailsService{
     @Transactional
     public void modificarContador(String id, String nombre, String email, String password, String password2, String telefono, String matricula, String provincia, MultipartFile foto) throws MiException, IOException {
 
-        validar(id, nombre, email, password, password2, telefono, matricula, provincia);
+        validar(nombre, email, password, password2, telefono, matricula, provincia);
 
         Optional<Contador> respuesta = contadorRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -72,7 +72,7 @@ public class ContadorServicio implements UserDetailsService{
             Contador contador = respuesta.get();
             contador.setNombre(nombre);
             contador.setEmail(email);
-            contador.setPassword(password);
+            contador.setPassword(new BCryptPasswordEncoder().encode(password));
             contador.setRol(Rol.CONTADOR);
             contador.setTelefono(telefono);
             contador.setMatricula(matricula);

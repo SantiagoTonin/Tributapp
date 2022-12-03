@@ -44,10 +44,15 @@
 
 footer{
     position:relative;
-    left:-700px;
-    bottom:-400px;
-    width: 120%;
+    left:0px;
+    bottom:-600px;
+    width: 100%;
 }
+.circulo {
+    clip-path: circle(50% at 50% 50%);
+    width: 70px;
+    height: 70px;
+  }
 
 
 

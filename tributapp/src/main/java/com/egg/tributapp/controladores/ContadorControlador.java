@@ -69,11 +69,11 @@ public class ContadorControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, @RequestParam String nombre,
-            @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2, @RequestParam String telefono, @RequestParam String matricula, @RequestParam String provincia, MultipartFile foto, ModelMap modelo) throws IOException {
+    public String modificar(@PathVariable String id, String nombre,
+            String email, String password,
+            String password2, String telefono, String matricula, String provincia, MultipartFile foto, ModelMap modelo) throws IOException {
         try {
-            contadorServicio.modificarContador(id, nombre, email, password, password2, telefono, matricula, provincia, foto);
+            contadorServicio.modificarContador(id,nombre, email, password,password2, telefono, matricula, provincia, foto);
 
             return "redirect:../lista";
 
@@ -111,7 +111,7 @@ public class ContadorControlador {
 
         Contador contador = contadorServicio.getOne(id);
 
-        byte[] imagen = contador.foto;
+        byte[] imagen = contador.getFoto();
 
         HttpHeaders headers = new HttpHeaders();
 
