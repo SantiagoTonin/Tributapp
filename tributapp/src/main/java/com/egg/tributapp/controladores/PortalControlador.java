@@ -49,7 +49,7 @@ public class PortalControlador {
         
         if (logueado.getRol().toString().equals("ADMIN")) {
             
-            return "redirect:/admin/dashboard";
+            return "redirect:/desarrollador/lista";
             
         }
 

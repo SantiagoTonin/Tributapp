@@ -2,6 +2,7 @@ package com.egg.tributapp.controladores;
 
 import com.egg.tributapp.entidades.Comentario;
 import com.egg.tributapp.entidades.Contador;
+import com.egg.tributapp.entidades.Desarrollador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.servicios.ComentarioServicio;
 import com.egg.tributapp.servicios.ContadorServicio;
@@ -201,7 +202,10 @@ public class ContadorControlador {
     }
 
     @GetMapping("/listaInfo")
-    public String listaInfo(ModelMap modelo) {
+    public String listaInfo(ModelMap modelo, HttpSession http) {
+        Desarrollador desarrollador = (Desarrollador) http.getAttribute("usuariosession");
+
+        modelo.addAttribute("desarrollador", desarrollador);
         List<Contador> contadores = contadorServicio.listarContadores();
         List<Comentario> comentario = comentarioServicio.listarComentarios();
         

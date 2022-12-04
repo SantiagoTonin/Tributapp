@@ -1,0 +1,35 @@
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(72,78,85,.6);
+    background-color: #D6E4E5;
+}
+
+.card {
+    transition: transform .5s;
+
+}
+
+.enlace:hover {
+
+    color: #1f2029;
+}
+
+.enlace {
+    color: #497174;
+    text-decoration: none;
+
+}
+
+.circulo {
+    clip-path: circle(50% at 50% 50%);
+    width: 70px;
+    height: 70px;
+}
+
+footer{
+    margin-top: 5rem;
+}
+
+
+   
+
