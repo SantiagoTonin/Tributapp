@@ -96,11 +96,11 @@
     </div>
     <div class="row2-container">
       <div class="box orange">
-        <h2>Feriados Nacionales</h2>
         <a
-          href="https://www.argentina.gob.ar/interior/feriados-nacionales-2023"
-          target="_blank"
+        href="https://www.argentina.gob.ar/interior/feriados-nacionales-2023"
+        target="_blank"
         >
+        <h2>Feriados Nacionales</h2>
           <p class="content">
             Mantenete al tanto de qué fechas son feriado en nuestro país.
           </p>
@@ -114,10 +114,10 @@
             {}
           )
             .then((response) => response.json())
-            .then((data) => {              
+            .then((data) => {
 
               data.forEach(item => {
-                console.log(item);
+                console.log(item["0"]);
               });
             });
         </script>
@@ -127,7 +127,7 @@
 
     <div class="vuelta" align="center">
       <button>
-        <span>Volver</span>
+        <span><a th:href="@{/}" class="quitar">Volver</a></span>
       </button>
     </div>
 

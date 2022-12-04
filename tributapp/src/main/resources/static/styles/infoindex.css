@@ -147,11 +147,16 @@ h2 {
 }
 
 /* volver button */
+.quitar{
+    text-decoration: none;
+    color: ghostwhite;
+}
 .vuelta{
     margin-top: 75px;
     margin-bottom: 40px;
 }
 button {
+    text-decoration: none;
     outline: none;
     cursor: pointer;
     border: none;
@@ -167,7 +172,7 @@ button {
     border-radius: 500px;
     overflow: hidden;
     background: #eb6440;
-    color: ghostwhite;
+    color: ghostwhite !important;
    }
    
    button span {
@@ -177,11 +182,13 @@ button {
    }
    
    button:hover span {
+    text-decoration: none;
     color: white;
    }
    
    button::before,
    button::after {
+    text-decoration: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -191,6 +198,7 @@ button {
    }
    
    button::before {
+    text-decoration: none;
     content: "";
     background: black;
     width: 120%;
