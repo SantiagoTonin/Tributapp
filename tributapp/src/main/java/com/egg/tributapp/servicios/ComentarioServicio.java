@@ -1,11 +1,12 @@
 package com.egg.tributapp.servicios;
 
 import com.egg.tributapp.entidades.Comentario;
-import com.egg.tributapp.entidades.Desarrollador;
+
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.ComentarioRepositorio;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class ComentarioServicio {
         Comentario comentario = new Comentario();
 
         comentario.setTexto(texto);
+        comentario.setFecha(new Date());
         comentarioRepositorio.save(comentario);
 
     }
@@ -55,6 +57,8 @@ public class ComentarioServicio {
         List<Comentario> comentarios = new ArrayList();
 
         comentarios = comentarioRepositorio.findAll();
+
+        Collections.sort(comentarios, Comparadores.ordenAsc);
 
         return comentarios;
     }

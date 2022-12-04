@@ -1,9 +1,15 @@
 package com.egg.tributapp.entidades;
 
+import java.util.Date;
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Getter
-@Setter 
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comentario {
@@ -22,13 +28,15 @@ public class Comentario {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String texto;
+    private Date fecha;
+
+
 
     @ManyToOne
-    private Desarrollador desarrollador;//no deberia ser un Strin donde saque el nombre del desarrollador unicamente????????????
+    private Desarrollador desarrollador;
 
-//    @OneToOne  un comentario va a tener una empresa o contador
-//    private Contador contador;
-//
-//    @OneToOne 
-//    private Empresa empresa;
+    @ManyToOne
+    private Contador contador;
+                                        
+
 }
