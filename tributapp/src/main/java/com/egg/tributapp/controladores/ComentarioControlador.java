@@ -33,27 +33,7 @@ public class ComentarioControlador {
         return "comentario_cargar.html";
     }
 
-    @PostMapping("/cargarComen")
-    public String cargarComentario(@RequestParam String texto,
-            @RequestParam Desarrollador desarrollador, ModelMap modelo) throws MiException {
 
-        try {
-
-            comentarioServicio.nuevoComentario(texto);
-
-            modelo.put("Exito", "El comentario fue cargado con exito");
-
-        } catch (MiException ex) {
-
-            modelo.put("Error", ex.getMessage());
-            
-            return "comentario_cargar.html";
-        
-        }
-
-        return "comentario.html";
-
-    }
     
 
 }

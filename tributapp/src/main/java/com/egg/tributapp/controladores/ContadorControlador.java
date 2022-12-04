@@ -204,6 +204,8 @@ public class ContadorControlador {
     public String listaInfo(ModelMap modelo) {
         List<Contador> contadores = contadorServicio.listarContadores();
         List<Comentario> comentario = comentarioServicio.listarComentarios();
+        
+        modelo.addAttribute("map",contadorServicio.contadoresComentarios());
         modelo.addAttribute("comentario",comentario);
         modelo.addAttribute("contadores", contadores);
 
@@ -225,12 +227,12 @@ public class ContadorControlador {
     }
 
     @PostMapping("/cargarComen")
-    public String cargarComentario(@RequestParam String texto,
+    public String cargarComentario(@RequestParam String texto,@RequestParam String emailContador,
             ModelMap modelo) throws MiException {
 
         try {
 
-            comentarioServicio.nuevoComentario(texto);
+            comentarioServicio.nuevoComentario(texto,emailContador);
 
             modelo.put("Exito", "El comentario fue cargado con exito");
 

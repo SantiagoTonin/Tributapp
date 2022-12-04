@@ -230,7 +230,7 @@ public class DesarrolladorControlador {
     public String setEmpresa(@RequestParam String idEmpresa, @RequestParam String idDesarrollador, ModelMap modelo) {
 
         try {
-            desarrolladorServicio.elegirEmpresa(idDesarrollador, idEmpresa);
+            desarrolladorServicio.elegirEmpresa(idDesarrollador, idEmpresa); 
             modelo.put("Exito", "El desarrollador a elegido correctamente una empresa");
 
         } catch (Exception e) {

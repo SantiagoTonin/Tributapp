@@ -1,11 +1,13 @@
 package com.egg.tributapp.servicios;
 
+import com.egg.tributapp.entidades.Comentario;
 import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.enumeraciones.Rol;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.ContadorRepositorio;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
@@ -24,13 +26,17 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class ContadorServicio implements UserDetailsService{
+public class ContadorServicio implements UserDetailsService {
 
     @Autowired
     private ContadorRepositorio contadorRepositorio;
 
+    @Autowired
+    private ComentarioServicio comentarioServicio;
+
     @Transactional
-    public void registrar(String nombre, String email, String password, String password2, String telefono, String matricula, String provincia, MultipartFile foto) throws MiException, IOException {
+    public void registrar(String nombre, String email, String password, String password2, String telefono,
+            String matricula, String provincia, MultipartFile foto) throws MiException, IOException {
 
         validar(nombre, email, password, password2, telefono, matricula, provincia);
 
@@ -39,15 +45,15 @@ public class ContadorServicio implements UserDetailsService{
         contador.setNombre(nombre);
         contador.setEmail(email);
         contador.setPassword(new BCryptPasswordEncoder().encode(password));
-        //contador.setPassword2(password2);
+        // contador.setPassword2(password2);
         contador.setTelefono(telefono);
         contador.setMatricula(matricula);
         contador.setProvincia(provincia);
         contador.setRol(Rol.CONTADOR);
         contador.setFoto(foto.getBytes());
 
-        //Imagen imagen = imagenServicio.guardar(archivo);
-        //contador.setImagen(imagen);
+        // Imagen imagen = imagenServicio.guardar(archivo);
+        // contador.setImagen(imagen);
         contadorRepositorio.save(contador);
     }
 
@@ -61,8 +67,36 @@ public class ContadorServicio implements UserDetailsService{
         return contadores;
     }
 
+    public HashMap<String,List<Comentario>> contadoresComentarios() {
+        // HashMap<String,List<Comentario>>
+        List<Contador> contador = listarContadores();
+        HashMap<String,List<Comentario>> comentarios = new HashMap<String,List<Comentario>>();
+
+        
+
+        for (Contador contador2 : contador) {
+
+            comentarios.put(contador2.getId(),comentarioServicio.listarComentario(contador2.getId()));        
+        }
+
+
+        // for (int i = 0; i < contador.size(); i++) {
+            
+        //     List<Comentario> p = comentarios.get(contador.get(i).getId());
+        //     for (Comentario comentario : p) {
+                
+        //         System.out.println(comentario.getTexto());
+        //     }
+        //     System.out.println("----------------");
+        // }
+
+        
+        return comentarios;
+    }
+
     @Transactional
-    public void modificarContador(String id, String nombre, String email, String password, String password2, String telefono, String matricula, String provincia, MultipartFile foto) throws MiException, IOException {
+    public void modificarContador(String id, String nombre, String email, String password, String password2,
+            String telefono, String matricula, String provincia, MultipartFile foto) throws MiException, IOException {
 
         validar(nombre, email, password, password2, telefono, matricula, provincia);
 
@@ -87,7 +121,8 @@ public class ContadorServicio implements UserDetailsService{
         return contadorRepositorio.getOne(id);
     }
 
-    private void validar(String nombre, String email, String password, String password2, String telefono, String matricula, String provincia) throws MiException {
+    private void validar(String nombre, String email, String password, String password2, String telefono,
+            String matricula, String provincia) throws MiException {
 
         List<Contador> emails = contadorRepositorio.findAll();
 
@@ -130,10 +165,9 @@ public class ContadorServicio implements UserDetailsService{
         contadorRepositorio.delete(contadores);
 
     }
-    
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
 
         Contador contador = contadorRepositorio.buscarPorEmail(email);
 
@@ -150,8 +184,6 @@ public class ContadorServicio implements UserDetailsService{
             HttpSession session = attr.getRequest().getSession(true);
 
             session.setAttribute("usuariosession", contador);
-            
-            
 
             return new User(contador.getEmail(), contador.getPassword(), permisos);
 
@@ -162,7 +194,8 @@ public class ContadorServicio implements UserDetailsService{
         }
     }
 
-    private void validar(String id, String nombre, String email, String password, String password2, String telefono, String matricula, String provincia) throws MiException {
+    private void validar(String id, String nombre, String email, String password, String password2, String telefono,
+            String matricula, String provincia) throws MiException {
         List<Contador> emails = contadorRepositorio.findAll();
 
         Contador contador = contadorRepositorio.getOne(id);

@@ -1,9 +1,11 @@
 package com.egg.tributapp.servicios;
 
 import com.egg.tributapp.entidades.Comentario;
-
+import com.egg.tributapp.entidades.Contador;
 import com.egg.tributapp.excepciones.MiException;
 import com.egg.tributapp.repositorios.ComentarioRepositorio;
+import com.egg.tributapp.repositorios.UsuarioRepositorio;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -22,13 +24,19 @@ public class ComentarioServicio {
     @Autowired
     private ComentarioRepositorio comentarioRepositorio;
 
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
+
     @Transactional
-    public void nuevoComentario(String texto) throws MiException {
+    public void nuevoComentario(String texto, String emailContador) throws MiException {
 
         validar(texto);
 
+        Contador contador = (Contador) usuarioRepositorio.buscarPorEmail(emailContador);
+
         Comentario comentario = new Comentario();
 
+        comentario.setContador(contador);
         comentario.setTexto(texto);
         comentario.setFecha(new Date());
         comentarioRepositorio.save(comentario);
@@ -58,19 +66,15 @@ public class ComentarioServicio {
 
         comentarios = comentarioRepositorio.findAll();
 
-        Collections.sort(comentarios, Comparadores.ordenAsc);
+        
 
         return comentarios;
     }
 
-    // @Transactional
-    // p ublic List<Comentario> listarComentariosPorNombre(Desarrollador
-    // desarrollador) {
-    //
-    // String nombre = desarrollador.getNombre();
-    // List<Comentario> comentarios = (List<Comentario>)
-    // comentarioRepositorio.buscarPorNombre(nombre);
-    //
-    // return comentarios;
-    // }
+    public List<Comentario> listarComentario(String id) {
+
+        List<Comentario> comentariofilt = comentarioRepositorio.buscarId(id);
+        Collections.sort(comentariofilt, Comparadores.ordenAsc);
+        return comentariofilt;
+    }
 }
