@@ -53,7 +53,7 @@
       </p>
     </div>
     <div class="row1-container">
-      <div class="box box-down cyan">
+      <div class="box box-down cyan caja1">
         <a
           href="https://www.bcra.gob.ar/publicacionesestadisticas/tipo_de_cambio_minorista.asp"
           target="_blank"
@@ -114,15 +114,10 @@
             {}
           )
             .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
+            .then((data) => {              
 
-              data.forEach((info) => {
-                const content = document.createElement("div");
-                content.innerHTML = `
-            <h4> Valor dolar : ${info.casa} </h4>
-            `;
-                dataBank.append(content);
+              data.forEach(item => {
+                console.log(item);
               });
             });
         </script>

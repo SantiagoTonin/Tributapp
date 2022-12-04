@@ -44,7 +44,7 @@ h1:last-of-type {
     text-align: center;
     line-height: 0.8;
     margin-bottom: 50px;
-    margin-top: 100px;
+    margin-top: 35px;
 }
 
 .header p {
@@ -62,7 +62,7 @@ h1:last-of-type {
     border-radius: 5px;
     box-shadow: 0px 30px 40px -20px var(--grayishBlue);
     padding: 30px;
-    margin: 20px;  
+    margin: 20px;
 }
 
 img {
@@ -94,6 +94,25 @@ img {
 .orange {
     border-top: 3px solid var(--orange);
 }
+
+.cyan :hover{
+    border: 1px solid var(--cyan);
+    border-radius: 10px;
+}
+.red :hover{
+    border: 1px solid var(--red);
+    border-radius: 10px;
+}
+.blue :hover{
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+}
+.orange :hover{
+    border: 1px solid var(--orange);
+    border-radius: 10px;
+}
+
+
 
 h2 {
     color: var(--varyDarkBlue);
