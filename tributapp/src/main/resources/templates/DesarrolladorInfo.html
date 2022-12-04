@@ -1,108 +1,145 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Información para desarrolladores</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/Info.css?1.0}" media="all">
-  </head>
-  <body>
-      
-      <nav class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-        
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              
-            <!-- <input class="form-control me-2" type="search" aria-label="Search" placeholder="Buscar en el sitio">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Información para desarrolladores</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/Info.css?1.0}" media="all">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-light" style="background-color: #EFF5F5;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><i class="bi bi-info-circle"></i> Tributapp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+        <!-- <input class="form-control me-2" type="search" aria-label="Search" placeholder="Buscar en el sitio">
             <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button> -->
-            <div class="input-group">
-              
-                
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
-                    
-                    <li class="nav-item dropdown me-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Menú
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" th:href="@{/desarrollador/inicio}">Ir al inicio</a></li>
-            <li><a class="dropdown-item"  th:href="@{/desarrollador/impuestos}">Calcula tus impuestos</a></li>
-            <li><a class="dropdown-item" href="#">Busca un contador</a></li>
-          </ul>
-        </li>
-                
-             <li class="nav-item">
-          <a th:href="@{/logout}" class="nav-link me-2" role="button" aria-disabled="true">Cerrar sesión</a>
-        </li>
-            
-            <img class="circulo ms-2" th:if="${desarrollador.foto != null}" th:src="@{/desarrollador/inicio/__${desarrollador.id}__}" alt="Foto de Develop">
-           
-          </div>
-          
+        <div class="input-group">
+
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+
+            <li class="nav-item dropdown me-2">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Menú
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" th:href="@{/desarrollador/inicio}">Ir al inicio</a></li>
+                <li><a class="dropdown-item" th:href="@{/desarrollador/impuestos}">Calcula tus impuestos</a></li>
+                <li><a class="dropdown-item" href="#">Busca un contador</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a th:href="@{/logout}" class="nav-link me-2" role="button" aria-disabled="true">Cerrar sesión</a>
+            </li>
+
+            <img class="circulo ms-2" th:if="${desarrollador.foto != null}"
+              th:src="@{/desarrollador/inicio/__${desarrollador.id}__}" alt="Foto de Develop">
+
         </div>
+
       </div>
-    </nav>
-      
-      <div class="container">
-          <h3 class="text-center mt-3">Sitios útiles para desarrolladores</h3>  
-          
-          <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
-  <div class="col">
-      <a href="https://monotributo.afip.gob.ar/Public/landing-monotributo.aspx" class="enlace"><div class="card h-100 ">
-      <img src="https://media.ambito.com/p/558bd6bc3abcd2a7e1e6bb0f5f7fadb9/adjuntos/239/imagenes/038/960/0038960005/monotributo-afip-appjpg.jpg" class="card-img-top" alt="...">
-      <div class="card-body text-center">
-        <h5 class="card-title">Monotributo</h5>
-        <p class="card-text">Gestioná todos los trámites relacionados al monotributo</p>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h3 class="text-center mt-3">Sitios útiles para desarrolladores</h3>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+      <div class="col">
+        <a href="https://monotributo.afip.gob.ar/Public/landing-monotributo.aspx" class="enlace">
+          <div class="card h-100 ">
+            <img
+              src="https://media.ambito.com/p/558bd6bc3abcd2a7e1e6bb0f5f7fadb9/adjuntos/239/imagenes/038/960/0038960005/monotributo-afip-appjpg.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title">Monotributo</h5>
+              <p class="card-text">Gestioná todos los trámites relacionados al monotributo</p>
+            </div>
+          </div>
+        </a>
       </div>
-    </div></a>
+      <div class="col">
+        <a href="https://www.afip.gob.ar/fe/" class="enlace">
+          <div class="card h-100">
+            <img
+              src="https://www.analdex.org/wp-content/uploads/2018/05/exportacion_servicios_figura_principal-750x365.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title">Facturación</h5>
+              <p class="card-text">Conocé los comprobantes de formato digital y enterate cómo operar con este sistema de
+                facturación</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="https://www.afip.gob.ar/aportesenlinea/" class="enlace">
+          <div class="card h-100">
+            <img
+              src="https://media.ambito.com/p/958da48924083d24f828579b74ac6190/adjuntos/239/imagenes/039/138/0039138245/afipjpg.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title">Conocé tus aportes</h5>
+              <p class="card-text">Un servicio para que los trabajadores en relación de dependencia controlen sus
+                aportes</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="http://servicioswww.anses.gob.ar/ooss2/" class="enlace">
+          <div class="card h-100">
+            <img
+              src="https://resizer.iproimg.com/unsafe/880x/filters:format(webp)/https://assets.iproup.com/assets/jpg/2019/09/5928.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title">Cononcé tu Obra Social</h5>
+              <!--        <p class="card-text"> obra social a través del portal de ANSES</p>-->
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="https://seti.afip.gob.ar/padron-puc-constancia-internet/ConsultaConstanciaAction.do" class="enlace">
+          <div class="card h-100">
+            <img src="https://seguro-seguros.com.ar/wp-content/uploads/2021/03/ranking-seguros-de-argentina-768x432.jpg"
+              class="card-img-top" alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title">Constancia de Inscripción</h5>
+              <!--<p class="card-text">Constancia de Inscripción</p>-->
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="col">
-      <a href="https://www.afip.gob.ar/fe/" class="enlace"><div class="card h-100">
-      <img src="https://www.analdex.org/wp-content/uploads/2018/05/exportacion_servicios_figura_principal-750x365.jpg" class="card-img-top" alt="...">
-      <div class="card-body text-center">
-        <h5 class="card-title">Facturación</h5>
-        <p class="card-text">Conocé los comprobantes de formato digital y enterate cómo operar con este sistema de facturación</p>
-      </div>
-    </div></a>
+
+  <div class="vuelta" align="center">
+    <button>
+      <span><a th:href="@{/desarrollador/inicio}">Volver</a></span>
+    </button>
   </div>
-  <div class="col">
-      <a href="https://www.afip.gob.ar/aportesenlinea/" class="enlace"><div class="card h-100">
-      <img src="https://media.ambito.com/p/958da48924083d24f828579b74ac6190/adjuntos/239/imagenes/039/138/0039138245/afipjpg.jpg" class="card-img-top" alt="...">
-      <div class="card-body text-center">
-        <h5 class="card-title">Conocé tus aportes</h5>
-        <p class="card-text">Un servicio para que los trabajadores en relación de dependencia controlen sus aportes</p>
-      </div>
-    </div></a>
-  </div>
-  <div class="col">
-      <a href="http://servicioswww.anses.gob.ar/ooss2/" class="enlace"><div class="card h-100">
-      <img src="https://resizer.iproimg.com/unsafe/880x/filters:format(webp)/https://assets.iproup.com/assets/jpg/2019/09/5928.jpg" class="card-img-top" alt="...">
-      <div class="card-body text-center">
-        <h5 class="card-title">Cononcé tu Obra Social</h5>
-<!--        <p class="card-text"> obra social a través del portal de ANSES</p>-->
-      </div>
-    </div></a>
-  </div>
-  <div class="col">
-      <a href="https://seti.afip.gob.ar/padron-puc-constancia-internet/ConsultaConstanciaAction.do" class="enlace"><div class="card h-100">
-      <img src="https://seguro-seguros.com.ar/wp-content/uploads/2021/03/ranking-seguros-de-argentina-768x432.jpg" class="card-img-top" alt="...">
-      <div class="card-body text-center">
-        <h5 class="card-title">Constancia de Inscripción</h5>
-        <!--<p class="card-text">Constancia de Inscripción</p>-->
-      </div>
-    </div></a>
-  </div>
-</div>
-      </div>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
+
+  <footer th:replace="fragments/Footer :: footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

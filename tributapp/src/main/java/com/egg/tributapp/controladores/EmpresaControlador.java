@@ -6,24 +6,21 @@
  */
 package com.egg.tributapp.controladores;
 
-import com.egg.tributapp.entidades.Admin;
-import com.egg.tributapp.entidades.Empresa;
-import com.egg.tributapp.servicios.DesarrolladorServicio;
-import com.egg.tributapp.servicios.EmpresaServicio;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.egg.tributapp.entidades.Empresa;
+import com.egg.tributapp.servicios.EmpresaServicio;
 
 /**
  *
@@ -60,7 +57,7 @@ public class EmpresaControlador {
             return "login.html";
         }
 
-        return "redirect:/empresa/listarEmpresa";
+        return "redirect:/login";
     }
 
     @GetMapping("/listarEmpresa")
