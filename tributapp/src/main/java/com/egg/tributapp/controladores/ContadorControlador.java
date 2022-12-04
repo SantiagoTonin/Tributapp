@@ -238,11 +238,11 @@ public class ContadorControlador {
 
             modelo.put("Error", ex.getMessage());
             
-            return "ContadorInfo.html";
+            return  "redirect:/contador/listaInfo";
         
         }
 
-        return "ContadorInfo.html";
+        return  "redirect:/contador/listaInfo";
 
     }
 
