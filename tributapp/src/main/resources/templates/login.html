@@ -146,7 +146,7 @@
                   <i class="formulario__validacion-estado fas fa-times-circle"></i>
                 </div>
                 <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener
-                  numeros, letras y guion bajo.</p>
+                  numeros y letras.</p>
               </div>
       
               <div class="mb-3">
@@ -158,7 +158,7 @@
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                   </div>
                   <p class="formulario__input-error">Razon Social tiene que ser de 4 a 16 dígitos y solo puede contener
-                    numeros, letras y guion bajo.</p>
+                    numeros y letras.</p>
                 </div>
       
               </div>
@@ -567,8 +567,8 @@
     const inputsEmpresa = document.querySelectorAll('#formulario-empresa');
   
     const expresionesEmpresa = {
-      razonSocial: /^[a-zA-ZÀ-ÿ\s]{2,50}$/, // Letras, numeros, guion y guion_bajo
-      nombreEmpresa: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+      razonSocial: /^[a-zA-ZÀ-ÿ0-9\s]{2,50}$/, // Letras, numeros, guion y guion_bajo
+      nombreEmpresa: /^[a-zA-ZÀ-ÿ0-9\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
       password: /^.{4,12}$/, // 4 a 12 digitos.
       email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       direccion: /^[a-zA-ZÀ-ÿ0-9\s]{2,30}$/ // 2 a 30 numeros.
